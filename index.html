@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pallavi B G — UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Pallavi B G, a UI/UX Designer with 1+ year of experience designing user-focused web, mobile and SaaS products." />
+  
+  <!-- Google Fonts: DM Serif Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-dark antialiased selection:bg-[#D98A7A] selection:text-[#170D13]">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header & Sticky Navigation Bar -->
+  <header>
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6" aria-label="Main Navigation">
+      <div class="container-custom flex justify-between items-center">
+        
+        <!-- Brand / Identity -->
+        <a href="#top" class="text-left group flex-shrink-0 flex flex-col items-start text-decoration-none">
+          <span class="font-serif text-xl sm:text-2xl tracking-[0.08em] text-[var(--text-main)] leading-none uppercase font-bold">
+            PALLAVI B G
+          </span>
+          <span class="text-[10px] sm:text-[11px] text-[var(--text-sec)] tracking-[0.2em] font-medium uppercase leading-none mt-1.5">
+            UI/UX DESIGNER
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <div class="hidden lg:flex items-center gap-5 xl:gap-7">
+          <a href="#top" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">About</a>
+          <span class="text-[var(--border)] select-none text-[10px]">·</span>
+          <a href="#work" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">Work</a>
+          <span class="text-[var(--border)] select-none text-[10px]">·</span>
+          <a href="#process" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">Process</a>
+          <span class="text-[var(--border)] select-none text-[10px]">·</span>
+          <a href="#experience" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">Experience</a>
+          <span class="text-[var(--border)] select-none text-[10px]">·</span>
+          <a href="#resume" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">Resume</a>
+          <span class="text-[var(--border)] select-none text-[10px]">·</span>
+          <a href="mailto:pallavibggowda016@gmail.com" class="nav-link text-xs tracking-wider uppercase font-medium text-[var(--text-main)] opacity-80 hover:opacity-100 hover:text-[var(--accent)] transition-all">Contact</a>
+        </div>
+
+        <!-- Controls: Theme Toggle & Primary CTA -->
+        <div class="flex items-center gap-4">
+          <!-- Theme Toggle Switch -->
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+            <!-- Stationary Background Track Icons (Subtle Muted Reference) -->
+            <span class="theme-toggle-track">
+              <!-- Stationary Moon Reference -->
+              <span class="theme-track-icon">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              </span>
+              <!-- Stationary Sun Reference -->
+              <span class="theme-track-icon">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4" fill="currentColor" />
+                  <line x1="12" y1="2" x2="12" y2="4.5" />
+                  <line x1="12" y1="19.5" x2="12" y2="22" />
+                  <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
+                  <line x1="17.3" y1="17.3" x2="19.07" y2="19.07" />
+                  <line x1="2" y1="12" x2="4.5" y2="12" />
+                  <line x1="19.5" y1="12" x2="22" y2="12" />
+                  <line x1="4.93" y1="19.07" x2="6.7" y2="17.3" />
+                  <line x1="17.3" y1="6.7" x2="19.07" y2="4.93" />
+                </svg>
+              </span>
+            </span>
+
+            <!-- Moving Circular Coral Indicator with Single Active Icon -->
+            <span class="theme-icon-indicator">
+              <!-- Clean Single Crescent Moon (Dark Mode) -->
+              <svg class="toggle-glyph-moon w-3 h-3 text-[#170D13] transition-opacity duration-200" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+              <!-- Clean Minimal Sun Glyph (Light Mode) -->
+              <svg class="toggle-glyph-sun w-3 h-3 text-[#170D13] opacity-0 absolute transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <line x1="12" y1="2" x2="12" y2="4.5" />
+                <line x1="12" y1="19.5" x2="12" y2="22" />
+                <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
+                <line x1="17.3" y1="17.3" x2="19.07" y2="19.07" />
+                <line x1="2" y1="12" x2="4.5" y2="12" />
+                <line x1="19.5" y1="12" x2="22" y2="12" />
+                <line x1="4.93" y1="19.07" x2="6.7" y2="17.3" />
+                <line x1="17.3" y1="6.7" x2="19.07" y2="4.93" />
+              </svg>
+            </span>
+          </button>
+
+          <!-- Let's Talk CTA -->
+          <a href="mailto:pallavibggowda016@gmail.com" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-[var(--accent)] text-[#170D13] px-5 py-2.5 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-md">
+            LET'S TALK ↗
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuBtn" class="lg:hidden min-w-[44px] min-h-[44px] p-2.5 text-[var(--text-main)] rounded-lg border border-[var(--border)] hover:bg-[var(--sec-bg)] flex items-center justify-center transition-colors" aria-label="Open mobile navigation menu" aria-controls="mobileMenu" aria-expanded="false">
+            <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden bg-[var(--card)] border-b border-[var(--border)] px-6 py-6 shadow-2xl transition-all">
+        <div class="flex flex-col gap-3">
+          <a href="#top" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">ABOUT</a>
+          <a href="#work" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">WORK</a>
+          <a href="#skills" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">SKILLS</a>
+          <a href="#experience" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">EXPERIENCE</a>
+          <a href="#process" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">PROCESS</a>
+          <a href="#resume" class="text-sm font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]">RESUME</a>
+          <a href="mailto:pallavibggowda016@gmail.com" class="text-sm font-medium text-[var(--text-main)] py-2.5">CONTACT</a>
+          <a href="mailto:pallavibggowda016@gmail.com" class="inline-flex items-center justify-center gap-2 text-xs font-semibold bg-[var(--accent)] text-[#170D13] py-3.5 rounded-lg mt-2 shadow-md">
+            LET'S TALK ↗
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Dynamic Case Study View (Hidden by default, shown when routed to #work/:id) -->
+  <div id="caseStudyView" class="hidden min-h-screen pt-32 pb-24 bg-[var(--bg)]">
+    <div class="container-custom" id="caseStudyContent">
+      <!-- Dynamic Case Study Content injected via app.js -->
+    </div>
+  </div>
+
+  <!-- Primary Portfolio Content Container -->
+  <main id="homeView" class="overflow-hidden">
+
+    <!-- ============================================================
+         SECTION 01 — HERO
+    ============================================================ -->
+    <section id="top" class="relative min-h-[94vh] flex items-center pt-28 sm:pt-32 pb-16 lg:pb-24 bg-[var(--bg)] transition-colors duration-300 overflow-hidden" aria-label="Hero Introduction">
+      
+      <!-- Layer 1: Ambient Background Glow & Decorative Shapes -->
+      <div class="parallax-layer-bg absolute inset-0 pointer-events-none overflow-hidden" data-speed="0.035" aria-hidden="true">
+        <!-- Deep Warm Halo -->
+        <div class="absolute top-1/4 right-[15%] w-[520px] sm:w-[680px] h-[520px] sm:h-[680px] rounded-full bg-gradient-to-tr from-[#D98A7A]/15 via-[#D98A7A]/5 to-transparent blur-3xl opacity-75"></div>
+        <div class="absolute -bottom-10 left-[5%] w-[380px] h-[380px] rounded-full bg-[var(--sec-bg)] opacity-40 blur-2xl"></div>
+        
+        <!-- Subtle Background Grid Axes -->
+        <div class="absolute top-0 right-[42%] w-px h-full bg-gradient-to-b from-transparent via-[var(--border)]/30 to-transparent"></div>
+        <div class="absolute bottom-[22%] left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--border)]/30 to-transparent"></div>
+      </div>
+
+      <div class="container-custom w-full relative z-10 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center min-h-[calc(100vh-140px)]">
+        
+        <!-- Left Column: Editorial Typography, Actions & Statistics (~45%) -->
+        <div class="parallax-text-layer flex flex-col items-start relative z-20">
+          
+          <!-- Sparkle Star Accent above Headline -->
+          <div class="parallax-foreground absolute -top-8 right-12 sm:right-24 text-[var(--accent)] opacity-85 pointer-events-none hidden sm:block" data-speed-x="-0.12" data-speed-y="-0.10" aria-hidden="true">
+            <svg class="w-6 h-6 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+            </svg>
+          </div>
+
+          <!-- Role Label -->
+          <div class="editorial-badge mb-5 text-[11px] tracking-[0.22em]">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="text-[var(--accent)]">
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+            </svg>
+            UI/UX DESIGNER
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="type-hero font-serif tracking-tight mb-6 text-[var(--text-main)]">
+            <span class="text-[var(--accent)] block">Designing</span>
+            <span class="block">digital experiences</span>
+            <span class="relative inline-block">
+              people understand.
+              <!-- Curved editorial hand-drawn flourish underline -->
+              <svg class="absolute w-[98%] h-4 -bottom-2.5 left-0 text-[var(--accent)] opacity-90" viewBox="0 0 300 15" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2,12 Q150,23 298,4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </span>
+          </h1>
+
+          <!-- Supporting Description -->
+          <p class="type-body text-[var(--text-sec)] max-w-xl mb-9 leading-relaxed font-light">
+            I turn complex requirements and user needs into simple, intuitive digital experiences.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 mb-12 w-full sm:w-auto">
+            <a href="#work" class="inline-flex items-center justify-center gap-2 text-xs font-semibold bg-[var(--accent)] text-[#170D13] px-7 py-3.5 rounded-lg hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-[0_4px_16px_rgba(217,138,122,0.25)]">
+              VIEW MY WORK ↗
+            </a>
+            <a href="assets/Pallavi_BG_Resume.pdf" download="Pallavi_BG_Resume.pdf" class="inline-flex items-center justify-center gap-2 text-xs font-medium border border-[var(--border)] text-[var(--text-main)] px-7 py-3.5 rounded-lg hover:bg-[var(--sec-bg)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition-all">
+              DOWNLOAD RESUME ↓
+            </a>
+          </div>
+
+          <!-- Hero Statistics -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-8 border-t border-[var(--border)] pt-7 w-full max-w-[540px]">
+            <div>
+              <div class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] mb-1">1+</div>
+              <div class="text-[10px] text-[var(--text-sec)] uppercase tracking-wider font-medium">YEAR EXPERIENCE</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] mb-1">4+</div>
+              <div class="text-[10px] text-[var(--text-sec)] uppercase tracking-wider font-medium">PRODUCTS</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-1 mb-1 text-[var(--accent)]">
+                <!-- Interlinked Venn Rings Symbol -->
+                <svg class="w-8 h-5" viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="11" cy="10" r="7.5" />
+                  <circle cx="19" cy="10" r="7.5" />
+                  <circle cx="27" cy="10" r="6.5" opacity="0.6" />
+                </svg>
+              </div>
+              <div class="text-[10px] text-[var(--text-sec)] uppercase tracking-wider font-medium">WEB · MOBILE · SAAS</div>
+            </div>
+          </div>
+
+          <!-- Scroll Indicator -->
+          <div class="mt-10 flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-semibold text-[var(--text-sec)]">
+            <span class="text-[var(--accent)] animate-bounce">↓</span> SCROLL TO EXPLORE
+          </div>
+
+        </div>
+
+        <!-- Right Column: Character Composition & Floating Micro-UI (~55%) -->
+        <div class="relative w-full flex justify-center items-center py-4 lg:py-8 min-h-[340px] sm:min-h-[460px] lg:min-h-[600px] overflow-hidden">
+          
+          <!-- Layer 1: Background Compass Arcs & Radial Halo behind character -->
+          <div class="parallax-layer-bg absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" data-speed="0.04" aria-hidden="true">
+            <!-- Concentric Compass Arc Rings -->
+            <div class="w-[420px] sm:w-[500px] lg:w-[540px] h-[420px] sm:h-[500px] lg:h-[540px] rounded-full border border-[var(--accent)]/20 opacity-60"></div>
+            <div class="absolute w-[340px] sm:w-[410px] lg:w-[450px] h-[340px] sm:h-[410px] lg:h-[450px] rounded-full border border-[var(--border)] opacity-35"></div>
+            <!-- Delicate diagonal compass lines -->
+            <div class="absolute w-[440px] sm:w-[520px] h-px bg-gradient-to-r from-transparent via-[var(--accent)]/25 to-transparent rotate-45"></div>
+            <div class="absolute w-[440px] sm:w-[520px] h-px bg-gradient-to-r from-transparent via-[var(--accent)]/25 to-transparent -rotate-45"></div>
+          </div>
+
+          <!-- Layer 3: Character Illustration (Replicated from Reference Image with 3D Depth) -->
+          <div class="parallax-character-wrapper relative z-10 w-full max-w-[540px] lg:max-w-[620px] flex justify-center items-center" data-speed="0.025">
+            <div class="hero-character-frame relative w-full aspect-[574/528] overflow-hidden flex items-center justify-center cursor-pointer">
+              <img 
+                id="heroCharacterImg"
+                src="assets/hero-character.jpg" 
+                alt="Pallavi B G — UI/UX Designer working on digital products with laptop" 
+                class="w-full h-full object-cover object-center hero-character-blend select-none pointer-events-none"
+                loading="eager"
+              />
+              <!-- 3D Specular Light Glare & Depth Overlay -->
+              <div class="hero-3d-glare absolute inset-0 pointer-events-none" id="hero3dGlare" aria-hidden="true"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         TECH STACK — TECHNOLOGIES I WORK WITH
+    ============================================================ -->
+    <section id="technologies" class="py-20 sm:py-24 bg-[var(--bg)]" aria-label="Technologies I Work With">
+      <div class="container-custom">
+        
+        <!-- Section Heading -->
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span class="editorial-badge mb-3">TECH STACK</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-3">Technologies I Work With</h2>
+          <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed">
+            Core design, prototyping, and front-end development tools powering my product workflow.
+          </p>
+        </div>
+
+        <!-- Technologies Grid -->
+        <div class="tech-grid" role="list">
+
+          <!-- 01: Figma -->
+          <div class="tech-card" role="listitem" aria-label="Figma">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">Figma</span>
+          </div>
+
+          <!-- 02: Canva -->
+          <div class="tech-card" role="listitem" aria-label="Canva">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="canvaGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#00C4CC"/>
+                    <stop offset="50%" stop-color="#008BE3"/>
+                    <stop offset="100%" stop-color="#7D2AE8"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="24" cy="24" r="22" fill="url(#canvaGrad)"/>
+                <path d="M26.2 33.2c-5.8 0-9.8-4.2-9.8-10.4 0-6.4 4.3-10.6 10.3-10.6 3.9 0 6.6 1.8 7.6 4.6.2.6-.1 1.2-.7 1.4l-2 .8c-.5.2-1.1-.1-1.3-.6-.6-1.7-2-2.7-3.8-2.7-3.9 0-6.1 3-6.1 7.1 0 4.1 2.3 6.9 5.8 6.9 2.2 0 3.8-1.1 4.5-2.8.2-.5.8-.8 1.3-.6l2 .8c.6.2.8.9.5 1.5-1.3 3-4.2 4.6-8.2 4.6z" fill="#FFFFFF"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">Canva</span>
+          </div>
+
+          <!-- 03: HTML5 -->
+          <div class="tech-card" role="listitem" aria-label="HTML5">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 1.5h19l-1.7 19.3L12 23.3 4.2 20.8 2.5 1.5z" fill="#E34F26"/>
+                <path d="M12 21.4l6.2-1.7 1.5-16.7H12v18.4z" fill="#EF652A"/>
+                <path d="M12 9.4h3.4l-.2 2.6H12v2.8h3.1l-.4 5.5-2.7.8V9.4zm0-5.8h6.7l-.2 2.5H12V3.6z" fill="#FFFFFF"/>
+                <path d="M12 9.4H8.6l.2 2.6H12v2.8H8.9l.4 5.5 2.7.8V9.4zm0-5.8H5.3l.2 2.5H12V3.6z" fill="#EBEBEB"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">HTML5</span>
+          </div>
+
+          <!-- 04: CSS3 -->
+          <div class="tech-card" role="listitem" aria-label="CSS3">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 1.5h19l-1.7 19.3L12 23.3 4.2 20.8 2.5 1.5z" fill="#1572B6"/>
+                <path d="M12 21.4l6.2-1.7 1.5-16.7H12v18.4z" fill="#33A9DC"/>
+                <path d="M12 9.2h3.3l-.3 3.2H12v2.8h3l-.3 3.8-2.7.8V9.2zm0-5.6h6.6l-.2 2.5H12V3.6z" fill="#FFFFFF"/>
+                <path d="M12 9.2H8.7l.2 2.5H12v2.8H8.9l.4 4.5 2.7.8V9.2zm0-5.6H5.4l.2 2.5H12V3.6z" fill="#EBEBEB"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">CSS3</span>
+          </div>
+
+          <!-- 05: JavaScript -->
+          <div class="tech-card" role="listitem" aria-label="JavaScript">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="4.5" fill="#F7DF1E"/>
+                <path d="M6.5 18.2c.4.7 1 1.2 1.9 1.2.9 0 1.5-.4 1.5-1.5v-7.1h1.7v7.2c0 2-1.2 2.9-3 2.9-1.6 0-2.6-.8-3.1-1.9l1-.8zm8.4 2.6c-1.4 0-2.3-.7-2.8-1.7l1.5-.9c.3.6.8 1 1.4 1 .7 0 1.1-.3 1.1-.8 0-.6-.5-.8-1.6-1.3l-.5-.2c-1.6-.7-2.6-1.5-2.6-3.3 0-1.6 1.3-2.9 3.2-2.9 1.4 0 2.4.5 2.9 1.6l-1.4.9c-.3-.5-.7-.8-1.4-.8-.7 0-1.1.3-1.1.8 0 .5.4.7 1.4 1.1l.5.2c1.9.8 2.8 1.6 2.8 3.5 0 2-1.5 3-3.6 3z" fill="#000000"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">JavaScript</span>
+          </div>
+
+          <!-- 06: React -->
+          <div class="tech-card" role="listitem" aria-label="React">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="-11.5 -10.2 23 20.4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
+                <g stroke="#61DAFB" stroke-width="1.1" fill="none">
+                  <ellipse rx="11" ry="4.2"/>
+                  <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                  <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                </g>
+              </svg>
+            </div>
+            <span class="tech-card-label">React</span>
+          </div>
+
+          <!-- 07: Claude -->
+          <div class="tech-card" role="listitem" aria-label="Claude">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="#D97757" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.656 12.875L21.375 7.125L17.781 4.781L14.063 10.531L14.063 3.656H9.938L9.938 10.531L6.219 4.781L2.625 7.125L6.344 12.875L0.281 12.875L0.281 17.125L6.344 17.125L2.625 22.875L6.219 25.219L9.938 19.469L9.938 26.344H14.063L14.063 19.469L17.781 25.219L21.375 22.875L17.656 17.125L23.719 17.125L23.719 12.875L17.656 12.875Z" transform="translate(12, 12) scale(0.68) translate(-12, -15)"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">Claude</span>
+          </div>
+
+          <!-- 08: Antigravity -->
+          <div class="tech-card" role="listitem" aria-label="Antigravity">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[var(--badge-bg)] border border-[var(--accent)]/60 flex items-center justify-center text-[var(--accent)] shadow-sm group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/15 transition-all">
+                <span class="font-mono font-bold text-[10px] sm:text-[11px] tracking-wider leading-none select-none">AGY</span>
+              </div>
+            </div>
+            <span class="tech-card-label">Antigravity</span>
+          </div>
+
+          <!-- 09: Adobe Photoshop -->
+          <div class="tech-card" role="listitem" aria-label="Adobe Photoshop">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="5" fill="#001E36"/>
+                <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" stroke="#31A8FF" stroke-opacity="0.8"/>
+                <path d="M5.8 7.2h3.5c1.8 0 2.9.9 2.9 2.3 0 1.5-1.1 2.4-3 2.4H7.5v3.6H5.8V7.2zm1.7 3.3h1.6c.8 0 1.3-.4 1.3-1 0-.6-.5-1-1.3-1H7.5v2zm7 3.7c.6.5 1.5.8 2.4.8 1.1 0 1.7-.5 1.7-1.1 0-.6-.5-.9-1.6-1.3-1.6-.5-2.5-1.2-2.5-2.3 0-1.4 1.2-2.4 2.8-2.4 1 0 1.8.3 2.3.7l-.5 1.2c-.5-.4-1.1-.6-1.8-.6-.9 0-1.4.5-1.4 1 0 .5.4.8 1.5 1.1 1.7.5 2.6 1.2 2.6 2.4 0 1.5-1.1 2.5-3 2.5-1.1 0-2.1-.4-2.7-.9l.6-1.1z" fill="#31A8FF"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">Adobe Photoshop</span>
+          </div>
+
+          <!-- 10: Git -->
+          <div class="tech-card" role="listitem" aria-label="Git">
+            <div class="tech-card-icon-wrap" aria-hidden="true">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.529-.527-.667-1.29-.413-1.944L12.8 8.948v5.526c.244.135.466.324.643.501.72.72.72 1.884 0 2.604-.719.719-1.883.719-2.602 0-.721-.72-.721-1.884 0-2.604.22-.221.489-.37.778-.448V8.847c-.289-.078-.557-.227-.778-.448-.523-.522-.664-1.28-.415-1.93L7.698 3.738.455 10.98c-.606.602-.606 1.58 0 2.186l10.479 10.48c.605.604 1.582.604 2.187 0l10.426-10.428a1.55 1.55 0 00-.001-2.288z" fill="#F05032"/>
+              </svg>
+            </div>
+            <span class="tech-card-label">Git</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 02 — SELECTED WORK
+    ============================================================ -->
+    <section id="work" class="py-24 bg-[var(--bg)] overflow-hidden" aria-label="Selected Work">
+      <div class="container-custom">
+        
+        <!-- Section Heading -->
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <span class="editorial-badge mb-3">02 — SELECTED WORK</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-4">Products I have designed</h2>
+          <p class="text-base text-[var(--text-sec)] leading-relaxed">
+            A selection of digital products I've worked on across web, mobile and SaaS environments.
+          </p>
+        </div>
+
+        <!-- 3D Destination Card Stage -->
+        <div class="destination-deck-wrapper pt-2 sm:pt-4 pb-2">
+          <div id="cardsDeckStage" class="destination-deck-stage" aria-live="polite">
+            <!-- CARD 01: DSEdify (Education Management SaaS) -->
+            <article 
+              id="deckCard0"
+              class="destination-card" 
+              data-deck-pos="0" 
+              data-project-index="0"
+              data-project-id="dsedify"
+              tabindex="0"
+              role="group"
+              aria-label="01: DSEdify — Education Management SaaS"
+            >
+              <!-- Top Bar -->
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[var(--badge-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold leading-none">01 · EDTECH SAAS</span>
+                    <span class="text-[10px] text-[var(--text-sec)]">Command App &amp; Learning Ops</span>
+                  </div>
+                </div>
+                <a 
+                  href="#work/dsedify" 
+                  class="deck-card-arrow-btn" 
+                  aria-label="Open DSEdify Case Study" 
+                  title="Open DSEdify Case Study"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Title Block -->
+              <div class="text-center my-1 sm:my-1.5">
+                <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-main)] uppercase tracking-wider font-bold leading-tight">
+                  <a href="#work/dsedify" class="hover:text-[var(--accent)] transition-colors">DSEdify</a>
+                </h3>
+                <p class="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold mt-0.5">
+                  Education Management Platform
+                </p>
+              </div>
+
+              <!-- Media Preview with Floating Pill -->
+              <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--sec-bg)] shadow-inner group/preview">
+                <img 
+                  src="assets/dsedify-cover.jpg" 
+                  alt="DSEdify Command App — Education Management Platform cover" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover/preview:scale-105 block select-none pointer-events-none" 
+                  loading="eager" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                <!-- Floating badge pill -->
+                <div class="deck-media-pill">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span>
+                  <span><span class="text-[var(--accent)] mr-1">&#10022;</span>Role-Based Command App</span>
+                </div>
+              </div>
+
+              <!-- Description / Editorial Quote -->
+              <div class="text-center px-1 my-0.5">
+                <p class="text-xs sm:text-[13px] text-[var(--text-sec)] font-serif italic leading-relaxed line-clamp-2">
+                  &ldquo;Designing role-governed workflows for students, trainers, coordinators, and corporate partners across complex multi-branch training operations.&rdquo;
+                </p>
+              </div>
+
+              <!-- Action CTA Button -->
+              <div>
+                <a 
+                  href="#work/dsedify" 
+                  class="deck-cta-btn inline-flex items-center justify-center gap-2 w-full text-xs font-semibold py-2.5 px-4 rounded-xl transition-all"
+                >
+                  <span>VIEW CASE STUDY</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 02: DSJobby (Job Portal & Recruitment Platform) -->
+            <article 
+              id="deckCard1"
+              class="destination-card" 
+              data-deck-pos="1" 
+              data-project-index="1"
+              data-project-id="ds-jobby"
+              tabindex="0"
+              role="group"
+              aria-label="02: DSJobby — Job Portal &amp; Recruitment Platform"
+            >
+              <!-- Top Bar -->
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[var(--badge-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold leading-none">02 · RECRUITMENT</span>
+                    <span class="text-[10px] text-[var(--text-sec)]">Talent &amp; Staffing Pipeline</span>
+                  </div>
+                </div>
+                <a 
+                  href="#work/ds-jobby" 
+                  class="deck-card-arrow-btn" 
+                  aria-label="Open DSJobby Case Study" 
+                  title="Open DSJobby Case Study"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Title Block -->
+              <div class="text-center my-1 sm:my-1.5">
+                <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-main)] uppercase tracking-wider font-bold leading-tight">
+                  <a href="#work/ds-jobby" class="hover:text-[var(--accent)] transition-colors">DSJobby</a>
+                </h3>
+                <p class="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold mt-0.5">
+                  Job Portal &amp; Recruitment Platform
+                </p>
+              </div>
+
+              <!-- Media Preview with Floating Pill -->
+              <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--sec-bg)] shadow-inner group/preview">
+                <img 
+                  src="assets/dsjobby-cover.jpg" 
+                  alt="DSJobby — Job Portal &amp; Recruitment Platform cover" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover/preview:scale-105 block select-none pointer-events-none" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                <!-- Floating badge pill -->
+                <div class="deck-media-pill">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span>
+                  <span><span class="text-[var(--accent)] mr-1">&#10022;</span>Permanent Staffing &amp; Talent Pipeline</span>
+                </div>
+              </div>
+
+              <!-- Description / Editorial Quote -->
+              <div class="text-center px-1 my-0.5">
+                <p class="text-xs sm:text-[13px] text-[var(--text-sec)] font-serif italic leading-relaxed line-clamp-2">
+                  &ldquo;Connecting candidates, recruiters, and companies with end-to-end applicant tracking, automated screening, and candidate interview management.&rdquo;
+                </p>
+              </div>
+
+              <!-- Action CTA Button -->
+              <div>
+                <a 
+                  href="#work/ds-jobby" 
+                  class="deck-cta-btn inline-flex items-center justify-center gap-2 w-full text-xs font-semibold py-2.5 px-4 rounded-xl transition-all"
+                >
+                  <span>VIEW CASE STUDY</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 03: MediTrack (Pharmacy Management Experience) -->
+            <article 
+              id="deckCard2"
+              class="destination-card" 
+              data-deck-pos="2" 
+              data-project-index="2"
+              data-project-id="meditrack"
+              tabindex="0"
+              role="group"
+              aria-label="03: MediTrack — Pharmacy Management Experience"
+            >
+              <!-- Top Bar -->
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[var(--badge-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold leading-none">03 · HEALTHCARE POS</span>
+                    <span class="text-[10px] text-[var(--text-sec)]">Store &amp; Inventory</span>
+                  </div>
+                </div>
+                <a 
+                  href="#work/meditrack" 
+                  class="deck-card-arrow-btn" 
+                  aria-label="Open MediTrack Case Study" 
+                  title="Open MediTrack Case Study"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Title Block -->
+              <div class="text-center my-1 sm:my-1.5">
+                <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-main)] uppercase tracking-wider font-bold leading-tight">
+                  <a href="#work/meditrack" class="hover:text-[var(--accent)] transition-colors">MediTrack</a>
+                </h3>
+                <p class="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold mt-0.5">
+                  Pharmacy Management Experience
+                </p>
+              </div>
+
+              <!-- Media Preview with Floating Pill -->
+              <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--sec-bg)] shadow-inner group/preview">
+                <img 
+                  src="assets/meditrack-cover.jpg" 
+                  alt="MediTrack — Pharmacy Management Experience cover" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover/preview:scale-105 block select-none pointer-events-none" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                <!-- Floating badge pill -->
+                <div class="deck-media-pill">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span>
+                  <span><span class="text-[var(--accent)] mr-1">&#10022;</span>Visual Store Mapping &amp; POS</span>
+                </div>
+              </div>
+
+              <!-- Description / Editorial Quote -->
+              <div class="text-center px-1 my-0.5">
+                <p class="text-xs sm:text-[13px] text-[var(--text-sec)] font-serif italic leading-relaxed line-clamp-2">
+                  &ldquo;Connecting inventory registration, visual rack mapping, and high-throughput point-of-sale checkout into a unified pharmacy workflow.&rdquo;
+                </p>
+              </div>
+
+              <!-- Action CTA Button -->
+              <div>
+                <a 
+                  href="#work/meditrack" 
+                  class="deck-cta-btn inline-flex items-center justify-center gap-2 w-full text-xs font-semibold py-2.5 px-4 rounded-xl transition-all"
+                >
+                  <span>VIEW CASE STUDY</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 04: DSCRM (Enterprise CRM Platform) -->
+            <article 
+              id="deckCard3"
+              class="destination-card" 
+              data-deck-pos="3" 
+              data-project-index="3"
+              data-project-id="dscrm"
+              tabindex="0"
+              role="group"
+              aria-label="04: DSCRM — Enterprise CRM Platform"
+            >
+              <!-- Top Bar -->
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[var(--badge-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold leading-none">04 · B2B SAAS CRM</span>
+                    <span class="text-[10px] text-[var(--text-sec)]">Enterprise Architecture</span>
+                  </div>
+                </div>
+                <a 
+                  href="#work/dscrm" 
+                  class="deck-card-arrow-btn" 
+                  aria-label="Open DSCRM Case Study" 
+                  title="Open DSCRM Case Study"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Title Block -->
+              <div class="text-center my-1 sm:my-1.5">
+                <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-main)] uppercase tracking-wider font-bold leading-tight">
+                  <a href="#work/dscrm" class="hover:text-[var(--accent)] transition-colors">DSCRM</a>
+                </h3>
+                <p class="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[var(--accent)] font-semibold mt-0.5">
+                  Enterprise CRM Platform
+                </p>
+              </div>
+
+              <!-- Media Preview with Floating Pill -->
+              <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--sec-bg)] shadow-inner group/preview">
+                <img 
+                  src="assets/dscrm-cover.jpg" 
+                  alt="DSCRM — Enterprise CRM Platform cover" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover/preview:scale-105 block select-none pointer-events-none" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                <!-- Floating badge pill -->
+                <div class="deck-media-pill">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span>
+                  <span><span class="text-[var(--accent)] mr-1">&#10022;</span>Enterprise Workflows &amp; Architecture</span>
+                </div>
+              </div>
+
+              <!-- Description / Editorial Quote -->
+              <div class="text-center px-1 my-0.5">
+                <p class="text-xs sm:text-[13px] text-[var(--text-sec)] font-serif italic leading-relaxed line-clamp-2">
+                  &ldquo;Enterprise UX requires making complex business rules and relationships understandable without overwhelming users.&rdquo;
+                </p>
+              </div>
+
+              <!-- Action CTA Button -->
+              <div>
+                <a 
+                  href="#work/dscrm" 
+                  class="deck-cta-btn inline-flex items-center justify-center gap-2 w-full text-xs font-semibold py-2.5 px-4 rounded-xl transition-all"
+                >
+                  <span>VIEW CASE STUDY</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Deck Controls & Interaction Hint (Below Cards) -->
+        <div class="deck-controls-container mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3">
+          
+          <!-- Next / Prev Control Bar -->
+          <div class="flex items-center justify-center gap-4 sm:gap-6">
+            <button 
+              id="deckPrevBtn" 
+              type="button"
+              class="deck-nav-btn" 
+              aria-label="Previous Project Card" 
+              title="Previous Project Card (Left Arrow)"
+            >
+              <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+
+            <!-- Active Deck Status Indicator -->
+            <div class="px-5 py-2 rounded-full border border-[var(--border)] bg-[var(--card)] shadow-sm text-center select-none">
+              <span id="deckCounterText" class="text-xs font-mono font-medium tracking-wider text-[var(--text-main)]">
+                01 / 04 · DSEdify
+              </span>
+            </div>
+
+            <button 
+              id="deckNextBtn" 
+              type="button"
+              class="deck-nav-btn" 
+              aria-label="Next Project Card" 
+              title="Next Project Card (Right Arrow)"
+            >
+              <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Interaction Hint -->
+          <div class="text-[11px] font-mono text-[var(--text-sec)] opacity-80 flex items-center justify-center gap-1.5 text-center mt-1 select-none">
+            <svg class="w-3.5 h-3.5 text-[var(--accent)] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+            <span>Use arrow buttons or swipe to cycle projects · Click any card behind to bring forward</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 03 — DESIGN SKILLS
+    ============================================================ -->
+    <section id="skills" class="py-24 bg-[var(--sec-bg)]" aria-label="Design Skills">
+      <div class="container-custom">
+        
+        <div class="mb-16">
+          <span class="editorial-badge mb-3">03 — DESIGN SKILLS</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-3">Core Capabilities</h2>
+          <p class="type-body text-[var(--text-sec)] max-w-xl">
+            A comprehensive overview of my design toolkit across research, visual systems, and product execution.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Column 01: UX Design -->
+          <div class="p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--accent)] transition-all">
+            <div class="text-xs font-mono text-[var(--accent)] mb-2">CATEGORY 01</div>
+            <h3 class="text-2xl font-serif text-[var(--text-main)] mb-6">UX DESIGN</h3>
+            
+            <ul class="space-y-2.5 text-sm text-[var(--text-sec)]">
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>User Research</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Requirement Analysis</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>User Flows</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Information Architecture</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Wireframing</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>UX Audits</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Usability</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Problem Solving</li>
+            </ul>
+          </div>
+
+          <!-- Column 02: UI Design -->
+          <div class="p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--accent)] transition-all">
+            <div class="text-xs font-mono text-[var(--accent)] mb-2">CATEGORY 02</div>
+            <h3 class="text-2xl font-serif text-[var(--text-main)] mb-6">UI DESIGN</h3>
+            
+            <ul class="space-y-2.5 text-sm text-[var(--text-sec)]">
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>High-Fidelity Design</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Responsive Design</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Design Systems</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Components</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Typography</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Visual Hierarchy</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Accessibility (WCAG)</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Interaction Design</li>
+            </ul>
+          </div>
+
+          <!-- Column 03: Product Design -->
+          <div class="p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--accent)] transition-all">
+            <div class="text-xs font-mono text-[var(--accent)] mb-2">CATEGORY 03</div>
+            <h3 class="text-2xl font-serif text-[var(--text-main)] mb-6">PRODUCT DESIGN</h3>
+            
+            <ul class="space-y-2.5 text-sm text-[var(--text-sec)]">
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>SaaS Architecture</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>B2B Platforms</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>B2C Consumer Experiences</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Web Applications</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Mobile Applications</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Enterprise Dashboards</li>
+              <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Complex Workflows</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 04 — EXPERIENCE
+    ============================================================ -->
+    <section id="experience" class="py-24 bg-[var(--bg)]" aria-label="Experience">
+      <div class="container-custom">
+        
+        <div class="mb-16">
+          <span class="editorial-badge mb-3">04 — EXPERIENCE</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-3">Professional Journey</h2>
+          <p class="type-body text-[var(--text-sec)] max-w-xl">
+            Real industry experience shaping digital products in agile cross-functional teams.
+          </p>
+        </div>
+
+        <!-- Refined Editorial Timeline -->
+        <div class="relative pl-8 sm:pl-12 border-l border-[var(--border)] max-w-3xl">
+          
+          <!-- Timeline Marker -->
+          <div class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full border-2 border-[var(--accent)] bg-[var(--bg)] flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-[var(--accent)]"></div>
+          </div>
+
+          <div class="bg-[var(--card)] p-8 sm:p-10 rounded-2xl border border-[var(--border)] shadow-xl hover:border-[var(--accent)] transition-colors">
+            
+            <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+              <div>
+                <span class="text-xs font-mono text-[var(--accent)] uppercase">Dyashin Technosoft</span>
+                <h3 class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] mt-1">UI/UX Designer</h3>
+              </div>
+              <span class="px-3.5 py-1 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] text-xs font-semibold text-[var(--text-main)]">
+                1+ Year Professional Experience
+              </span>
+            </div>
+
+            <p class="text-sm text-[var(--text-sec)] leading-relaxed mb-6">
+              Spearheaded user experience and visual interface design across four core software products spanning job recruitment, learning management, pharmacy SaaS, and enterprise CRM.
+            </p>
+
+            <div class="border-t border-[var(--border)] pt-6">
+              <div class="text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-4">Core Responsibilities:</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--text-sec)]">
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Requirement Analysis</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> UX Design & User Flows</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Wireframing & Prototyping</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> High-Fidelity UI Design</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Responsive Multi-Device Design</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Design Systems & Component Tokens</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Developer Collaboration & Handoff</div>
+                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Stakeholder Alignment & Reviews</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 05 — DESIGN PROCESS (3D INTERACTIVE BOOK)
+    ============================================================ -->
+    <section id="process" class="py-24 bg-[var(--sec-bg)]" aria-label="Design Process">
+      <div class="container-custom">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="editorial-badge mb-3">05 — DESIGN PROCESS</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-4">How I Design</h2>
+          <p class="text-base text-[var(--text-sec)] leading-relaxed">
+            “From understanding the problem to creating meaningful experiences.”
+          </p>
+          <div class="text-xs text-[var(--text-sec)] font-mono mt-2">
+            Interactive Design Journal — Click pages or step tabs to flip through the process.
+          </div>
+        </div>
+
+        <div class="design-process-layout max-w-7xl mx-auto">
+          
+          <!-- Left: Step Navigation Sidebar -->
+          <div class="process-navigation flex flex-col gap-3">
+            
+            <!-- Row 01 Discover -->
+            <button class="process-step-row text-left transition-all" data-step="1" aria-label="Step 01 Discover Understand">
+              <span class="process-num font-mono">01</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">DISCOVER</span>
+                <span class="process-sub font-mono">UNDERSTAND</span>
+              </span>
+            </button>
+
+            <!-- Row 02 Define -->
+            <button class="process-step-row text-left transition-all" data-step="2" aria-label="Step 02 Define Direction">
+              <span class="process-num font-mono">02</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">DEFINE</span>
+                <span class="process-sub font-mono">DIRECTION</span>
+              </span>
+            </button>
+
+            <!-- Row 03 Ideate -->
+            <button class="process-step-row text-left transition-all" data-step="3" aria-label="Step 03 Ideate Possibilities">
+              <span class="process-num font-mono">03</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">IDEATE</span>
+                <span class="process-sub font-mono">POSSIBILITIES</span>
+              </span>
+            </button>
+
+            <!-- Row 04 Design -->
+            <button class="process-step-row text-left transition-all" data-step="4" aria-label="Step 04 Design Structure to UI">
+              <span class="process-num font-mono">04</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">DESIGN</span>
+                <span class="process-sub font-mono">STRUCTURE TO UI</span>
+              </span>
+            </button>
+
+            <!-- Row 05 Validate -->
+            <button class="process-step-row text-left transition-all" data-step="5" aria-label="Step 05 Validate Evaluation">
+              <span class="process-num font-mono">05</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">VALIDATE</span>
+                <span class="process-sub font-mono">EVALUATION</span>
+              </span>
+            </button>
+
+            <!-- Row 06 Improve -->
+            <button class="process-step-row text-left transition-all" data-step="6" aria-label="Step 06 Improve Evolution">
+              <span class="process-num font-mono">06</span>
+              <span class="process-divider"></span>
+              <span class="process-info">
+                <span class="process-title font-serif">IMPROVE</span>
+                <span class="process-sub font-mono">EVOLUTION</span>
+              </span>
+            </button>
+
+            <!-- Book Page Turn Controls -->
+            <div class="flex items-center gap-3 pt-3 border-t border-[var(--border)] mt-1">
+              <button id="bookPrevBtn" class="flex-1 py-2.5 rounded-lg border border-[var(--border)] text-xs font-semibold text-[var(--text-main)] hover:border-[var(--accent)] disabled:opacity-30 disabled:pointer-events-none transition-colors">
+                ← PREV PAGE
+              </button>
+              <button id="bookNextBtn" class="flex-1 py-2.5 rounded-lg bg-[var(--accent)] text-[#170D13] text-xs font-bold hover:opacity-90 disabled:opacity-30 disabled:pointer-events-none transition-opacity">
+                NEXT PAGE →
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: The 3D Book Container -->
+          <div class="book-container flex justify-center items-center">
+            <div class="book-wrapper" id="designProcessBook" tabindex="0" aria-label="Interactive 3D Process Book. Use left and right arrow keys to flip pages.">
+              
+              <div class="book is-closed" id="interactiveBookElement">
+                
+                <!-- Page 1: Cover & Step 01 Discover -->
+                <div class="page book-page" style="z-index: 6;">
+                  <!-- Front: Book Cover -->
+                  <div class="page-face page-front book-cover-front border-2 border-[var(--border)] relative overflow-hidden flex flex-col justify-between" data-stage="0">
+                    <div class="cover-inset-frame"></div>
+                    
+                    <!-- Cover Header Metadata -->
+                    <div class="flex justify-between items-center text-[9px] font-mono tracking-widest uppercase border-b border-[var(--border)] pb-3 relative z-10">
+                      <span class="text-[var(--accent)] font-semibold flex items-center gap-1.5">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                        VOL. 01 · PROCESS
+                      </span>
+                      <span class="text-[var(--text-sec)]">DESIGN PHILOSOPHY</span>
+                    </div>
+
+                    <!-- Center Editorial Title & Emblem Block -->
+                    <div class="text-center my-auto py-4 relative z-10">
+                      
+                      <!-- Geometric Emblem -->
+                      <div class="w-12 h-12 mx-auto mb-4 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] flex items-center justify-center relative shadow-sm">
+                        <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <div class="absolute -inset-1 rounded-full border border-[var(--accent)] opacity-30"></div>
+                      </div>
+
+                      <!-- Subtitle Label -->
+                      <div class="text-[10px] tracking-[0.25em] text-[var(--text-sec)] uppercase font-semibold mb-2">PALLAVI B G</div>
+                      
+                      <!-- Main Title -->
+                      <h3 class="text-3xl sm:text-4xl font-serif text-[var(--text-main)] leading-tight tracking-tight mb-2">
+                        HOW I DESIGN
+                      </h3>
+
+                      <!-- Thin Decorative Accent Line -->
+                      <div class="flex items-center justify-center gap-2 my-3">
+                        <span class="w-10 h-px bg-[var(--border)]"></span>
+                        <span class="w-2 h-2 rotate-45 border border-[var(--accent)] bg-[var(--accent)]/30"></span>
+                        <span class="w-10 h-px bg-[var(--border)]"></span>
+                      </div>
+
+                      <!-- Professional Label -->
+                      <div class="text-[10px] font-mono text-[var(--accent)] tracking-[0.2em] uppercase font-medium">
+                        UX · UI · PRODUCT DESIGN
+                      </div>
+
+                      <!-- Philosophical Note -->
+                      <div class="mt-4 pt-3 border-t border-[var(--border)]/60 max-w-[200px] mx-auto text-[10.5px] text-[var(--text-sec)] leading-relaxed italic font-serif">
+                        “Minimal but not empty.<br/>Dense but not cluttered.”
+                      </div>
+                    </div>
+
+                    <!-- Cover Footer Action -->
+                    <div class="pt-3 border-t border-[var(--border)] flex justify-between items-center text-[9px] font-mono text-[var(--text-sec)] relative z-10">
+                      <span class="text-[var(--accent)]">© PALLAVI B G</span>
+                      <button type="button" id="coverOpenJournalBtn" class="tracking-widest flex items-center gap-1 text-[var(--accent)] font-semibold hover:underline cursor-pointer">
+                        OPEN JOURNAL →
+                      </button>
+                    </div>
+
+                  </div>
+                  <!-- Back: Step 01 Discover -->
+                  <div class="page-face page-back bg-[var(--card)] border border-[var(--border)]" data-stage="1">
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 01</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">DISCOVER</span>
+                    </div>
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center space-y-3.5 sm:space-y-4 my-auto">
+                      <h4 class="text-[clamp(20px,5vw,24px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">“Understand before designing.”</h4>
+                      <p class="text-[clamp(14px,3.5vw,15px)] text-[var(--text-sec)] leading-[1.6] font-light">
+                        Every interface starts with empathy and active listening. Before opening Figma or sketching layouts, I immerse myself in user contexts and business constraints.
+                      </p>
+                      <ul class="text-xs sm:text-[13px] space-y-1.5 text-[var(--text-main)]">
+                        <li>• Understand the core problem.</li>
+                        <li>• Understand users &amp; stakeholders.</li>
+                        <li>• Gather functional requirements.</li>
+                        <li>• Explore context and constraints.</li>
+                      </ul>
+                      <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[11px] font-mono text-center text-[var(--accent)]">
+                        USER → NEED → PROBLEM
+                      </div>
+                    </div>
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">PAGE 01</div>
+                  </div>
+                </div>
+
+                <!-- Page 2: Step 02 Define & Step 03 Ideate -->
+                <div class="page book-page" style="z-index: 5;">
+                  <!-- Front: Step 02 Define -->
+                  <div class="page-face page-front bg-[var(--card)] border border-[var(--border)]" data-stage="2">
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 02</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">DEFINE</span>
+                    </div>
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center space-y-3.5 sm:space-y-4 my-auto">
+                      <h4 class="text-[clamp(20px,5vw,24px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">“Turn observations into direction.”</h4>
+                      <p class="text-[clamp(14px,3.5vw,15px)] text-[var(--text-sec)] leading-[1.6] font-light">
+                        Synthesizing qualitative feedback into a concrete North Star prevents scope creep and aligns cross-functional engineering and product partners.
+                      </p>
+                      <ul class="text-xs sm:text-[13px] space-y-1.5 text-[var(--text-main)]">
+                        <li>• Identify specific user needs.</li>
+                        <li>• Map acute pain points.</li>
+                        <li>• Clarify core product goals.</li>
+                        <li>• Define constraints and boundaries.</li>
+                      </ul>
+                      <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[11px] font-mono text-center text-[var(--accent)]">
+                        PROBLEM → GOAL → DIRECTION
+                      </div>
+                    </div>
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">PAGE 02</div>
+                  </div>
+                  <!-- Back: Step 03 Ideate -->
+                  <div class="page-face page-back bg-[var(--card)] border border-[var(--border)]" data-stage="3">
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 03</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">IDEATE</span>
+                    </div>
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center space-y-3.5 sm:space-y-4 my-auto">
+                      <h4 class="text-[clamp(20px,5vw,24px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">“Explore possibilities before choosing a direction.”</h4>
+                      <p class="text-[clamp(14px,3.5vw,15px)] text-[var(--text-sec)] leading-[1.6] font-light">
+                        Rapid low-fidelity sketches and decision trees allow testing hypotheses fast without getting attached to visual styling too early.
+                      </p>
+                      <ul class="text-xs sm:text-[13px] space-y-1.5 text-[var(--text-main)]">
+                        <li>• Explore comprehensive user flows.</li>
+                        <li>• Structure information architecture.</li>
+                        <li>• Compare alternative approaches.</li>
+                        <li>• Evaluate density vs speed trade-offs.</li>
+                      </ul>
+                      <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[11px] font-mono text-center text-[var(--accent)]">
+                        FLOW → OPTIONS → SOLUTION
+                      </div>
+                    </div>
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">PAGE 03</div>
+                  </div>
+                </div>
+
+                <!-- Page 3: Step 04 Design & Step 05 Validate -->
+                <div class="page book-page" style="z-index: 4;">
+                  <!-- Front: Step 04 Design -->
+                  <div class="page-face page-front bg-[var(--card)] border border-[var(--border)]" data-stage="4">
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 04</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">DESIGN</span>
+                    </div>
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center space-y-3.5 sm:space-y-4 my-auto">
+                      <h4 class="text-[clamp(20px,5vw,24px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">“Turn structure into experience.”</h4>
+                      <p class="text-[clamp(14px,3.5vw,15px)] text-[var(--text-sec)] leading-[1.6] font-light">
+                        Applying typography, 8pt spacing rhythm, tokenized color palettes, and accessible component libraries to bring products to life.
+                      </p>
+                      <ul class="text-xs sm:text-[13px] space-y-1.5 text-[var(--text-main)]">
+                        <li>• Reconstructed Wireframes.</li>
+                        <li>• High-fidelity responsive UI.</li>
+                        <li>• Scalable design systems.</li>
+                        <li>• Interactive prototypes.</li>
+                      </ul>
+                      <!-- Component composition -->
+                      <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--accent)] text-xs flex justify-between items-center">
+                        <span class="font-bold text-[var(--accent)] font-mono">Component State:</span>
+                        <span class="px-2.5 py-0.5 rounded bg-[var(--accent)] text-[#170D13] font-semibold text-[11px]">Active UI</span>
+                      </div>
+                    </div>
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">PAGE 04</div>
+                  </div>
+                  <!-- Back: Step 05 Validate -->
+                  <div class="page-face page-back bg-[var(--card)] border border-[var(--border)]" data-stage="5">
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 05</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">VALIDATE</span>
+                    </div>
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center space-y-3.5 sm:space-y-4 my-auto">
+                      <h4 class="text-[clamp(20px,5vw,24px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">“Learn, refine and improve.”</h4>
+                      <p class="text-[clamp(14px,3.5vw,15px)] text-[var(--text-sec)] leading-[1.6] font-light">
+                        Validating design decisions against real-world edge cases and stakeholder reviews to ensure accessibility and developer feasibility.
+                      </p>
+                      <ul class="text-xs sm:text-[13px] space-y-1.5 text-[var(--text-main)]">
+                        <li>• Review design decisions.</li>
+                        <li>• Gather stakeholder feedback.</li>
+                        <li>• Identify usability friction.</li>
+                        <li>• Refine the final experience.</li>
+                      </ul>
+                      <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[11px] font-mono text-center text-[var(--accent)]">
+                        DESIGN → FEEDBACK → ITERATE
+                      </div>
+                    </div>
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">PAGE 05</div>
+                  </div>
+                </div>
+
+                <!-- Page 4: Step 06 Improve & Back Cover -->
+                <div class="page book-page" style="z-index: 3;">
+                  <!-- Front: Step 06 Improve -->
+                  <div class="page-face page-front bg-[var(--card)] border border-[var(--border)]" data-stage="6">
+                    <!-- Top header row: Step label and IMPROVE heading aligned on the same row -->
+                    <div class="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[var(--border)] shrink-0">
+                      <span class="text-[11px] sm:text-xs font-mono text-[var(--accent)] font-semibold tracking-wider">STEP 06</span>
+                      <span class="text-xs sm:text-sm font-serif font-bold text-[var(--text-main)] tracking-wider">IMPROVE</span>
+                    </div>
+
+                    <!-- Page Body: Natural vertical flow with balanced, proportional spacing -->
+                    <div class="py-4 sm:py-5 flex-1 flex flex-col justify-center gap-3.5 sm:gap-4 my-auto">
+                      <!-- Main quote: 24-28px on mobile, fluid typography -->
+                      <h4 class="text-[clamp(24px,6.5vw,28px)] font-serif text-[var(--text-main)] leading-tight tracking-tight">
+                        “Good design evolves.”
+                      </h4>
+
+                      <!-- Supporting paragraph: 15-16px, line-height 1.5-1.7 -->
+                      <p class="text-[clamp(15px,3.8vw,16px)] text-[var(--text-sec)] leading-[1.65] font-light">
+                        “I believe design is an ongoing process of understanding, testing and improving the experience.”
+                      </p>
+
+                      <!-- Process sequence box: 10-12px, wrapped cleanly onto multiple lines without overflow -->
+                      <div class="p-3 sm:p-3.5 rounded-xl bg-[var(--bg)] border border-[var(--border)] shadow-sm">
+                        <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[clamp(10px,2.7vw,12px)] font-mono text-[var(--accent)] text-center leading-normal">
+                          <span class="whitespace-nowrap">UNDERSTAND</span>
+                          <span class="text-[var(--text-sec)] opacity-60">→</span>
+                          <span class="whitespace-nowrap">DEFINE</span>
+                          <span class="text-[var(--text-sec)] opacity-60">→</span>
+                          <span class="whitespace-nowrap">IDEATE</span>
+                          <span class="text-[var(--text-sec)] opacity-60">→</span>
+                          <span class="whitespace-nowrap">DESIGN</span>
+                          <span class="text-[var(--text-sec)] opacity-60">→</span>
+                          <span class="whitespace-nowrap">VALIDATE</span>
+                          <span class="text-[var(--text-sec)] opacity-60">→</span>
+                          <span class="font-bold text-[var(--text-main)] underline decoration-[var(--accent)] decoration-2 underline-offset-4 whitespace-nowrap">IMPROVE</span>
+                        </div>
+                      </div>
+
+                      <!-- Signature: 11-12px in natural flow -->
+                      <div class="text-center pt-3 border-t border-[var(--border)] text-[clamp(11px,2.8vw,12px)] text-[var(--text-sec)] font-mono tracking-wider">
+                        PALLAVI B G · UI/UX DESIGNER
+                      </div>
+                    </div>
+
+                    <!-- Bottom row: Page number near bottom-right corner -->
+                    <div class="text-right pt-2 border-t border-[var(--border)]/40 text-[11px] sm:text-xs text-[var(--text-sec)] font-mono shrink-0">
+                      PAGE 06
+                    </div>
+                  </div>
+                  <!-- Back: Back Cover -->
+                  <div class="page-face page-back book-cover-back border-2 border-[var(--border)] text-center flex flex-col justify-between p-7 relative overflow-hidden" data-stage="7">
+                    <div class="cover-inset-frame"></div>
+                    <div class="flex justify-between items-center text-[9px] font-mono tracking-widest text-[var(--text-sec)] uppercase border-b border-[var(--border)] pb-3 relative z-10">
+                      <span>PROCESS JOURNAL</span>
+                      <span class="text-[var(--accent)] font-semibold">DESIGN PHILOSOPHY</span>
+                    </div>
+
+                    <div class="my-auto py-6 relative z-10">
+                      <div class="w-10 h-10 mx-auto mb-3 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] flex items-center justify-center">
+                        <span class="text-[var(--accent)] font-serif text-lg">✦</span>
+                      </div>
+                      <h4 class="text-2xl font-serif text-[var(--text-main)] mb-2">Intentionality</h4>
+                      <div class="w-12 h-0.5 bg-[var(--accent)] mx-auto my-3"></div>
+                      <p class="text-xs text-[var(--text-sec)] max-w-[210px] mx-auto leading-relaxed italic font-serif">
+                        Minimal but not empty.<br/>Dense but not cluttered.
+                      </p>
+                      <div class="mt-4 text-[9px] font-mono text-[var(--accent)] uppercase tracking-wider">
+                        UX · UI · PRODUCT DESIGN
+                      </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-[var(--border)] flex justify-between items-center text-[9px] font-mono text-[var(--text-sec)] relative z-10">
+                      <span>VOL. 01</span>
+                      <span class="text-[var(--accent)] font-semibold">© PALLAVI B G</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 06 — BEYOND DESIGN
+    ============================================================ -->
+    <section id="beyond" class="py-24 bg-[var(--bg)]" aria-label="Beyond Design">
+      <div class="container-custom">
+        
+        <div class="max-w-3xl mb-12">
+          <span class="editorial-badge mb-3">06 — BEYOND DESIGN</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-4">People-Focused Perspectives</h2>
+          <p class="type-body text-[var(--text-sec)] leading-relaxed font-light">
+            “My experience in UX has strengthened my ability to understand people, identify needs, communicate with different stakeholders and solve problems. I'm also exploring opportunities in Talent Acquisition and other people-focused roles.”
+          </p>
+        </div>
+
+        <!-- Relationship Flow Diagram -->
+        <div class="p-5 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg">
+          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-6 text-center">Core Methodology Translation</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+            <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
+              <div class="text-[10px] font-mono text-[var(--accent)] mb-1">01 · EMPATHY</div>
+              <div class="text-xs font-serif font-bold text-[var(--text-main)]">UNDERSTAND PEOPLE</div>
+              <div class="text-[10px] text-[var(--text-sec)] mt-1">Active Listening &amp; Research</div>
+            </div>
+            <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
+              <div class="text-[10px] font-mono text-[var(--accent)] mb-1">02 · ANALYSIS</div>
+              <div class="text-xs font-serif font-bold text-[var(--text-main)]">IDENTIFY NEEDS</div>
+              <div class="text-[10px] text-[var(--text-sec)] mt-1">Root Requirements Discovery</div>
+            </div>
+            <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
+              <div class="text-[10px] font-mono text-[var(--accent)] mb-1">03 · ALIGNMENT</div>
+              <div class="text-xs font-serif font-bold text-[var(--text-main)]">COMMUNICATE</div>
+              <div class="text-[10px] text-[var(--text-sec)] mt-1">Cross-Functional Sync</div>
+            </div>
+            <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
+              <div class="text-[10px] font-mono text-[var(--accent)] mb-1">04 · EXECUTION</div>
+              <div class="text-xs font-serif font-bold text-[var(--text-main)]">SOLVE PROBLEMS</div>
+              <div class="text-[10px] text-[var(--text-sec)] mt-1">Actionable Impact</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- Editorial separator -->
+    <div class="editorial-separator"></div>
+
+    <!-- ============================================================
+         SECTION 07 — RESUME
+    ============================================================ -->
+    <section id="resume" class="py-24 bg-[var(--sec-bg)]" aria-label="Resume">
+      <div class="container-custom">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="editorial-badge mb-3">07 — WANT TO KNOW MORE?</span>
+          <h2 class="type-section-title font-serif text-[var(--text-main)] mb-3">Resume & Background</h2>
+          <p class="type-body text-[var(--text-sec)]">
+            Explore my complete professional experience, skills and background.
+          </p>
+        </div>
+
+        <!-- Resume Preview Panel -->
+        <div class="max-w-2xl mx-auto p-8 sm:p-12 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-2xl text-center">
+          
+          <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest mb-2">CURRICULUM VITAE</div>
+          <div class="text-3xl font-serif text-[var(--text-main)] mb-1">PALLAVI B G</div>
+          <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-wider mb-6">UI/UX DESIGNER | PRODUCT DESIGNER · 1.5 YEARS EXPERIENCE</div>
+          
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] mb-8 text-xs font-mono text-[var(--text-sec)]">
+            UX · UI · PRODUCT · SAAS · WEB · MOBILE
+          </div>
+
+          <div class="flex flex-wrap justify-center items-center gap-4">
+            <a href="assets/Pallavi_BG_Resume.pdf" download="Pallavi_BG_Resume.pdf" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--accent)] text-[#170D13] text-xs font-bold hover:opacity-90 transition-all shadow-md">
+              DOWNLOAD RESUME →
+            </a>
+            <a href="https://www.linkedin.com/in/pallavi-bg/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-[var(--border)] text-[var(--text-main)] text-xs font-semibold hover:border-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors">
+              VIEW LINKEDIN ↗
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <!-- ============================================================
+       SECTION 08 — FOOTER
+  ============================================================ -->
+  <footer class="border-t border-[var(--border)] py-12 bg-[var(--sec-bg)]" aria-label="Site Footer">
+    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <!-- Brand -->
+      <div class="text-center md:text-left">
+        <div class="font-serif text-lg text-[var(--text-main)] uppercase font-bold tracking-wider">PALLAVI B G</div>
+        <div class="text-[10px] text-[var(--text-sec)] uppercase tracking-widest mt-1">UI/UX DESIGNER</div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex flex-wrap justify-center gap-6 text-xs text-[var(--text-sec)]">
+        <a href="#top" class="hover:text-[var(--text-main)] transition-colors">About</a>
+        <a href="#work" class="hover:text-[var(--text-main)] transition-colors">Work</a>
+        <a href="#skills" class="hover:text-[var(--text-main)] transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-[var(--text-main)] transition-colors">Experience</a>
+        <a href="#process" class="hover:text-[var(--text-main)] transition-colors">Process</a>
+        <a href="#resume" class="hover:text-[var(--text-main)] transition-colors">Resume</a>
+        <a href="mailto:pallavibggowda016@gmail.com" class="hover:text-[var(--text-main)] transition-colors">Contact</a>
+      </div>
+
+      <!-- Footer Theme Toggle & Copyright -->
+      <div class="flex items-center gap-4">
+        <button class="theme-toggle-btn theme-toggle-footer" aria-label="Toggle theme in footer" title="Toggle theme">
+          <!-- Stationary Background Track Icons -->
+          <span class="theme-toggle-track">
+            <span class="theme-track-icon">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
+            <span class="theme-track-icon">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <line x1="12" y1="2" x2="12" y2="4.5" />
+                <line x1="12" y1="19.5" x2="12" y2="22" />
+                <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
+                <line x1="17.3" y1="17.3" x2="19.07" y2="19.07" />
+                <line x1="2" y1="12" x2="4.5" y2="12" />
+                <line x1="19.5" y1="12" x2="22" y2="12" />
+                <line x1="4.93" y1="19.07" x2="6.7" y2="17.3" />
+                <line x1="17.3" y1="6.7" x2="19.07" y2="4.93" />
+              </svg>
+            </span>
+          </span>
+
+          <!-- Moving Circular Coral Indicator with Single Active Icon -->
+          <span class="theme-icon-indicator">
+            <svg class="toggle-glyph-moon w-2.5 h-2.5 text-[#170D13] transition-opacity duration-200" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg class="toggle-glyph-sun w-2.5 h-2.5 text-[#170D13] opacity-0 absolute transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" fill="currentColor" />
+              <line x1="12" y1="2" x2="12" y2="4.5" />
+              <line x1="12" y1="19.5" x2="12" y2="22" />
+              <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
+              <line x1="17.3" y1="17.3" x2="19.07" y2="19.07" />
+              <line x1="2" y1="12" x2="4.5" y2="12" />
+              <line x1="19.5" y1="12" x2="22" y2="12" />
+              <line x1="4.93" y1="19.07" x2="6.7" y2="17.3" />
+              <line x1="17.3" y1="6.7" x2="19.07" y2="4.93" />
+            </svg>
+          </span>
+        </button>
+        <span class="text-xs text-[var(--text-sec)]">© 2026 Pallavi B G</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Accessible Image Lightbox Modal for Dashboard Screenshots -->
+  <div id="imageLightboxModal" class="fixed inset-0 z-[9999] hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-label="Enlarged screenshot preview">
+    <div class="relative max-w-6xl w-full max-h-[94vh] flex flex-col bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-[var(--border)] bg-[var(--sec-bg)]">
+        <div>
+          <h3 id="lightboxTitle" class="text-sm sm:text-base font-serif text-[var(--text-main)] font-semibold"></h3>
+        </div>
+        <button id="closeLightboxBtn" class="p-2 text-[var(--text-sec)] hover:text-[var(--text-main)] rounded-lg hover:bg-[var(--card)] border border-transparent hover:border-[var(--border)] transition-all" aria-label="Close image preview">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Modal Image View -->
+      <div class="flex-1 overflow-auto p-3 sm:p-6 flex items-center justify-center bg-[#10070D]">
+        <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[72vh] object-contain rounded-lg shadow-2xl select-none" />
+      </div>
+      <!-- Modal Caption Bar -->
+      <div class="px-5 py-3 border-t border-[var(--border)] bg-[var(--card)] text-xs text-[var(--text-sec)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <span id="lightboxCaption" class="leading-relaxed"></span>
+        <span class="text-[10px] font-mono text-[var(--accent)] shrink-0">Press ESC or click backdrop to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Interaction Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

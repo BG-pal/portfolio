@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="100%" height="100%" style="background:#170D13; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F121B"/>
+      <stop offset="100%" stop-color="#140B10"/>
+    </linearGradient>
+    <linearGradient id="coralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E59888"/>
+      <stop offset="100%" stop-color="#D98A7A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1100" height="640" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle decorative grid -->
+  <g stroke="#3D2230" stroke-width="0.7" opacity="0.35">
+    <line x1="100" y1="0" x2="100" y2="640"/>
+    <line x1="300" y1="0" x2="300" y2="640"/>
+    <line x1="550" y1="0" x2="550" y2="640"/>
+    <line x1="800" y1="0" x2="800" y2="640"/>
+    <line x1="1000" y1="0" x2="1000" y2="640"/>
+    <line x1="0" y1="80" x2="1100" y2="80"/>
+    <line x1="0" y1="220" x2="1100" y2="220"/>
+    <line x1="0" y1="400" x2="1100" y2="400"/>
+    <line x1="0" y1="540" x2="1100" y2="540"/>
+  </g>
+
+  <!-- Title Badge -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="310" height="30" rx="6" fill="#2A1624" stroke="#59363B" stroke-width="1"/>
+    <text x="14" y="19" fill="#D98A7A" font-size="11" font-weight="700" letter-spacing="1.5">INFORMATION ARCHITECTURE</text>
+    <text x="215" y="19" fill="#F8EAE5" font-size="11" font-weight="500">· DUAL-JOURNEY</text>
+  </g>
+
+  <!-- Root Node: DSJobby Global Shell -->
+  <g transform="translate(375, 40)" filter="url(#cardShadow)">
+    <rect width="350" height="74" rx="14" fill="#24151C" stroke="#D98A7A" stroke-width="1.8"/>
+    <text x="175" y="32" fill="#F8EAE5" font-size="15" font-weight="700" text-anchor="middle">DSJobby Global Platform Shell</text>
+    <text x="175" y="52" fill="#D98A7A" font-size="11" font-weight="500" text-anchor="middle">Brand Identity · Navigation Bar · Dual Entry Auth · Legal Hub</text>
+  </g>
+
+  <!-- Connecting Lines from Root to Columns -->
+  <path d="M 550,114 L 550,150 L 280,150 L 280,185" fill="none" stroke="#D98A7A" stroke-width="1.8" stroke-dasharray="4,4"/>
+  <path d="M 550,114 L 550,150 L 820,150 L 820,185" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-dasharray="4,4"/>
+
+  <!-- Left Column Header: Job Seekers Branch -->
+  <g transform="translate(100, 185)" filter="url(#cardShadow)">
+    <rect width="360" height="56" rx="10" fill="#2E1825" stroke="#D98A7A" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#D98A7A"/>
+    <text x="28" y="32" fill="#170D13" font-size="11" font-weight="800" text-anchor="middle">1</text>
+    <text x="50" y="27" fill="#F8EAE5" font-size="14" font-weight="700">Job Seeker Journey</text>
+    <text x="50" y="44" fill="#D98A7A" font-size="10.5" font-weight="500">Discovery · Filtering · 1-Click Application</text>
+  </g>
+
+  <!-- Right Column Header: Employers Branch -->
+  <g transform="translate(640, 185)" filter="url(#cardShadow)">
+    <rect width="360" height="56" rx="10" fill="#152433" stroke="#38BDF8" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#38BDF8"/>
+    <text x="28" y="32" fill="#0B213E" font-size="11" font-weight="800" text-anchor="middle">2</text>
+    <text x="50" y="27" fill="#F8EAE5" font-size="14" font-weight="700">Employer &amp; Recruiter Journey</text>
+    <text x="50" y="44" fill="#38BDF8" font-size="10.5" font-weight="500">Talent Sourcing · Mandates · ATS Review</text>
+  </g>
+
+  <!-- Left Branch Sub-Nodes -->
+  <!-- Node L1: Search & Filter Engine -->
+  <g transform="translate(100, 265)">
+    <rect width="360" height="66" rx="10" fill="#24151C" stroke="#59363B" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Job Discovery &amp; Filter Engine</text>
+    <text x="20" y="48" fill="#B39AA2" font-size="11">Keywords, Role pills (Design, Tech), Location &amp; Salary</text>
+  </g>
+
+  <!-- Node L2: Scannable Card Matrix -->
+  <g transform="translate(100, 350)">
+    <rect width="360" height="66" rx="10" fill="#24151C" stroke="#59363B" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Standardized Card Matrix</text>
+    <text x="20" y="48" fill="#B39AA2" font-size="11">Compensation tags, Remote badge, Expiry date, Perks</text>
+  </g>
+
+  <!-- Node L3: Contextual Application Drawer -->
+  <g transform="translate(100, 435)">
+    <rect width="360" height="66" rx="10" fill="#24151C" stroke="#D98A7A" stroke-width="1.2"/>
+    <text x="20" y="28" fill="#D98A7A" font-size="13" font-weight="700">Slide-Out Application Drawer</text>
+    <text x="20" y="48" fill="#B39AA2" font-size="11">Non-disruptive modal, 1-click apply, resume attach</text>
+  </g>
+
+  <!-- Node L4: Career Hub -->
+  <g transform="translate(100, 520)">
+    <rect width="360" height="66" rx="10" fill="#24151C" stroke="#59363B" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Candidate Career Hub</text>
+    <text x="20" y="48" fill="#B39AA2" font-size="11">AI matching alerts, free mock interview prep, reviews</text>
+  </g>
+
+  <!-- Left Connectors -->
+  <line x1="280" y1="241" x2="280" y2="265" stroke="#D98A7A" stroke-width="1.5"/>
+  <line x1="280" y1="331" x2="280" y2="350" stroke="#D98A7A" stroke-width="1.5"/>
+  <line x1="280" y1="416" x2="280" y2="435" stroke="#D98A7A" stroke-width="1.5"/>
+  <line x1="280" y1="501" x2="280" y2="520" stroke="#D98A7A" stroke-width="1.5"/>
+
+  <!-- Right Branch Sub-Nodes -->
+  <!-- Node R1: Hiring Mandates -->
+  <g transform="translate(640, 265)">
+    <rect width="360" height="66" rx="10" fill="#182330" stroke="#25425C" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Hiring Mandate &amp; JD Portal</text>
+    <text x="20" y="48" fill="#93B4D4" font-size="11">Role specs upload, domain criteria (12+ industries)</text>
+  </g>
+
+  <!-- Node R2: AI Matching Engine -->
+  <g transform="translate(640, 350)">
+    <rect width="360" height="66" rx="10" fill="#182330" stroke="#38BDF8" stroke-width="1.2"/>
+    <text x="20" y="28" fill="#38BDF8" font-size="13" font-weight="700">AI-Powered Matching Engine</text>
+    <text x="20" y="48" fill="#93B4D4" font-size="11">Smart resume parsing, 24-hr pre-screened turnaround</text>
+  </g>
+
+  <!-- Node R3: Applicant Review & Pipeline -->
+  <g transform="translate(640, 435)">
+    <rect width="360" height="66" rx="10" fill="#182330" stroke="#25425C" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Recruiter Pipeline &amp; ATS</text>
+    <text x="20" y="48" fill="#93B4D4" font-size="11">Stage triage, interview scheduling, shortlist feedback</text>
+  </g>
+
+  <!-- Node R4: Compliance & BGV -->
+  <g transform="translate(640, 520)">
+    <rect width="360" height="66" rx="10" fill="#182330" stroke="#25425C" stroke-width="1"/>
+    <text x="20" y="28" fill="#F8EAE5" font-size="13" font-weight="600">Compliance &amp; Replacement Assurance</text>
+    <text x="20" y="48" fill="#93B4D4" font-size="11">Optional BGV verification, placement guarantee</text>
+  </g>
+
+  <!-- Right Connectors -->
+  <line x1="820" y1="241" x2="820" y2="265" stroke="#38BDF8" stroke-width="1.5"/>
+  <line x1="820" y1="331" x2="820" y2="350" stroke="#38BDF8" stroke-width="1.5"/>
+  <line x1="820" y1="416" x2="820" y2="435" stroke="#38BDF8" stroke-width="1.5"/>
+  <line x1="820" y1="501" x2="820" y2="520" stroke="#38BDF8" stroke-width="1.5"/>
+
+  <!-- Center Cross-Over Link (The Matching Bridge) -->
+  <g transform="translate(485, 365)" filter="url(#cardShadow)">
+    <rect width="130" height="40" rx="8" fill="#24151C" stroke="#D98A7A" stroke-width="1.2"/>
+    <text x="65" y="25" fill="#F8EAE5" font-size="10.5" font-weight="700" text-anchor="middle">← AI BRIDGE →</text>
+  </g>
+</svg>

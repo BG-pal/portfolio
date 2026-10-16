@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #1E1218; }
+      .card { fill: #24151C; stroke: #59363B; stroke-width: 1.5; rx: 12px; }
+      .card-core { fill: #2E1A23; stroke: #D98A7A; stroke-width: 2; rx: 14px; }
+      .title { fill: #F8EAE5; font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 600; }
+      .core-title { fill: #F8EAE5; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; text-anchor: middle; }
+      .badge { fill: #D98A7A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+      .core-badge { fill: #D98A7A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-anchor: middle; }
+      .text-sec { fill: #BFA7A2; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.5; }
+      .core-sub { fill: #BFA7A2; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; text-anchor: middle; }
+      .item { fill: #F8EAE5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; }
+      .dot { fill: #D98A7A; }
+      .conn-line { stroke: #59363B; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .conn-line-active { stroke: #D98A7A; stroke-width: 1.5; fill: none; }
+      .tag { fill: #381C26; stroke: #59363B; stroke-width: 1; rx: 4px; }
+      .tag-text { fill: #D98A7A; font-family: monospace; font-size: 10px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" class="bg" rx="16" />
+  
+  <!-- Subtle grid pattern -->
+  <line x1="80" y1="340" x2="1120" y2="340" stroke="#3A202A" stroke-width="1" />
+  <line x1="600" y1="40" x2="600" y2="640" stroke="#3A202A" stroke-width="1" />
+
+  <!-- Center Core: Command Center Unified Platform -->
+  <g transform="translate(420, 260)">
+    <!-- Connection lines radiating out -->
+    <path d="M 0, -30 L -140, -110" class="conn-line-active" />
+    <path d="M 180, -40 L 180, -110" class="conn-line-active" />
+    <path d="M 360, -30 L 500, -110" class="conn-line-active" />
+    <path d="M 0, 110 L -140, 190" class="conn-line-active" />
+    <path d="M 180, 120 L 180, 190" class="conn-line-active" />
+    <path d="M 360, 110 L 500, 190" class="conn-line-active" />
+
+    <rect width="360" height="150" class="card-core" />
+    <text x="180" y="38" class="core-badge">CENTRAL PLATFORM CORE</text>
+    <text x="180" y="72" class="core-title">DSEdify Command Center</text>
+    <text x="180" y="100" class="core-sub">Unified Data Models · Shared Design System · Role Context</text>
+    <g transform="translate(30, 118)">
+      <rect width="90" height="20" class="tag" />
+      <text x="45" y="14" class="tag-text" text-anchor="middle">AUTH &amp; ROLES</text>
+      <rect x="105" width="90" height="20" class="tag" />
+      <text x="150" y="14" class="tag-text" text-anchor="middle">DATA TABLES</text>
+      <rect x="210" width="90" height="20" class="tag" />
+      <text x="255" y="14" class="tag-text" text-anchor="middle">METRIC TOKENS</text>
+    </g>
+  </g>
+
+  <!-- TOP ROW ROLES (1, 2, 3) -->
+
+  <!-- Node 01: Campus Connect -->
+  <g transform="translate(60, 50)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">01 · CAMPUS ENGAGEMENT</text>
+    <text x="24" y="60" class="title">Campus Connect</text>
+    <text x="24" y="80" class="text-sec">Higher education partners &amp; campus drives</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">College Onboarding &amp; Status</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">Drive Creation &amp; Rules</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Drive Selection &amp; Funnel</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">Event Ratings &amp; Updates</text>
+    </g>
+  </g>
+
+  <!-- Node 02: Trainer Dashboard -->
+  <g transform="translate(440, 50)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">02 · ACADEMIC INSTRUCTION</text>
+    <text x="24" y="60" class="title">Trainer Dashboard</text>
+    <text x="24" y="80" class="text-sec">Daily instruction, attendance &amp; grading</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">Assigned Batches &amp; Cohorts</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">Session Calendar &amp; Agendas</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Student Feedback &amp; Ratings</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">Holiday &amp; Exam Announcements</text>
+    </g>
+  </g>
+
+  <!-- Node 03: Corporate Connect -->
+  <g transform="translate(820, 50)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">03 · B2B &amp; ENTERPRISE</text>
+    <text x="24" y="60" class="title">Corporate Connect</text>
+    <text x="24" y="80" class="text-sec">Employer training &amp; workforce upskilling</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">Enterprise Client Directory</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">Training Type Distribution</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Corporate Session Schedules</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">B2B Enrollment &amp; Revenue</text>
+    </g>
+  </g>
+
+  <!-- BOTTOM ROW ROLES (4, 5, 6) -->
+
+  <!-- Node 04: Admin Dashboard -->
+  <g transform="translate(60, 450)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">04 · CENTRAL GOVERNANCE</text>
+    <text x="24" y="60" class="title">Admin Dashboard</text>
+    <text x="24" y="80" class="text-sec">Macro operations, finances &amp; programs</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">Active Batches &amp; Progress (4.1k)</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">Finance, Invoicing &amp; Waivers</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Indian vs. Overseas Programs</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">Placement Conversion Rates</text>
+    </g>
+  </g>
+
+  <!-- Node 05: Overseas Dashboard -->
+  <g transform="translate(440, 450)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">05 · INTERNATIONAL OPERATIONS</text>
+    <text x="24" y="60" class="title">Overseas Dashboard</text>
+    <text x="24" y="80" class="text-sec">Cross-border cohorts &amp; financial tracking</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">Overseas Cohort Enrolments</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">Cross-Timezone Attendance</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Multi-Currency Payments &amp; Waivers</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">Course Enrollment Revenue</text>
+    </g>
+  </g>
+
+  <!-- Node 06: Counsellor Dashboard -->
+  <g transform="translate(820, 450)">
+    <rect width="320" height="180" class="card" />
+    <text x="24" y="32" class="badge">06 · ADMISSIONS &amp; LEADS</text>
+    <text x="24" y="60" class="title">Counsellor Dashboard</text>
+    <text x="24" y="80" class="text-sec">Lead conversion, counselling &amp; follow-ups</text>
+    <g transform="translate(24, 100)">
+      <circle cx="4" cy="4" r="3" class="dot" />
+      <text x="16" y="8" class="item">Total Leads &amp; Pipeline Status</text>
+      <circle cx="4" cy="24" r="3" class="dot" />
+      <text x="16" y="28" class="item">High-Priority "Hot Leads"</text>
+      <circle cx="4" cy="44" r="3" class="dot" />
+      <text x="16" y="48" class="item">Activity &amp; Interaction History</text>
+      <circle cx="4" cy="64" r="3" class="dot" />
+      <text x="16" y="68" class="item">Follow-up Call Calendar</text>
+    </g>
+  </g>
+</svg>

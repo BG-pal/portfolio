@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="100%" height="100%" style="background:#170D13; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="wfShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="640" fill="#150B11"/>
+
+  <!-- Header -->
+  <g transform="translate(60, 40)">
+    <rect width="360" height="30" rx="6" fill="#241420" stroke="#4A2B33" stroke-width="1"/>
+    <text x="14" y="19" fill="#B39AA2" font-size="11" font-weight="700" letter-spacing="1.5">LOW-FIDELITY WIREFRAMES</text>
+    <text x="202" y="19" fill="#D98A7A" font-size="11" font-weight="500">· EXPLORATION &amp; BREAKPOINTS</text>
+  </g>
+
+  <!-- Left: Desktop Layout Wireframe -->
+  <g transform="translate(60, 95)" filter="url(#wfShadow)">
+    <rect width="600" height="495" rx="12" fill="#1C1118" stroke="#4A2B33" stroke-width="1.5"/>
+    
+    <!-- Window Bar -->
+    <rect x="0" y="0" width="600" height="36" rx="12" fill="#261622"/>
+    <circle cx="20" cy="18" r="4.5" fill="#4A2B33"/>
+    <circle cx="36" cy="18" r="4.5" fill="#4A2B33"/>
+    <circle cx="52" cy="18" r="4.5" fill="#4A2B33"/>
+    <text x="300" y="22" fill="#8C6F77" font-size="11" text-anchor="middle">Desktop Wireframe — Multi-Column Discovery &amp; Drawer Test</text>
+
+    <!-- Nav Mock -->
+    <rect x="20" y="52" width="90" height="18" rx="4" fill="#3D2230"/>
+    <rect x="130" y="55" width="40" height="12" rx="3" fill="#2F1B27"/>
+    <rect x="180" y="55" width="45" height="12" rx="3" fill="#2F1B27"/>
+    <rect x="235" y="55" width="40" height="12" rx="3" fill="#2F1B27"/>
+    <rect x="500" y="50" width="80" height="22" rx="4" fill="#D98A7A" opacity="0.6"/>
+
+    <!-- Filter Bar Wireframe -->
+    <rect x="20" y="88" width="560" height="48" rx="8" fill="#261622" stroke="#4A2B33" stroke-width="1"/>
+    <rect x="36" y="100" width="160" height="24" rx="4" fill="#1C1118" stroke="#3D2230" stroke-width="1"/>
+    <rect x="210" y="100" width="55" height="24" rx="12" fill="#D98A7A" opacity="0.4"/>
+    <rect x="272" y="100" width="55" height="24" rx="12" fill="#2F1B27"/>
+    <rect x="334" y="100" width="55" height="24" rx="12" fill="#2F1B27"/>
+    <rect x="400" y="100" width="100" height="24" rx="4" fill="#1C1118" stroke="#3D2230" stroke-width="1"/>
+    <rect x="510" y="100" width="60" height="24" rx="4" fill="#D98A7A" opacity="0.8"/>
+
+    <!-- 4 Wireframe Cards Grid (2x2) -->
+    <g transform="translate(20, 150)">
+      <!-- Card 1 -->
+      <rect x="0" y="0" width="270" height="145" rx="8" fill="#24151E" stroke="#3D2230" stroke-width="1"/>
+      <rect x="14" y="14" width="30" height="30" rx="6" fill="#3D2230"/>
+      <rect x="54" y="16" width="130" height="12" rx="3" fill="#8C6F77"/>
+      <rect x="54" y="32" width="90" height="10" rx="3" fill="#4A2B33"/>
+      <rect x="14" y="60" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="75" y="60" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="14" y="90" width="100" height="12" rx="3" fill="#D98A7A" opacity="0.7"/>
+      <rect x="14" y="112" width="242" height="22" rx="4" fill="#3D2230"/>
+
+      <!-- Card 2 -->
+      <rect x="290" y="0" width="270" height="145" rx="8" fill="#24151E" stroke="#3D2230" stroke-width="1"/>
+      <rect x="304" y="14" width="30" height="30" rx="6" fill="#3D2230"/>
+      <rect x="344" y="16" width="130" height="12" rx="3" fill="#8C6F77"/>
+      <rect x="344" y="32" width="90" height="10" rx="3" fill="#4A2B33"/>
+      <rect x="304" y="60" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="365" y="60" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="304" y="90" width="100" height="12" rx="3" fill="#D98A7A" opacity="0.7"/>
+      <rect x="304" y="112" width="242" height="22" rx="4" fill="#3D2230"/>
+
+      <!-- Card 3 -->
+      <rect x="0" y="160" width="270" height="145" rx="8" fill="#24151E" stroke="#3D2230" stroke-width="1"/>
+      <rect x="14" y="174" width="30" height="30" rx="6" fill="#3D2230"/>
+      <rect x="54" y="176" width="130" height="12" rx="3" fill="#8C6F77"/>
+      <rect x="54" y="192" width="90" height="10" rx="3" fill="#4A2B33"/>
+      <rect x="14" y="220" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="75" y="220" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="14" y="250" width="100" height="12" rx="3" fill="#D98A7A" opacity="0.7"/>
+      <rect x="14" y="272" width="242" height="22" rx="4" fill="#3D2230"/>
+
+      <!-- Card 4 -->
+      <rect x="290" y="160" width="270" height="145" rx="8" fill="#24151E" stroke="#3D2230" stroke-width="1"/>
+      <rect x="304" y="174" width="30" height="30" rx="6" fill="#3D2230"/>
+      <rect x="344" y="176" width="130" height="12" rx="3" fill="#8C6F77"/>
+      <rect x="344" y="192" width="90" height="10" rx="3" fill="#4A2B33"/>
+      <rect x="304" y="220" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="365" y="220" width="55" height="16" rx="4" fill="#1C1118"/>
+      <rect x="304" y="250" width="100" height="12" rx="3" fill="#D98A7A" opacity="0.7"/>
+      <rect x="304" y="272" width="242" height="22" rx="4" fill="#3D2230"/>
+    </g>
+
+    <text x="30" y="475" fill="#B39AA2" font-size="11">Iterated 2-column vs 3-column desktop card spacing to optimize visual hierarchy.</text>
+  </g>
+
+  <!-- Right: Mobile Drawer Wireframe -->
+  <g transform="translate(690, 95)" filter="url(#wfShadow)">
+    <rect width="350" height="495" rx="20" fill="#1C1118" stroke="#4A2B33" stroke-width="1.8"/>
+
+    <!-- Phone Notch -->
+    <rect x="125" y="12" width="100" height="16" rx="8" fill="#261622"/>
+    <text x="175" y="45" fill="#8C6F77" font-size="11" text-anchor="middle">Mobile Viewport Wireframe</text>
+
+    <!-- Mobile Stacked Content -->
+    <rect x="24" y="65" width="302" height="34" rx="6" fill="#261622" stroke="#4A2B33" stroke-width="1"/>
+    <rect x="36" y="74" width="120" height="16" rx="3" fill="#3D2230"/>
+
+    <!-- Horizontal Pill Scroll -->
+    <rect x="24" y="112" width="60" height="22" rx="11" fill="#D98A7A" opacity="0.5"/>
+    <rect x="92" y="112" width="60" height="22" rx="11" fill="#261622"/>
+    <rect x="160" y="112" width="60" height="22" rx="11" fill="#261622"/>
+    <rect x="228" y="112" width="60" height="22" rx="11" fill="#261622"/>
+
+    <!-- Bottom Sheet / Mobile Drawer Animation Test -->
+    <g transform="translate(24, 155)">
+      <!-- Underlying Card Mock -->
+      <rect x="0" y="0" width="302" height="120" rx="8" fill="#22131C" stroke="#3D2230" stroke-width="1"/>
+      <rect x="12" y="12" width="150" height="12" rx="3" fill="#8C6F77"/>
+
+      <!-- Slide-Up Drawer -->
+      <rect x="0" y="60" width="302" height="255" rx="16" fill="#2A1624" stroke="#D98A7A" stroke-width="1.5"/>
+      <rect x="126" y="72" width="50" height="4" rx="2" fill="#D98A7A"/>
+      <text x="151" y="98" fill="#F8EAE5" font-size="13" font-weight="700" text-anchor="middle">Quick Apply Bottom Sheet</text>
+      
+      <rect x="20" y="115" width="262" height="40" rx="6" fill="#1C1118"/>
+      <rect x="32" y="127" width="130" height="10" rx="3" fill="#B39AA2"/>
+      
+      <rect x="20" y="165" width="262" height="60" rx="6" fill="#1C1118"/>
+      <rect x="32" y="177" width="180" height="10" rx="3" fill="#8C6F77"/>
+      <rect x="32" y="195" width="110" height="10" rx="3" fill="#8C6F77"/>
+
+      <rect x="20" y="240" width="262" height="38" rx="6" fill="#D98A7A"/>
+      <text x="151" y="264" fill="#170D13" font-size="12" font-weight="700" text-anchor="middle">Submit 1-Click Application</text>
+    </g>
+
+    <text x="175" y="475" fill="#D98A7A" font-size="10.5" font-weight="600" text-anchor="middle">Bottom-sheet ergonomics tested for mobile reach</text>
+  </g>
+</svg>

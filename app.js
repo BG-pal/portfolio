@@ -4178,17 +4178,14 @@ function renderMeditrackCaseStudy(project, container) {
                     webkit-playsinline
                     preload="auto"
                     poster="assets/meditrack-mobile-walkthrough-poster.jpg"
-                    class="w-full h-full object-cover block select-none"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="w-full h-full object-contain block select-none bg-black"
+                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Mobile Walkthrough"
                   >
-                    <source src="public/videos/meditrack-mobile-walkthrough.mp4" type="video/mp4">
-                    <source src="videos/meditrack-mobile-walkthrough.mp4" type="video/mp4">
-                    <source src="assets/meditrack-mobile-walkthrough.mp4" type="video/mp4">
-                    <source src="/videos/meditrack-mobile-walkthrough.mp4" type="video/mp4">
-                    <source src="assets/Login and what's new.mp4" type="video/mp4">
-                    <source src="file:///C:/Users/Pallavi%20BG/Downloads/Login%20and%20what's%20new.mp4" type="video/mp4">
-                    <source src="../../../../Downloads/Login%20and%20what's%20new.mp4" type="video/mp4">
+                    <source src="assets/meditrack-mobile-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="public/videos/meditrack-mobile-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="videos/meditrack-mobile-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="assets/Login and what's new.mp4#t=0.001" type="video/mp4">
                     <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
                   </video>
 
@@ -4345,17 +4342,15 @@ function renderMeditrackCaseStudy(project, container) {
                     webkit-playsinline
                     preload="auto"
                     poster="assets/meditrack-inventory-walkthrough-poster.jpg"
-                    class="w-full h-full object-cover block select-none"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="w-full h-full object-contain block select-none bg-black"
+                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Inventory and Billing Walkthrough"
                   >
-                    <source src="public/videos/meditrack-inventory-walkthrough.mp4" type="video/mp4">
-                    <source src="videos/meditrack-inventory-walkthrough.mp4" type="video/mp4">
-                    <source src="assets/meditrack-inventory-walkthrough.mp4" type="video/mp4">
-                    <source src="/videos/meditrack-inventory-walkthrough.mp4" type="video/mp4">
-                    <source src="assets/videos/meditrack-inventory-walkthrough.mp4" type="video/mp4">
-                    <source src="file:///C:/Users/Pallavi%20BG/Downloads/Inventory.mp4" type="video/mp4">
-                    <source src="../../../../Downloads/Inventory.mp4" type="video/mp4">
+                    <source src="assets/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="public/videos/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="videos/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="assets/videos/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
+                    <source src="/videos/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
                     <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
                   </video>
 
@@ -4543,18 +4538,15 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
-                    poster="assets/meditrack-billing-workflow-poster.jpg"
-                    class="w-full h-full object-cover block select-none"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="w-full h-full object-contain block select-none bg-black"
+                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Billing and Checkout Walkthrough"
                   >
-                    <source src="public/videos/meditrack-billing-workflow.mp4" type="video/mp4">
-                    <source src="videos/meditrack-billing-workflow.mp4" type="video/mp4">
-                    <source src="assets/meditrack-billing-workflow.mp4" type="video/mp4">
-                    <source src="/videos/meditrack-billing-workflow.mp4" type="video/mp4">
-                    <source src="assets/videos/meditrack-billing-workflow.mp4" type="video/mp4">
-                    <source src="file:///C:/Users/Pallavi%20BG/Downloads/Billing.mp4" type="video/mp4">
-                    <source src="../../../../Downloads/Billing.mp4" type="video/mp4">
+                    <source src="assets/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="public/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="assets/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
                     <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
                   </video>
 
@@ -4740,18 +4732,15 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
-                    poster="assets/meditrack-store-mapping-poster.jpg"
-                    class="w-full h-full object-cover block select-none"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="w-full h-full object-contain block select-none bg-black"
+                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Smart Store Mapping Walkthrough"
                   >
-                    <source src="public/videos/meditrack-store-mapping.mp4" type="video/mp4">
-                    <source src="videos/meditrack-store-mapping.mp4" type="video/mp4">
-                    <source src="assets/meditrack-store-mapping.mp4" type="video/mp4">
-                    <source src="/videos/meditrack-store-mapping.mp4" type="video/mp4">
-                    <source src="assets/videos/meditrack-store-mapping.mp4" type="video/mp4">
-                    <source src="file:///C:/Users/Pallavi%20BG/Downloads/Store%20Map.mp4" type="video/mp4">
-                    <source src="../../../../Downloads/Store Map.mp4" type="video/mp4">
+                    <source src="assets/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
+                    <source src="public/videos/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
+                    <source src="videos/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
+                    <source src="assets/videos/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
+                    <source src="/videos/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
                     <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
                   </video>
 

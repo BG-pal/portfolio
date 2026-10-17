@@ -83,20 +83,21 @@ function initNavigation() {
 
   // Sticky Navbar Scroll Effect
   window.addEventListener('scroll', () => {
+    const isMobile = window.innerWidth < 640;
     if (window.scrollY > 40) {
       navbar.classList.add('navbar-scrolled');
       navbar.style.backgroundColor = 'var(--bg)';
       navbar.style.borderBottom = '1px solid var(--border)';
       navbar.style.boxShadow = '0 8px 24px var(--shadow-color)';
-      navbar.style.paddingTop = '14px';
-      navbar.style.paddingBottom = '14px';
+      navbar.style.paddingTop = isMobile ? '10px' : '14px';
+      navbar.style.paddingBottom = isMobile ? '10px' : '14px';
     } else {
       navbar.classList.remove('navbar-scrolled');
       navbar.style.backgroundColor = 'transparent';
       navbar.style.borderBottom = '1px solid transparent';
       navbar.style.boxShadow = 'none';
-      navbar.style.paddingTop = '24px';
-      navbar.style.paddingBottom = '24px';
+      navbar.style.paddingTop = isMobile ? '12px' : '24px';
+      navbar.style.paddingBottom = isMobile ? '12px' : '24px';
     }
   }, { passive: true });
 
@@ -766,36 +767,99 @@ function renderExploreMoreWork(currentProjectId) {
   const nextProject = PORTFOLIO_PROJECTS[nextIdx];
 
   return `
-    <!-- Case Study Footer Navigation: Explore More Work -->
-    <section class="explore-more-work-section scroll-mt-8 border-t border-[var(--border)] pt-12 sm:pt-14 pb-16 sm:pb-20" aria-label="Explore More Work">
+    <!-- Case Study Footer Navigation: Selected Projects -->
+    <section class="explore-more-work-section scroll-mt-8 border-t border-[var(--border)] pt-8 sm:pt-12 pb-12 sm:pb-16" aria-label="Selected Projects Navigation">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <!-- Section Heading: Centered uppercase label -->
-        <div class="text-center mb-8">
-          <div class="text-xs sm:text-sm font-mono tracking-widest text-[var(--text-sec)] uppercase font-semibold">
-            EXPLORE MORE WORK
+        
+        <!-- Section Heading: Subtle label + Project Counter badge -->
+        <div class="flex items-center justify-between mb-4 sm:mb-6">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true"></span>
+            <h3 class="text-xs sm:text-sm font-mono tracking-widest text-[var(--text-main)] uppercase font-semibold">
+              SELECTED PROJECTS
+            </h3>
           </div>
+          <span class="text-[10px] sm:text-[11px] font-mono tracking-wider text-[var(--text-sec)] px-2.5 py-0.5 rounded-full bg-[var(--border)]/30 border border-[var(--border)]/50">
+            04 PROJECTS
+          </span>
         </div>
 
         <!-- Previous Project and Next Project Buttons in one balanced row -->
-        <div class="flex flex-row justify-center items-center gap-3 sm:gap-6 mb-10 w-full max-w-xl mx-auto">
+        <div class="flex flex-row justify-center items-center gap-2.5 sm:gap-4 mb-4 sm:mb-8 w-full max-w-xl mx-auto">
           <a 
             href="${prevProject.route}" 
-            class="flex-1 text-center px-4 sm:px-6 py-3 rounded-xl border border-[var(--border)] bg-[var(--card)] text-xs sm:text-sm font-semibold text-[var(--text-main)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all shadow-sm active:scale-95"
+            class="flex-1 min-w-0 h-11 sm:h-12 min-h-[44px] inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 rounded-xl border border-[var(--border)] bg-[var(--card)] text-[11px] sm:text-xs font-semibold text-[var(--text-main)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-all shadow-sm active:scale-[0.98] group select-none"
             aria-label="Previous project: ${prevProject.title}"
           >
-            ← PREVIOUS PROJECT
+            <svg class="w-3.5 h-3.5 shrink-0 text-[var(--accent)] transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            <span class="truncate tracking-wider uppercase font-mono text-[10.5px] min-[360px]:text-xs">PREV PROJECT</span>
           </a>
           <a 
             href="${nextProject.route}" 
-            class="flex-1 text-center px-4 sm:px-6 py-3 rounded-xl border border-[var(--border)] bg-[var(--card)] text-xs sm:text-sm font-semibold text-[var(--text-main)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all shadow-sm active:scale-95"
+            class="flex-1 min-w-0 h-11 sm:h-12 min-h-[44px] inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 rounded-xl border border-[var(--border)] bg-[var(--card)] text-[11px] sm:text-xs font-semibold text-[var(--text-main)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-all shadow-sm active:scale-[0.98] group select-none"
             aria-label="Next project: ${nextProject.title}"
           >
-            NEXT PROJECT →
+            <span class="truncate tracking-wider uppercase font-mono text-[10.5px] min-[360px]:text-xs">NEXT PROJECT</span>
+            <svg class="w-3.5 h-3.5 shrink-0 text-[var(--accent)] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"/>
+            </svg>
           </a>
         </div>
 
-        <!-- 4 Project Cards in clean responsive grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 w-full">
+        <!-- Mobile Project Navigation: Compact Horizontal List Items (sm:hidden) -->
+        <div class="flex flex-col gap-3 sm:hidden w-full">
+          ${PORTFOLIO_PROJECTS.map((p, idx) => {
+            const isSelected = p.id === current.id || (p.aliases && p.aliases.includes(current.id));
+            const mobileNum = String(idx + 1).padStart(2, '0');
+            return `
+              <a 
+                href="${p.route}" 
+                onclick="if (window.location.hash === '${p.route}') { window.scrollTo({ top: 0, behavior: 'smooth' }); }"
+                class="mobile-nav-item w-full min-h-[64px] h-[66px] px-3.5 py-3 rounded-xl border flex items-center justify-between transition-all duration-200 group relative ${
+                  isSelected 
+                    ? 'is-active border-[#D98A7A]/45 bg-[#D98A7A]/[0.08] shadow-sm' 
+                    : 'border-[var(--border)] bg-[var(--card)] hover:border-[#D98A7A]/35 hover:bg-[var(--sec-bg)] active:scale-[0.99]'
+                }"
+                aria-current="${isSelected ? 'page' : 'false'}"
+                aria-label="${mobileNum} — ${p.title}${isSelected ? ' (Current Project)' : ''}"
+              >
+                <!-- Left: Project Number -->
+                <div class="flex items-center gap-2 shrink-0">
+                  ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-[#D98A7A] shrink-0" aria-hidden="true"></span>' : ''}
+                  <span class="font-mono text-xs font-semibold tracking-wider ${
+                    isSelected ? 'text-[#D98A7A]' : 'text-[var(--text-sec)] group-hover:text-[var(--accent)]'
+                  }">
+                    ${mobileNum}
+                  </span>
+                  <span class="text-[var(--border)] select-none text-[10px]">—</span>
+                </div>
+
+                <!-- Middle: Project Name (Left-aligned, 14–16px) -->
+                <div class="flex-1 min-w-0 px-2.5 text-left">
+                  <h4 class="text-[14px] min-[360px]:text-[15px] font-medium text-[var(--text-main)] truncate ${
+                    isSelected ? 'font-semibold text-[var(--text-main)]' : 'group-hover:text-[var(--text-main)]'
+                  }">
+                    ${p.title}
+                  </h4>
+                </div>
+
+                <!-- Right: Small Arrow Icon -->
+                <div class="shrink-0 flex items-center justify-center pl-1">
+                  <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 ${
+                    isSelected ? 'text-[#D98A7A]' : 'text-[var(--text-sec)]/60 group-hover:text-[var(--accent)]'
+                  }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              </a>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Desktop & Tablet Layout: 4 Cards in responsive grid (Preserved on sm: and up) -->
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 w-full">
           ${PORTFOLIO_PROJECTS.map(p => {
             const isSelected = p.id === current.id || (p.aliases && p.aliases.includes(current.id));
             return `

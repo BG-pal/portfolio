@@ -1608,4 +1608,26 @@ body.theme-light .tech-card {
   color: var(--accent);
 }
 
+/* ============================================================
+   MOBILE PROJECT NAVIGATION ENHANCEMENTS (WCAG AA & Touch)
+   ============================================================ */
+.mobile-nav-item {
+  min-height: 64px;
+  max-height: 76px;
+  border-radius: 12px;
+  text-decoration: none;
+  outline: none;
+  touch-action: manipulation;
+}
+
+.mobile-nav-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+body.theme-light .mobile-nav-item.is-active {
+  border-color: rgba(217, 138, 122, 0.55);
+  background-color: rgba(217, 138, 122, 0.12);
+}
+
 

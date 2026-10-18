@@ -1009,6 +1009,125 @@ body.theme-light .parallax-floating-ui:hover {
   will-change: transform;
 }
 
+/* ============================================================
+   HERO CALL-TO-ACTION (CTA) BUTTONS — EQUALIZED & RESPONSIVE
+============================================================ */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 360px;
+  gap: 14px;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
+}
+
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  padding: 0 1.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.25s ease,
+              border-color 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.hero-cta-icon {
+  font-size: 0.875rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* Primary Button (Filled Salmon) */
+.hero-cta-primary {
+  background-color: var(--accent);
+  color: #170D13;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(217, 138, 122, 0.25);
+}
+
+.hero-cta-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(217, 138, 122, 0.35);
+}
+
+.hero-cta-primary:hover .hero-cta-icon {
+  transform: translate(2px, -2px);
+}
+
+.hero-cta-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button (Outlined) */
+.hero-cta-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.hero-cta-secondary:hover {
+  background-color: var(--sec-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.hero-cta-secondary:hover .hero-cta-icon {
+  transform: translateY(2px);
+}
+
+.hero-cta-secondary:active {
+  transform: translateY(0);
+}
+
+.hero-cta-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Desktop & Tablet breakpoint: side-by-side layout, natural widths */
+@media (min-width: 640px) {
+  .hero-cta-group {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    max-width: none;
+    gap: 16px;
+  }
+
+  .hero-cta-btn {
+    width: auto;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 1.75rem;
+  }
+}
+
+
 /* Subtle line separator */
 .editorial-separator {
   height: 1px;

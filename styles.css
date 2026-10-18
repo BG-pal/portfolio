@@ -1127,6 +1127,99 @@ body.theme-light .parallax-floating-ui:hover {
   }
 }
 
+/* ============================================================
+   EXPERIENCE SECTION — TIMELINE & DUAL EXPERIENCE CARDS
+============================================================ */
+.timeline-track {
+  position: relative;
+  border-left: 2px solid var(--border);
+  margin-left: 0.375rem;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 54rem;
+}
+
+@media (min-width: 640px) {
+  .timeline-track {
+    margin-left: 0.75rem;
+    padding-left: 2.5rem;
+    gap: 2.75rem;
+  }
+}
+
+.timeline-entry {
+  position: relative;
+}
+
+.timeline-node {
+  position: absolute;
+  top: 1.75rem;
+  left: calc(-1.125rem - 11px);
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: 2px solid var(--accent);
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(217, 138, 122, 0.35);
+  z-index: 10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+@media (min-width: 640px) {
+  .timeline-node {
+    top: 2.25rem;
+    left: calc(-2.5rem - 12px);
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.timeline-node-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--accent);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.timeline-node.node-secondary {
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.timeline-node.node-secondary .timeline-node-core {
+  background-color: var(--text-sec);
+}
+
+.timeline-entry:hover .timeline-node {
+  transform: scale(1.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(217, 138, 122, 0.45);
+}
+
+.timeline-entry:hover .timeline-node.node-secondary .timeline-node-core {
+  background-color: var(--accent);
+}
+
+.experience-card {
+  position: relative;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 35px -10px var(--shadow-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.experience-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 45px -10px var(--shadow-color);
+  transform: translateY(-2px);
+}
 
 /* Subtle line separator */
 .editorial-separator {

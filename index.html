@@ -904,10 +904,11 @@
     <!-- ============================================================
          SECTION 04 — EXPERIENCE
     ============================================================ -->
-    <section id="experience" class="py-24 bg-[var(--bg)]" aria-label="Experience">
+    <section id="experience" class="py-20 sm:py-24 bg-[var(--bg)]" aria-label="Professional Experience">
       <div class="container-custom">
         
-        <div class="mb-16">
+        <!-- Section Header -->
+        <div class="mb-12 sm:mb-16">
           <span class="editorial-badge mb-3">04 — EXPERIENCE</span>
           <h2 class="type-section-title font-serif text-[var(--text-main)] mb-3">Professional Journey</h2>
           <p class="type-body text-[var(--text-sec)] max-w-xl">
@@ -915,45 +916,168 @@
           </p>
         </div>
 
-        <!-- Refined Editorial Timeline -->
-        <div class="relative pl-8 sm:pl-12 border-l border-[var(--border)] max-w-3xl">
+        <!-- Editorial Timeline Track with Dual Experiences -->
+        <div class="timeline-track">
           
-          <!-- Timeline Marker -->
-          <div class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full border-2 border-[var(--accent)] bg-[var(--bg)] flex items-center justify-center">
-            <div class="w-2 h-2 rounded-full bg-[var(--accent)]"></div>
-          </div>
-
-          <div class="bg-[var(--card)] p-8 sm:p-10 rounded-2xl border border-[var(--border)] shadow-xl hover:border-[var(--accent)] transition-colors">
-            
-            <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
-              <div>
-                <span class="text-xs font-mono text-[var(--accent)] uppercase">Dyashin Technosoft</span>
-                <h3 class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] mt-1">UI/UX Designer</h3>
-              </div>
-              <span class="px-3.5 py-1 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] text-xs font-semibold text-[var(--text-main)]">
-                1+ Year Professional Experience
-              </span>
+          <!-- ========================================================
+               EXPERIENCE 01: UI/UX Designer (Full-Time)
+          ======================================================== -->
+          <article class="timeline-entry" aria-label="Experience 01: UI/UX Designer at Dyashin Technosoft">
+            <!-- Timeline Node 01 -->
+            <div class="timeline-node" aria-hidden="true">
+              <div class="timeline-node-core"></div>
             </div>
 
-            <p class="text-sm text-[var(--text-sec)] leading-relaxed mb-6">
-              Spearheaded user experience and visual interface design across four core software products spanning job recruitment, learning management, pharmacy SaaS, and enterprise CRM.
-            </p>
+            <!-- Card Content -->
+            <div class="experience-card p-5 sm:p-8 md:p-10">
+              
+              <!-- Role Header: Company, Title & Date Badges -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5 pb-5 border-b border-[var(--border)]">
+                <div>
+                  <span class="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[var(--accent)] font-semibold block mb-1">
+                    Dyashin Technosoft Pvt. Ltd.
+                  </span>
+                  <h3 class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] font-bold">
+                    UI/UX Designer
+                  </h3>
+                </div>
 
-            <div class="border-t border-[var(--border)] pt-6">
-              <div class="text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-4">Core Responsibilities:</div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--text-sec)]">
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Requirement Analysis</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> UX Design & User Flows</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Wireframing & Prototyping</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> High-Fidelity UI Design</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Responsive Multi-Device Design</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Design Systems & Component Tokens</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Developer Collaboration & Handoff</div>
-                <div class="flex items-center gap-2"><span class="text-[var(--accent)]">✦</span> Stakeholder Alignment & Reviews</div>
+                <div class="flex flex-wrap items-center gap-2 sm:self-start">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] text-[11px] sm:text-xs font-mono text-[var(--text-main)] font-medium">
+                    <svg class="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span>September 2025 – August 2026</span>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 text-[11px] font-mono text-[var(--accent)] font-semibold">
+                    1 Year · Full-time
+                  </span>
+                </div>
               </div>
+
+              <!-- Description -->
+              <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed mb-6 font-light">
+                Designed user experiences and visual interfaces across four core software products spanning recruitment, learning management, pharmacy SaaS, and enterprise CRM.
+              </p>
+
+              <!-- Core Responsibilities -->
+              <div class="rounded-xl p-4 sm:p-5 bg-[var(--sec-bg)]/60 border border-[var(--border)]">
+                <div class="text-[11px] sm:text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-3.5 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true"></span>
+                  <span>Core Responsibilities</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-[13px] text-[var(--text-sec)]">
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Requirement Analysis</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>UX Design &amp; User Flows</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Wireframing &amp; Prototyping</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>High-Fidelity UI Design</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Responsive Multi-Device Design</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Design Systems &amp; Component Tokens</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Developer Collaboration &amp; Handoff</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Stakeholder Alignment &amp; Reviews</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ========================================================
+               EXPERIENCE 02: UI/UX Design Intern (6 Months)
+          ======================================================== -->
+          <article class="timeline-entry" aria-label="Experience 02: UI/UX Design Intern at Dyashin Technosoft">
+            <!-- Timeline Node 02 -->
+            <div class="timeline-node node-secondary" aria-hidden="true">
+              <div class="timeline-node-core"></div>
             </div>
 
-          </div>
+            <!-- Card Content -->
+            <div class="experience-card p-5 sm:p-8 md:p-10">
+              
+              <!-- Role Header: Company, Title & Date Badges -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5 pb-5 border-b border-[var(--border)]">
+                <div>
+                  <span class="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[var(--accent)] font-semibold block mb-1">
+                    Dyashin Technosoft Pvt. Ltd.
+                  </span>
+                  <h3 class="text-2xl sm:text-3xl font-serif text-[var(--text-main)] font-bold">
+                    UI/UX Design Intern
+                  </h3>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 sm:self-start">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] text-[11px] sm:text-xs font-mono text-[var(--text-main)] font-medium">
+                    <svg class="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span>February 2025 – September 2025</span>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full border border-[var(--border)] bg-[var(--sec-bg)] text-[11px] font-mono text-[var(--text-sec)] font-semibold">
+                    6 Months · Internship
+                  </span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed mb-6 font-light">
+                Supported UX and UI design across enterprise software products, helping transform complex workflows into intuitive interfaces.
+              </p>
+
+              <!-- Core Responsibilities -->
+              <div class="rounded-xl p-4 sm:p-5 bg-[var(--sec-bg)]/60 border border-[var(--border)]">
+                <div class="text-[11px] sm:text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-3.5 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true"></span>
+                  <span>Core Responsibilities</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-[13px] text-[var(--text-sec)]">
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Assisted with requirement analysis and user-flow mapping.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Created wireframes and high-fidelity UI designs.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Designed complex forms, dashboards, and multi-step workflows.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Contributed to responsive layouts and reusable Figma components.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5 sm:col-span-2">
+                    <span class="text-[var(--accent)] mt-0.5 flex-shrink-0" aria-hidden="true">✦</span>
+                    <span>Collaborated with design and development teams.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
 
         </div>
 

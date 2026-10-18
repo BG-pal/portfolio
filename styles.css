@@ -1216,10 +1216,32 @@ body.theme-light .asset-placeholder-pattern {
               border-color 0.3s ease;
   transform-origin: 50% 100%;
   cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.destination-card a,
+.destination-card button {
+  touch-action: manipulation;
+}
+
+.destination-card img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .destination-card:active {
   cursor: grabbing;
+}
+
+.destination-card.is-dragging {
+  cursor: grabbing !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  z-index: 50 !important;
+  box-shadow: 0 35px 80px -15px var(--shadow-color), 0 15px 35px -10px var(--shadow-color) !important;
 }
 
 /* Fanned 3D Stack Positions */

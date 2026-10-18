@@ -6113,6 +6113,15 @@ function initSelectedWorkShowcase() {
   const deckStage = document.getElementById('cardsDeckStage');
   if (!deckStage) return;
 
+  // Prevent duplicate listener bindings when returning from case study views
+  if (deckStage._isDeckInitialized) {
+    if (typeof deckStage._refreshDeck === 'function') {
+      deckStage._refreshDeck();
+    }
+    return;
+  }
+  deckStage._isDeckInitialized = true;
+
   const cards = Array.from(deckStage.querySelectorAll('.destination-card'));
   if (!cards || cards.length === 0) return;
 
@@ -6133,7 +6142,7 @@ function initSelectedWorkShowcase() {
   ];
 
   function syncMeta() {
-    // Update top pill buttons
+    // Update top pill buttons if present
     pillBtns.forEach((pill, i) => {
       const isActive = i === currentIndex;
       pill.classList.toggle('active', isActive);
@@ -6147,93 +6156,109 @@ function initSelectedWorkShowcase() {
     }
   }
 
+  function applyDeckPositions() {
+    cards.forEach((card, i) => {
+      const pos = (i - currentIndex + totalCards) % totalCards;
+      card.setAttribute('data-deck-pos', pos);
+      card.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
+      card.classList.remove('anim-exit-next', 'anim-exit-prev', 'is-dragging', 'is-swiping-down');
+      card.style.transform = '';
+      card.style.transition = '';
+      card.style.opacity = '';
+      card.style.pointerEvents = '';
+    });
+  }
+
   function goToProject(targetIndex, direction = null) {
     if (isAnimating) return;
 
-    // Wrap-around calculation
     const nextIndex = ((targetIndex % totalCards) + totalCards) % totalCards;
     if (nextIndex === currentIndex && direction !== null) return;
 
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // If reduced motion is requested or no direction, update instantly
+    // Instant switch if no direction or reduced-motion
     if (!direction || prefersReduced) {
       currentIndex = nextIndex;
-      cards.forEach((card, i) => {
-        const pos = (i - currentIndex + totalCards) % totalCards;
-        card.setAttribute('data-deck-pos', pos);
-        card.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
-        card.classList.remove('anim-exit-next', 'anim-exit-prev', 'is-swiping-down');
-        card.style.transform = '';
-        card.style.transition = '';
-      });
+      applyDeckPositions();
       syncMeta();
       return;
     }
 
     isAnimating = true;
-
-    // Find the current active card in the foreground
     const activeCard = cards.find(c => c.getAttribute('data-deck-pos') === '0');
 
-    if (direction === 'next') {
-      // Forward transition: active card glides out to the right with subtle tilt & fade
-      if (activeCard) {
+    if (activeCard) {
+      if (direction === 'next') {
         activeCard.classList.add('anim-exit-next');
-      }
-
-      currentIndex = nextIndex;
-
-      // Bring behind cards forward into new positions
-      cards.forEach((card, i) => {
-        if (card === activeCard) return;
-        const newPos = (i - currentIndex + totalCards) % totalCards;
-        card.setAttribute('data-deck-pos', newPos);
-        card.setAttribute('aria-hidden', newPos === 0 ? 'false' : 'true');
-      });
-
-      syncMeta();
-
-      // Complete transition after 480ms
-      setTimeout(() => {
-        if (activeCard) {
-          activeCard.classList.remove('anim-exit-next');
-          const finalPos = (cards.indexOf(activeCard) - currentIndex + totalCards) % totalCards;
-          activeCard.setAttribute('data-deck-pos', finalPos);
-          activeCard.setAttribute('aria-hidden', finalPos === 0 ? 'false' : 'true');
-        }
-        isAnimating = false;
-      }, 500);
-
-    } else if (direction === 'prev') {
-      // Backward transition: active card glides out to the left with subtle tilt & fade
-      if (activeCard) {
+      } else {
         activeCard.classList.add('anim-exit-prev');
       }
-
-      currentIndex = nextIndex;
-
-      // Step cards behind into new positions
-      cards.forEach((card, i) => {
-        if (card === activeCard) return;
-        const newPos = (i - currentIndex + totalCards) % totalCards;
-        card.setAttribute('data-deck-pos', newPos);
-        card.setAttribute('aria-hidden', newPos === 0 ? 'false' : 'true');
-      });
-
-      syncMeta();
-
-      // Complete transition after 480ms
-      setTimeout(() => {
-        if (activeCard) {
-          activeCard.classList.remove('anim-exit-prev');
-          const finalPos = (cards.indexOf(activeCard) - currentIndex + totalCards) % totalCards;
-          activeCard.setAttribute('data-deck-pos', finalPos);
-          activeCard.setAttribute('aria-hidden', finalPos === 0 ? 'false' : 'true');
-        }
-        isAnimating = false;
-      }, 500);
     }
+
+    currentIndex = nextIndex;
+
+    // Step cards behind forward
+    cards.forEach((card, i) => {
+      if (card === activeCard) return;
+      const newPos = (i - currentIndex + totalCards) % totalCards;
+      card.setAttribute('data-deck-pos', newPos);
+      card.setAttribute('aria-hidden', newPos === 0 ? 'false' : 'true');
+    });
+
+    syncMeta();
+
+    setTimeout(() => {
+      applyDeckPositions();
+      isAnimating = false;
+    }, 500);
+  }
+
+  // Smooth drag exit and advance function
+  function animateCardExitAndAdvance(card, exitSide, startX, startY, nextIdx) {
+    isAnimating = true;
+    const cardWidth = card.offsetWidth || 340;
+    const exitX = exitSide === 'left' ? -Math.max(cardWidth * 1.3, 380) : Math.max(cardWidth * 1.3, 380);
+    const exitRot = exitSide === 'left' ? -15 : 15;
+
+    // Apply continuous glide from current finger position
+    card.style.transition = 'transform 0.42s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.36s ease';
+    card.style.transform = `translate3d(${exitX}px, ${startY * 1.2}px, 0px) rotate(${exitRot}deg) scale(0.92)`;
+    card.style.opacity = '0';
+    card.style.pointerEvents = 'none';
+
+    // In parallel, advance deck index and bring rear cards forward smoothly
+    currentIndex = ((nextIdx % totalCards) + totalCards) % totalCards;
+
+    cards.forEach((c, i) => {
+      if (c === card) return;
+      const newPos = (i - currentIndex + totalCards) % totalCards;
+      c.setAttribute('data-deck-pos', newPos);
+      c.setAttribute('aria-hidden', newPos === 0 ? 'false' : 'true');
+    });
+
+    syncMeta();
+
+    setTimeout(() => {
+      applyDeckPositions();
+      isAnimating = false;
+    }, 450);
+  }
+
+  // Smooth snap back when drag is insufficient
+  function snapCardBack(card) {
+    isAnimating = true;
+    card.style.transition = 'transform 0.34s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.28s ease';
+    card.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
+    card.style.opacity = '1';
+
+    setTimeout(() => {
+      card.style.transition = '';
+      card.style.transform = '';
+      card.style.opacity = '';
+      card.classList.remove('is-dragging');
+      isAnimating = false;
+    }, 350);
   }
 
   // Next Arrow Button (Right)
@@ -6294,64 +6319,162 @@ function initSelectedWorkShowcase() {
   }
 
   // Touch & Pointer Drag Gestures for direct swipe interaction
+  let isTracking = false;
   let isDragging = false;
+  let directionLocked = false;
   let startX = 0;
   let startY = 0;
+  let currentDragX = 0;
+  let currentDragY = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let velocityX = 0;
+  let activePointerId = null;
   let currentDragCard = null;
 
   deckStage.addEventListener('pointerdown', (e) => {
     if (isAnimating) return;
+
+    // Ignore secondary pointers if already dragging
+    if (isTracking || isDragging) return;
+
+    // Do not intercept interactive elements (links, buttons)
+    if (e.target.closest('a, button, [role="button"], input, textarea')) return;
+
+    // Only start drag on the front card
     const frontCard = cards.find(c => c.getAttribute('data-deck-pos') === '0');
     if (!frontCard || !frontCard.contains(e.target)) return;
-    if (e.target.closest('a') || e.target.closest('button')) return;
 
-    isDragging = true;
+    isTracking = true;
+    isDragging = false;
+    directionLocked = false;
     startX = e.clientX;
     startY = e.clientY;
+    lastX = e.clientX;
+    lastTime = performance.now();
+    velocityX = 0;
+    currentDragX = 0;
+    currentDragY = 0;
+    activePointerId = e.pointerId;
     currentDragCard = frontCard;
-    try {
-      frontCard.setPointerCapture(e.pointerId);
-    } catch (err) {}
-  });
+  }, { passive: true });
 
   deckStage.addEventListener('pointermove', (e) => {
-    if (!isDragging || !currentDragCard) return;
-    const deltaX = (e.clientX - startX) * 0.75;
-    const deltaY = (e.clientY - startY) * 0.35;
+    if (!isTracking || !currentDragCard || (activePointerId !== null && e.pointerId !== activePointerId)) return;
+
+    const diffX = e.clientX - startX;
+    const diffY = e.clientY - startY;
+
+    // Determine direction before locking gesture
+    if (!directionLocked) {
+      const dist = Math.hypot(diffX, diffY);
+      if (dist < 7) {
+        return; // Small deadband to prevent jitter
+      }
+
+      // If vertical movement dominates, cancel card drag and allow page scroll
+      if (Math.abs(diffY) > Math.abs(diffX)) {
+        isTracking = false;
+        isDragging = false;
+        currentDragCard = null;
+        activePointerId = null;
+        return;
+      }
+
+      // Horizontal gesture confirmed: lock to card drag
+      directionLocked = true;
+      isDragging = true;
+      currentDragCard.classList.add('is-dragging');
+      try {
+        currentDragCard.setPointerCapture(e.pointerId);
+      } catch (err) {}
+    }
+
+    if (!isDragging) return;
+
+    // Prevent scrolling while actively dragging horizontal card
+    if (e.cancelable) e.preventDefault();
+
+    // Track velocity
+    const now = performance.now();
+    const dt = now - lastTime;
+    if (dt > 8) {
+      velocityX = (e.clientX - lastX) / dt;
+      lastX = e.clientX;
+      lastTime = now;
+    }
+
+    currentDragX = diffX;
+    currentDragY = diffY * 0.22; // subtle vertical follow
+
+    const cardWidth = currentDragCard.offsetWidth || 340;
+    const rotation = (currentDragX / cardWidth) * 14;
 
     currentDragCard.style.transition = 'none';
-    currentDragCard.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0px) rotate(${deltaX * 0.04}deg)`;
+    currentDragCard.style.transform = `translate3d(${currentDragX}px, ${currentDragY}px, 0px) rotate(${rotation}deg) scale(0.99)`;
   });
 
-  function handleDragEnd(e) {
-    if (!isDragging || !currentDragCard) return;
+  function handlePointerEnd(e) {
+    if (!isTracking || (activePointerId !== null && e.pointerId !== activePointerId)) return;
+
+    const card = currentDragCard;
+    const wasDragging = isDragging;
+
+    // Reset tracking state
+    isTracking = false;
     isDragging = false;
+    directionLocked = false;
+    activePointerId = null;
+    currentDragCard = null;
+
+    if (!card) return;
+
     try {
-      if (e.pointerId) currentDragCard.releasePointerCapture(e.pointerId);
+      if (card.hasPointerCapture && card.hasPointerCapture(e.pointerId)) {
+        card.releasePointerCapture(e.pointerId);
+      }
     } catch (err) {}
 
-    const deltaX = e.clientX - startX;
-    currentDragCard.style.transition = '';
-    currentDragCard.style.transform = '';
+    card.classList.remove('is-dragging');
 
-    if (deltaX < -50) {
-      goToProject(currentIndex + 1, 'next');
-    } else if (deltaX > 50) {
-      goToProject(currentIndex - 1, 'prev');
+    if (!wasDragging) {
+      // Tap without drag: reset any inline styles
+      card.style.transform = '';
+      card.style.transition = '';
+      return;
     }
-    currentDragCard = null;
+
+    const cardWidth = card.offsetWidth || 340;
+    const threshold = Math.min(cardWidth * 0.22, 70);
+    const isQuickSwipe = Math.abs(velocityX) > 0.42 && Math.abs(currentDragX) > 22;
+    const isExceeded = Math.abs(currentDragX) > threshold;
+
+    if (isExceeded || isQuickSwipe) {
+      if (currentDragX < 0) {
+        // Dragged Left -> Advance to Next project
+        animateCardExitAndAdvance(card, 'left', currentDragX, currentDragY, currentIndex + 1);
+      } else {
+        // Dragged Right -> Return to Previous project
+        animateCardExitAndAdvance(card, 'right', currentDragX, currentDragY, currentIndex - 1);
+      }
+    } else {
+      // Drag insufficient: smoothly snap back
+      snapCardBack(card);
+    }
   }
 
-  deckStage.addEventListener('pointerup', handleDragEnd);
-  deckStage.addEventListener('pointercancel', handleDragEnd);
+  deckStage.addEventListener('pointerup', handlePointerEnd);
+  deckStage.addEventListener('pointercancel', handlePointerEnd);
 
   // Expose refresh function on the stage so case study return can re-sync
   deckStage._refreshDeck = function() {
-    goToProject(currentIndex);
+    applyDeckPositions();
+    syncMeta();
   };
 
   // Initial synchronization
-  goToProject(currentIndex);
+  applyDeckPositions();
+  syncMeta();
 }
 
 window.initSelectedWorkShowcase = initSelectedWorkShowcase;

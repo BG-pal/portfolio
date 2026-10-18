@@ -2483,8 +2483,11 @@ function renderDSEdifyCaseStudy(project, container) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
     <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
-      <a href="#work" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:opacity-80 transition-opacity">
-        ← BACK TO SELECTED WORK
+      <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
+        <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        <span class="sr-only">Back to selected work</span>
       </a>
       <div class="text-xs font-mono text-[var(--text-sec)]">
         PROJECT 001 OF 04
@@ -3672,16 +3675,19 @@ function renderDSJobbyCaseStudy(project, container) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
     <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
-      <a href="#work" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:opacity-80 transition-opacity">
-        ← BACK TO SELECTED WORK
+      <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
+        <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        <span class="sr-only">Back to selected work</span>
       </a>
       <div class="flex items-center gap-3">
         <a href="https://www.dsjobby.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[var(--accent)] hover:underline">
           <span>Visit dsjobby.com</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
-        <span class="text-[var(--text-sec)] hidden sm:inline">·</span>
-        <div class="text-xs font-mono text-[var(--text-sec)] hidden sm:inline">
+        <span class="text-[var(--text-sec)]">·</span>
+        <div class="text-xs font-mono text-[var(--text-sec)]">
           PROJECT 002 OF 04
         </div>
       </div>
@@ -4127,8 +4133,11 @@ function renderMeditrackCaseStudy(project, container) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
     <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
-      <a href="#work" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:opacity-80 transition-opacity">
-        ← BACK TO SELECTED WORK
+      <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
+        <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        <span class="sr-only">Back to selected work</span>
       </a>
       <div class="text-xs font-mono text-[var(--text-sec)]">
         PROJECT 003 OF 04
@@ -5018,8 +5027,11 @@ function renderDSCRMCaseStudy(project, container) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
     <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
-      <a href="#work" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:opacity-80 transition-opacity">
-        ← BACK TO SELECTED WORK
+      <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
+        <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        <span class="sr-only">Back to selected work</span>
       </a>
       <div class="flex items-center gap-3">
         <div class="text-xs font-mono text-[var(--text-sec)]">
@@ -5359,8 +5371,11 @@ function renderCaseStudy(project) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
     <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
-      <a href="#work" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:opacity-80 transition-opacity">
-        ← BACK TO SELECTED WORK
+      <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
+        <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        <span class="sr-only">Back to selected work</span>
       </a>
       <div class="text-xs font-mono text-[var(--text-sec)]">
         PROJECT ${project.number} OF 04

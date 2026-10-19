@@ -160,9 +160,9 @@
         <div class="absolute bottom-[22%] left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--border)]/30 to-transparent"></div>
       </div>
 
-      <div class="container-custom w-full relative z-10 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center min-h-[calc(100vh-140px)]">
+      <div class="container-custom w-full relative z-10 grid grid-cols-1 md:grid-cols-[48%_52%] lg:grid-cols-[46%_54%] gap-8 lg:gap-8 items-center min-h-[calc(100vh-140px)]">
         
-        <!-- Left Column: Editorial Typography, Actions & Statistics (~45%) -->
+        <!-- Left Column: Editorial Typography, Actions & Statistics (~46%) -->
         <div class="parallax-text-layer flex flex-col items-start relative z-20">
           
           <!-- Sparkle Star Accent above Headline -->
@@ -240,32 +240,109 @@
 
         </div>
 
-        <!-- Right Column: Character Composition & Floating Micro-UI (~55%) -->
-        <div class="relative w-full flex justify-center items-center py-4 lg:py-8 min-h-[340px] sm:min-h-[460px] lg:min-h-[600px] overflow-hidden">
+        <!-- Right Column: Visual Portrait & Recreated Reference Design (~54%) -->
+        <div class="relative w-full flex justify-center items-center py-4 lg:py-6 overflow-hidden">
           
-          <!-- Layer 1: Background Compass Arcs & Radial Halo behind character -->
-          <div class="parallax-layer-bg absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" data-speed="0.04" aria-hidden="true">
-            <!-- Concentric Compass Arc Rings -->
-            <div class="w-[420px] sm:w-[500px] lg:w-[540px] h-[420px] sm:h-[500px] lg:h-[540px] rounded-full border border-[var(--accent)]/20 opacity-60"></div>
-            <div class="absolute w-[340px] sm:w-[410px] lg:w-[450px] h-[340px] sm:h-[410px] lg:h-[450px] rounded-full border border-[var(--border)] opacity-35"></div>
-            <!-- Delicate diagonal compass lines -->
-            <div class="absolute w-[440px] sm:w-[520px] h-px bg-gradient-to-r from-transparent via-[var(--accent)]/25 to-transparent rotate-45"></div>
-            <div class="absolute w-[440px] sm:w-[520px] h-px bg-gradient-to-r from-transparent via-[var(--accent)]/25 to-transparent -rotate-45"></div>
-          </div>
+          <div class="hero-composition">
+            
+            <!-- Ambient Radial Glow -->
+            <div class="hero-glow-primary parallax-layer-bg" data-speed="0.035" aria-hidden="true"></div>
 
-          <!-- Layer 3: Character Illustration (Replicated from Reference Image with 3D Depth) -->
-          <div class="parallax-character-wrapper relative z-10 w-full max-w-[540px] lg:max-w-[620px] flex justify-center items-center" data-speed="0.025">
-            <div class="hero-character-frame relative w-full aspect-[574/528] overflow-hidden flex items-center justify-center cursor-pointer">
+            <!-- Concentric Drafting Rings -->
+            <div class="hero-ring-outer parallax-layer-bg" data-speed="0.04" aria-hidden="true"></div>
+            <div class="hero-ring-inner parallax-layer-bg" data-speed="0.045" aria-hidden="true"></div>
+
+            <!-- Circular Backdrop directly behind portrait -->
+            <div class="hero-circular-backdrop parallax-layer-bg" data-speed="0.03" aria-hidden="true"></div>
+
+            <!-- Floating UI Mockup Panel (Top-Right) -->
+            <div class="hero-floating-card hero-ui-panel parallax-floating-ui" data-speed-x="0.06" data-speed-y="0.08" data-scroll-speed="0.1" aria-hidden="true">
+              <div class="hero-ui-header">
+                <span class="hero-ui-dot"></span>
+                <span class="hero-ui-dot"></span>
+                <span class="hero-ui-dot"></span>
+              </div>
+              <div class="hero-ui-body">
+                <div class="hero-ui-sidebar">
+                  <span class="hero-ui-side-dot"></span>
+                  <span class="hero-ui-side-dot"></span>
+                  <span class="hero-ui-side-dot"></span>
+                </div>
+                <div class="hero-ui-main">
+                  <div class="hero-ui-img-wireframe">
+                    <svg viewBox="0 0 100 80" class="w-full h-full text-[var(--accent)] opacity-40" preserveAspectRatio="none">
+                      <line x1="0" y1="0" x2="100" y2="80" stroke="currentColor" stroke-width="1.5" />
+                      <line x1="0" y1="80" x2="100" y2="0" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                  </div>
+                  <div class="hero-ui-lines">
+                    <div class="hero-ui-line hero-ui-line-full"></div>
+                    <div class="hero-ui-line hero-ui-line-short"></div>
+                    <div class="hero-ui-line hero-ui-line-mid"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Color Swatch Chip -->
+            <div class="hero-floating-card hero-swatch-card parallax-floating-ui" data-speed-x="0.09" data-speed-y="0.05" data-scroll-speed="0.08" aria-hidden="true">
+              <div class="hero-swatch-list">
+                <span class="hero-swatch-circle swatch-1" title="Cream"></span>
+                <span class="hero-swatch-circle swatch-2" title="Blush"></span>
+                <span class="hero-swatch-circle swatch-3" title="Coral Accent"></span>
+                <span class="hero-swatch-circle swatch-4" title="Deep Burgundy"></span>
+              </div>
+            </div>
+
+            <!-- Floating Typography Card -->
+            <div class="hero-floating-card hero-type-card parallax-floating-ui" data-speed-x="0.04" data-speed-y="0.07" data-scroll-speed="0.12" aria-hidden="true">
+              <span class="hero-type-aa font-serif">Aa</span>
+              <div class="hero-type-lines">
+                <span class="hero-type-line"></span>
+                <span class="hero-type-line"></span>
+                <span class="hero-type-line hero-type-line-short"></span>
+              </div>
+            </div>
+
+            <!-- Floating Icon Tile -->
+            <div class="hero-floating-card hero-icon-tile parallax-floating-ui" data-speed-x="-0.07" data-speed-y="0.06" data-scroll-speed="0.09" aria-hidden="true">
+              <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+            </div>
+
+            <!-- Sparkle Stars -->
+            <div class="hero-star-1 parallax-floating-ui" data-speed-x="-0.10" data-speed-y="-0.08" aria-hidden="true">
+              <svg class="w-6 h-6 text-[var(--accent)]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+              </svg>
+            </div>
+            <div class="hero-star-2 parallax-floating-ui" data-speed-x="0.08" data-speed-y="-0.06" aria-hidden="true">
+              <svg class="w-3.5 h-3.5 text-[var(--accent)] opacity-70" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+              </svg>
+            </div>
+
+            <!-- Arrow Badge -->
+            <div class="hero-arrow-badge parallax-floating-ui" data-speed-x="0.05" data-speed-y="0.06" aria-hidden="true">
+              <svg class="w-4 h-4 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+
+            <!-- The Portrait: Pallavi's actual photograph -->
+            <div class="hero-portrait-wrapper parallax-character-wrapper" data-speed="0.025">
               <img 
-                id="heroCharacterImg"
-                src="assets/hero-character.jpg" 
-                alt="Pallavi B G — UI/UX Designer working on digital products with laptop" 
-                class="w-full h-full object-cover object-center hero-character-blend select-none pointer-events-none"
+                id="heroPortraitImg"
+                src="assets/pallavi-portrait.png" 
+                alt="Pallavi B G — UI/UX Designer" 
+                class="hero-portrait-img select-none pointer-events-none"
                 loading="eager"
               />
-              <!-- 3D Specular Light Glare & Depth Overlay -->
-              <div class="hero-3d-glare absolute inset-0 pointer-events-none" id="hero3dGlare" aria-hidden="true"></div>
             </div>
+
           </div>
 
         </div>

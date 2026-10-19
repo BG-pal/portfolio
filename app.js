@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const body = document.body;
   const toggles = document.querySelectorAll('.theme-toggle-btn');
-  const savedTheme = localStorage.getItem('pallavi_theme') || 'theme-dark';
+  const savedTheme = localStorage.getItem('pallavi_theme') || (body.classList.contains('theme-light') ? 'theme-light' : 'theme-dark');
   
   applyTheme(savedTheme);
 

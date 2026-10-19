@@ -1049,7 +1049,7 @@ body.theme-light .cover-inset-frame {
 /* 1. Large Circular Halo behind head and shoulders (Code-built CSS Radial Gradient) */
 .hero-backdrop-halo {
   position: absolute;
-  top: 48%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: clamp(480px, 44vw, 620px);
@@ -1057,12 +1057,12 @@ body.theme-light .cover-inset-frame {
   border-radius: 50%;
   background: var(--hero-halo);
   filter: blur(24px);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   transition: background 0.4s ease;
 }
 
-/* 2. Concentric Orbit Rings & Compass Accents (CSS) */
+/* 2. Concentric Orbit Rings & Accents (CSS) */
 .hero-rings-wrapper {
   position: absolute;
   inset: 0;
@@ -1070,13 +1070,14 @@ body.theme-light .cover-inset-frame {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  z-index: 2;
-  will-change: transform;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 84%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 84%);
 }
 
 .hero-orbit-ring {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -1085,40 +1086,22 @@ body.theme-light .cover-inset-frame {
 }
 
 .hero-orbit-1 {
-  width: clamp(380px, 34vw, 450px);
-  height: clamp(380px, 34vw, 450px);
+  width: clamp(370px, 33vw, 440px);
+  height: clamp(370px, 33vw, 440px);
   border: 1px solid var(--hero-ring-1);
   box-shadow: 0 0 20px var(--hero-ring-glow);
 }
 
 .hero-orbit-2 {
-  width: clamp(480px, 42vw, 550px);
-  height: clamp(480px, 42vw, 550px);
+  width: clamp(460px, 40vw, 530px);
+  height: clamp(460px, 40vw, 530px);
   border: 1px solid var(--hero-ring-2);
 }
 
 .hero-orbit-3 {
-  width: clamp(560px, 48vw, 640px);
-  height: clamp(560px, 48vw, 640px);
-  border: 1px dashed var(--hero-ring-3);
-}
-
-.hero-compass-line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: clamp(540px, 46vw, 620px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--hero-ring-2), transparent);
-  pointer-events: none;
-}
-
-.hero-compass-line-1 {
-  transform: translate(-50%, -50%) rotate(38deg);
-}
-
-.hero-compass-line-2 {
-  transform: translate(-50%, -50%) rotate(-38deg);
+  height: clamp(540px, 46vw, 620px);
+  border: 1px dashed var(--hero-ring-3);
 }
 
 .hero-halo-sparkle {
@@ -1129,20 +1112,20 @@ body.theme-light .cover-inset-frame {
   filter: drop-shadow(0 0 8px var(--accent));
   animation: sparklePulse 3.5s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 3;
+  z-index: 1;
 }
 
 .hero-halo-dot {
   position: absolute;
-  top: 26%;
-  right: 12%;
+  top: 22%;
+  right: 7%;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background-color: var(--accent);
   box-shadow: 0 0 10px var(--accent);
   pointer-events: none;
-  z-index: 3;
+  z-index: 1;
 }
 
 @keyframes sparklePulse {
@@ -1156,25 +1139,22 @@ body.theme-light .cover-inset-frame {
   z-index: 10;
   width: 100%;
   max-width: min(100%, 560px);
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
-  will-change: transform;
 }
 
 .hero-portrait-img {
+  display: block;
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center bottom;
   background: transparent;
-  filter: var(--portrait-glow);
   -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 98%);
   mask-image: linear-gradient(to bottom, black 82%, transparent 98%);
-  transition: opacity 0.3s ease;
-  transform: translateZ(0);
 }
 
 .parallax-layer-bg,
@@ -1211,16 +1191,18 @@ body.theme-light .cover-inset-frame {
     max-width: 480px;
   }
   .hero-backdrop-halo {
+    top: 42%;
     width: 420px;
     height: 420px;
     filter: blur(20px);
   }
+  .hero-orbit-ring { top: 42%; }
   .hero-orbit-1 { width: 340px; height: 340px; }
   .hero-orbit-2 { width: 420px; height: 420px; }
   .hero-orbit-3 { width: 480px; height: 480px; }
   .hero-portrait-frame {
     max-width: 440px;
-    height: 460px;
+    height: auto;
   }
 }
 
@@ -1235,15 +1217,17 @@ body.theme-light .cover-inset-frame {
     max-width: 500px;
   }
   .hero-backdrop-halo {
+    top: 42%;
     width: 460px;
     height: 460px;
   }
+  .hero-orbit-ring { top: 42%; }
   .hero-orbit-1 { width: 360px; height: 360px; }
   .hero-orbit-2 { width: 440px; height: 440px; }
   .hero-orbit-3 { width: 500px; height: 500px; }
   .hero-portrait-frame {
     max-width: 480px;
-    height: 500px;
+    height: auto;
   }
   .hero-bottom-bar {
     padding-top: 0.85rem !important;
@@ -1262,19 +1246,19 @@ body.theme-light .cover-inset-frame {
   .hero-backdrop-halo {
     width: clamp(240px, 70vw, 290px);
     height: clamp(240px, 70vw, 290px);
-    top: 50%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     filter: blur(16px);
   }
+  .hero-orbit-ring { top: 42%; }
   .hero-orbit-1 { width: clamp(230px, 66vw, 260px); height: clamp(230px, 66vw, 260px); }
   .hero-orbit-2 { width: clamp(270px, 76vw, 310px); height: clamp(270px, 76vw, 310px); }
   .hero-orbit-3 { display: none; }
-  .hero-compass-line { display: none; }
   
   .hero-portrait-frame {
     max-width: min(300px, 80vw);
-    height: 340px;
+    height: auto;
   }
 }
 

@@ -160,21 +160,14 @@
         <div class="absolute bottom-[22%] left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--border)]/30 to-transparent"></div>
       </div>
 
-      <div class="container-custom w-full relative z-10 flex flex-col justify-between flex-1 py-3 sm:py-5 lg:py-6">
+      <div class="hero-container relative z-10">
         
-        <!-- Two-column Centered Grid for Content & Portrait -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center my-auto">
+        <!-- Two-column Centered Grid for Content & Portrait (48% / 52%) -->
+        <div class="hero-grid">
         
-        <!-- Left Column: Editorial Typography, Actions & Statistics (~50%) -->
-        <div class="parallax-text-layer flex flex-col items-start relative z-20">
+        <!-- Left Column: Editorial Typography & Actions (~48%) -->
+        <div class="hero-left-col parallax-text-layer">
           
-          <!-- Sparkle Star Accent above Headline -->
-          <div class="hidden" aria-hidden="true">
-            <svg class="w-6 h-6 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
-            </svg>
-          </div>
-
           <!-- Role Label -->
           <div class="editorial-badge mb-4 sm:mb-5 text-[11px] tracking-[0.22em]">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="text-[var(--accent)]">
@@ -183,23 +176,13 @@
             UI/UX DESIGNER
           </div>
 
-          <!-- Main Headline (Exact 5-line editorial serif hierarchy) -->
-          <h1 class="type-hero font-serif tracking-tight mb-4 sm:mb-6 text-[var(--text-main)]">
-            <span class="text-[var(--accent)] block">Designing</span>
-            <span class="block">digital</span>
-            <span class="block">experiences</span>
-            <span class="block">people</span>
-            <span class="relative inline-block">
-              understand.
-              <!-- Curved editorial hand-drawn flourish underline -->
-              <svg class="absolute w-[105%] h-4 -bottom-2.5 left-0 text-[var(--accent)] opacity-90" viewBox="0 0 300 15" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M2,12 Q150,23 298,4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-              </svg>
-            </span>
+          <!-- Main Headline (Natural wrap into ~4–5 lines, large editorial serif) -->
+          <h1 class="type-hero font-serif tracking-tight mb-5 sm:mb-6 text-[var(--text-main)] w-full">
+            <span class="text-[var(--accent)]">Designing</span> digital experiences people <span class="relative inline-block">understand.<svg class="absolute w-[105%] h-4 -bottom-2.5 left-0 text-[var(--accent)] opacity-95" viewBox="0 0 300 15" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q150,23 298,4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg></span>
           </h1>
 
           <!-- Supporting Description -->
-          <p class="type-body text-[var(--text-sec)] max-w-xl mb-6 sm:mb-8 leading-relaxed font-light">
+          <p class="type-body text-[var(--text-sec)] max-w-xl mb-7 sm:mb-8 leading-relaxed font-light">
             I turn complex requirements and user needs into simple, intuitive digital experiences.
           </p>
 
@@ -216,10 +199,10 @@
           </div>
         </div>
 
-        <!-- Right Column: Transparent Portrait & Code-built Halo Composition (~50%) -->
-        <div class="relative w-full flex justify-center items-center py-4 lg:py-6 overflow-visible">
+        <!-- Right Column: Transparent Portrait & Code-built Halo Composition (~52%) -->
+        <div class="hero-right-col">
           
-          <div class="hero-composition relative w-full max-w-[520px] flex justify-center items-center">
+          <div class="hero-composition">
 
             <!-- Background Glowing Circular Halo (Code-built CSS Radial Gradient) -->
             <div class="hero-backdrop-halo absolute pointer-events-none" aria-hidden="true"></div>

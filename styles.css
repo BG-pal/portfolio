@@ -968,7 +968,7 @@ body.theme-light .cover-inset-frame {
   position: relative;
   width: 100%;
   max-width: 540px;
-  height: 530px;
+  height: 500px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1085,7 +1085,7 @@ body.theme-light .cover-inset-frame {
   z-index: 4;
   width: 100%;
   max-width: 460px;
-  height: 510px;
+  height: 485px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1099,6 +1099,8 @@ body.theme-light .cover-inset-frame {
   object-fit: contain;
   object-position: bottom center;
   filter: var(--portrait-glow);
+  -webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
   transition: filter 0.4s ease;
   transform: translateZ(0);
 }

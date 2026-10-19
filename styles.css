@@ -17,7 +17,7 @@
   --shadow-color: rgba(0, 0, 0, 0.45);
 
   /* Hero halo, concentric rings & floating design panels */
-  --hero-halo: radial-gradient(circle at 50% 42%, rgba(217, 138, 122, 0.44) 0%, rgba(107, 62, 62, 0.30) 40%, rgba(23, 13, 18, 0) 70%);
+  --hero-halo: radial-gradient(circle at 50% 50%, rgba(217, 138, 122, 0.44) 0%, rgba(107, 62, 62, 0.30) 40%, rgba(23, 13, 18, 0) 70%);
   --hero-ring-1: rgba(217, 138, 122, 0.28);
   --hero-ring-2: rgba(217, 138, 122, 0.18);
   --hero-ring-3: rgba(217, 138, 122, 0.12);
@@ -45,7 +45,7 @@ body.theme-light {
   --shadow-color: rgba(104, 70, 61, 0.08);
 
   /* Light theme hero halo, rings & floating design panels */
-  --hero-halo: radial-gradient(circle at 50% 42%, rgba(239, 175, 152, 0.48) 0%, rgba(217, 138, 122, 0.22) 42%, rgba(255, 247, 241, 0) 70%);
+  --hero-halo: radial-gradient(circle at 50% 50%, rgba(239, 175, 152, 0.48) 0%, rgba(217, 138, 122, 0.22) 42%, rgba(255, 247, 241, 0) 70%);
   --hero-ring-1: rgba(196, 91, 70, 0.25);
   --hero-ring-2: rgba(196, 91, 70, 0.16);
   --hero-ring-3: rgba(196, 91, 70, 0.10);
@@ -967,20 +967,21 @@ body.theme-light .cover-inset-frame {
 .hero-composition {
   position: relative;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   height: 500px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: visible;
+  margin: 0 auto;
 }
 
 /* 1. Large Circular Halo behind head and shoulders (Code-built CSS Radial Gradient) */
 .hero-backdrop-halo {
   position: absolute;
-  top: 15px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 440px;
   height: 440px;
   border-radius: 50%;
@@ -1005,7 +1006,7 @@ body.theme-light .cover-inset-frame {
 
 .hero-orbit-ring {
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -1034,7 +1035,7 @@ body.theme-light .cover-inset-frame {
 
 .hero-compass-line {
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   width: 460px;
   height: 1px;
@@ -1079,7 +1080,7 @@ body.theme-light .cover-inset-frame {
   100% { transform: scale(1.18); opacity: 1; }
 }
 
-/* 3. Portrait Frame & Transparent Image */
+/* 3. Portrait Frame & Transparent Image (Center-aligned) */
 .hero-portrait-frame {
   position: relative;
   z-index: 4;
@@ -1087,7 +1088,7 @@ body.theme-light .cover-inset-frame {
   max-width: 460px;
   height: 485px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: visible;
   will-change: transform;
@@ -1097,7 +1098,7 @@ body.theme-light .cover-inset-frame {
   max-width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: center center;
   filter: var(--portrait-glow);
   -webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
@@ -1336,7 +1337,9 @@ body.theme-light .swatch-circle {
   .hero-backdrop-halo {
     width: clamp(260px, 75vw, 300px);
     height: clamp(260px, 75vw, 300px);
-    top: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .hero-orbit-1 { width: clamp(250px, 70vw, 280px); height: clamp(250px, 70vw, 280px); }
   .hero-orbit-2 { width: clamp(290px, 80vw, 330px); height: clamp(290px, 80vw, 330px); }

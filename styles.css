@@ -15,16 +15,6 @@
   --hover-accent: #E19A8C;
   --badge-bg: rgba(217, 138, 122, 0.12);
   --shadow-color: rgba(0, 0, 0, 0.45);
-
-  /* Hero Editorial Composition Tokens - Dark Theme */
-  --hero-disc-grad: radial-gradient(circle at 45% 40%, rgba(217, 138, 122, 0.42) 0%, rgba(184, 91, 82, 0.22) 50%, rgba(89, 54, 59, 0.08) 80%, transparent 100%);
-  --hero-ring-color: rgba(217, 138, 122, 0.22);
-  --hero-card-bg: rgba(36, 21, 28, 0.78);
-  --hero-card-border: rgba(217, 138, 122, 0.24);
-  --hero-card-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.55), 0 0 18px -2px rgba(217, 138, 122, 0.12);
-  --hero-card-text: #F8EAE5;
-  --hero-card-sub: #BFA7A2;
-  --hero-glow: rgba(217, 138, 122, 0.18);
 }
 
 body.theme-light {
@@ -39,16 +29,6 @@ body.theme-light {
   --hover-accent: #7A5147;
   --badge-bg: rgba(122, 81, 71, 0.08);
   --shadow-color: rgba(104, 70, 61, 0.08);
-
-  /* Hero Editorial Composition Tokens - Light Theme */
-  --hero-disc-grad: radial-gradient(circle at 45% 40%, rgba(239, 175, 152, 0.48) 0%, rgba(245, 205, 192, 0.28) 50%, rgba(254, 226, 213, 0.1) 80%, transparent 100%);
-  --hero-ring-color: rgba(217, 138, 122, 0.35);
-  --hero-card-bg: rgba(255, 253, 249, 0.88);
-  --hero-card-border: rgba(217, 138, 122, 0.3);
-  --hero-card-shadow: 0 16px 32px -6px rgba(104, 70, 61, 0.12), 0 2px 8px rgba(104, 70, 61, 0.04);
-  --hero-card-text: #4A2821;
-  --hero-card-sub: #7A5E57;
-  --hero-glow: rgba(239, 175, 152, 0.25);
 }
 
 * {
@@ -955,358 +935,56 @@ body.theme-light .cover-inset-frame {
    HERO EDITORIAL & MULTI-LAYER PARALLAX STYLES
 ============================================================ */
 
-/* Right column portrait composition container */
-.hero-composition {
+/* Seamless Character Blending into Canvas with True 3D Depth */
+.parallax-character-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero-character-frame {
   position: relative;
   width: 100%;
-  max-width: 580px;
-  height: 560px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin-inline: auto;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  box-shadow: 
+    0 24px 55px -12px rgba(0, 0, 0, 0.65),
+    0 12px 28px -6px rgba(217, 138, 122, 0.16);
+  transition: box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Circular Backdrop / Ambient Halo */
-.hero-backdrop-disc {
+.hero-character-blend {
+  /* Smooth vignette mask blending the illustration seamlessly into the canvas */
+  mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, black 72%, rgba(0, 0, 0, 0.85) 88%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, black 72%, rgba(0, 0, 0, 0.85) 88%, transparent 100%);
+  filter: contrast(1.02) saturate(1.03);
+  border-radius: 18px;
+  transform: translateZ(0);
+}
+
+/* 3D Specular Light Sheen overlay */
+.hero-3d-glare {
   position: absolute;
-  width: 440px;
-  height: 440px;
-  border-radius: 50%;
-  background: var(--hero-disc-grad);
-  box-shadow: 0 0 60px 10px var(--hero-glow);
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-48%, -50%);
+  inset: 0;
+  border-radius: 18px;
   pointer-events: none;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 65%);
+  transition: opacity 0.35s ease;
+  z-index: 10;
 }
 
-/* Fine concentric orbital rings */
-.hero-orbit-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid var(--hero-ring-color);
-  pointer-events: none;
-  z-index: 2;
-  transition: border-color 0.4s ease;
+body.theme-light .hero-character-frame {
+  box-shadow: 
+    0 24px 50px -12px rgba(104, 70, 61, 0.22),
+    0 10px 24px -6px rgba(239, 175, 152, 0.28);
 }
 
-.hero-orbit-1 {
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-48%, -50%);
-}
-
-.hero-orbit-2 {
-  width: 580px;
-  height: 580px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-48%, -50%);
-  opacity: 0.38;
-  border-style: dashed;
-  border-dasharray: 4 6;
-}
-
-.hero-orbit-dot {
-  position: absolute;
-  top: 24%;
-  left: 4%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  z-index: 3;
-  box-shadow: 0 0 8px var(--accent);
-  pointer-events: none;
-}
-
-/* Sparkle Star */
-.hero-sparkle {
-  position: absolute;
-  color: var(--accent);
-  z-index: 4;
-  pointer-events: none;
-  filter: drop-shadow(0 0 8px var(--accent));
-  animation: sparklePulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes sparklePulse {
-  0% { transform: scale(0.85); opacity: 0.7; }
-  100% { transform: scale(1.15); opacity: 1; }
-}
-
-/* The Portrait Frame & Image */
-.hero-portrait-frame {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 420px;
-  height: 520px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-portrait-img {
-  max-width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom center;
-  mask-image: linear-gradient(to bottom, black 80%, rgba(0, 0, 0, 0.4) 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, rgba(0, 0, 0, 0.4) 94%, transparent 100%);
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
-  transition: filter 0.4s ease;
-}
-
-body.theme-light .hero-portrait-img {
-  filter: drop-shadow(0 14px 24px rgba(104, 70, 61, 0.18));
-}
-
-/* Floating UI Cards & Code-built Design Artifacts */
-.hero-card {
-  position: absolute;
-  background: var(--hero-card-bg);
-  border: 1px solid var(--hero-card-border);
-  box-shadow: var(--hero-card-shadow);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 14px;
-  z-index: 5;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              box-shadow 0.3s ease, 
-              border-color 0.3s ease,
-              background-color 0.4s ease;
-}
-
-.hero-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent);
-}
-
-body.theme-light .hero-card:hover {
-  box-shadow: 0 18px 36px -6px rgba(104, 70, 61, 0.16), 0 0 16px rgba(217, 138, 122, 0.25);
-}
-
-/* Card 1: UI Wireframe Mockup Panel (Top Right) */
-.hero-card-mockup {
-  top: 32px;
-  right: 8px;
-  width: 200px;
-  padding: 12px;
-  transform: rotate(2deg);
-  animation: floatSlow 6s ease-in-out infinite alternate;
-}
-
-.hero-mockup-header {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid rgba(217, 138, 122, 0.18);
-  margin-bottom: 9px;
-}
-
-.hero-mockup-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.hero-mockup-media {
-  width: 62px;
-  height: 48px;
-  border-radius: 6px;
-  background: rgba(217, 138, 122, 0.12);
-  border: 1px dashed rgba(217, 138, 122, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* Card 2: Color Swatches Pill (Middle Right) */
-.hero-card-swatches {
-  top: 230px;
-  right: 0px;
-  padding: 8px 14px;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  animation: floatMid 5s ease-in-out infinite 0.5s alternate;
-}
-
-.swatch-dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  flex-shrink: 0;
-}
-
-/* Card 3: Typography "Aa" Card (Lower Right) */
-.hero-card-typo {
-  bottom: 95px;
-  right: 18px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: floatSlow 5.5s ease-in-out infinite 1s alternate;
-}
-
-/* Card 4: Leaf / Glyph Icon Card (Middle Left) */
-.hero-card-glyph {
-  top: 200px;
-  left: 8px;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  animation: floatSlow 6.5s ease-in-out infinite 1.5s alternate;
-}
-
-/* Card 5: Arrow Circle Badge (Bottom Right) */
-.hero-badge-arrow {
-  position: absolute;
-  bottom: 30px;
-  right: 48px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--hero-card-border);
-  background: var(--hero-card-bg);
-  color: var(--accent);
-  font-size: 14px;
-  box-shadow: var(--hero-card-shadow);
-  z-index: 5;
-  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.4s ease;
-}
-
-.hero-badge-arrow:hover {
-  transform: translateY(-2px) scale(1.06);
-  border-color: var(--accent);
-}
-
-@keyframes floatSlow {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-7px); }
-}
-
-@keyframes floatMid {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
-}
-
-/* Responsive Scaling & Breakpoints */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .hero-composition {
-    height: 480px;
-    max-width: 480px;
-  }
-  .hero-backdrop-disc {
-    width: 360px;
-    height: 360px;
-  }
-  .hero-orbit-1 { width: 400px; height: 400px; }
-  .hero-orbit-2 { width: 460px; height: 460px; }
-  .hero-portrait-frame {
-    max-width: 340px;
-    height: 440px;
-  }
-  .hero-card-mockup {
-    width: 165px;
-    top: 15px;
-    right: 4px;
-  }
-  .hero-card-swatches {
-    top: 190px;
-    right: 0px;
-  }
-  .hero-card-typo {
-    bottom: 75px;
-    right: 8px;
-  }
-  .hero-card-glyph {
-    top: 170px;
-    left: 4px;
-  }
-}
-
-@media (max-width: 639px) {
-  .hero-composition {
-    height: 370px;
-    width: 100%;
-    max-width: min(340px, 100%);
-    overflow: visible;
-  }
-  .hero-backdrop-disc {
-    width: clamp(230px, 70vw, 270px);
-    height: clamp(230px, 70vw, 270px);
-  }
-  .hero-orbit-1 { 
-    width: clamp(260px, 80vw, 300px); 
-    height: clamp(260px, 80vw, 300px); 
-  }
-  .hero-orbit-2 { display: none; }
-  .hero-portrait-frame {
-    max-width: min(260px, 78vw);
-    height: 340px;
-  }
-  .hero-card-mockup {
-    width: 125px;
-    top: 8px;
-    right: 2px;
-    padding: 7px;
-  }
-  .hero-card-swatches {
-    top: 135px;
-    right: 2px;
-    padding: 5px 8px;
-    gap: 5px;
-  }
-  .swatch-dot { width: 11px; height: 11px; }
-  .hero-card-typo {
-    bottom: 45px;
-    right: 4px;
-    padding: 6px 9px;
-    gap: 8px;
-  }
-  .hero-card-glyph {
-    top: 135px;
-    left: 2px;
-    width: 34px;
-    height: 34px;
-  }
-  .hero-badge-arrow {
-    bottom: 12px;
-    right: 14px;
-    width: 28px;
-    height: 28px;
-    font-size: 11px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-card-mockup, 
-  .hero-card-swatches, 
-  .hero-card-typo, 
-  .hero-card-glyph, 
-  .hero-sparkle {
-    animation: none !important;
-  }
+body.theme-light .hero-character-blend {
+  mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, black 68%, rgba(0, 0, 0, 0.8) 86%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, black 68%, rgba(0, 0, 0, 0.8) 86%, transparent 100%);
 }
 
 /* Floating UI card micro-interactions & hardware acceleration */

@@ -1295,24 +1295,45 @@ body.theme-light .cover-inset-frame {
   will-change: transform;
 }
 
+/* Hero Bottom Bar: Key Statistics / Details Strip */
 .hero-bottom-bar {
   width: 100%;
   border-top: 1px solid var(--border);
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
   box-sizing: border-box;
 }
 
-@media (min-width: 640px) {
-  .hero-bottom-bar {
-    flex-direction: row;
-    align-items: center;
+.hero-metrics-strip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(0.75rem, 2.5vw, 2.5rem);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.hero-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-metric-divider {
+  width: 1px;
+  height: clamp(24px, 3vw, 30px);
+  background-color: var(--border);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+@media (max-width: 359px) {
+  .hero-metrics-strip {
+    gap: 0.5rem;
+  }
+  .hero-metric-divider {
+    height: 20px;
   }
 }
 

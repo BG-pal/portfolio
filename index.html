@@ -6,13 +6,25 @@
   <title>Pallavi B G — UI/UX Designer</title>
   <meta name="description" content="Portfolio of Pallavi B G, a UI/UX Designer with 1+ year of experience designing user-focused web, mobile and SaaS products." />
   
-  <!-- Google Fonts: DM Serif Display & Inter -->
+  <!-- Google Fonts: Instrument Serif & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['var(--font-serif)', 'Georgia', 'serif'],
+            sans: ['var(--font-sans)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
   
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="styles.css" />

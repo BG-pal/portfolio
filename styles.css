@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 :root {
   --header-height: 80px;
@@ -2214,33 +2214,134 @@ body.theme-light .asset-placeholder-pattern {
 /* ============================================================
    TECHNOLOGIES I WORK WITH (TECH STACK) — MINIMAL & BORDERLESS
 ============================================================ */
-.tech-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem 0.875rem;
-  max-width: 1160px;
+/* Wrapper: clips horizontal overflow, provides smooth gradient edge fade */
+.tech-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   margin: 0 auto;
+  padding: 0.5rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%);
+  --tech-gap: 1.5rem;
 }
 
 @media (min-width: 480px) {
-  .tech-grid {
-    gap: 1.75rem 1.25rem;
+  .tech-marquee-wrapper {
+    --tech-gap: 1.75rem;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 36px, black calc(100% - 36px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 36px, black calc(100% - 36px), transparent 100%);
   }
 }
 
 @media (min-width: 768px) {
-  .tech-grid {
-    gap: 2rem 1.5rem;
+  .tech-marquee-wrapper {
+    --tech-gap: 2rem;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 44px, black calc(100% - 44px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 44px, black calc(100% - 44px), transparent 100%);
   }
 }
 
+/* Continuous Marquee Track */
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: flex-start;
+  will-change: transform;
+  animation: techMarqueeScroll 28s linear infinite;
+}
+
+/* Pause on hover or focus for user control & readability */
+.tech-marquee-wrapper:hover .tech-marquee-track,
+.tech-marquee-track:hover,
+.tech-marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+/* Individual Sequence Group (Primary and Duplicate) */
+.tech-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: var(--tech-gap);
+  padding-right: var(--tech-gap);
+}
+
+/* Duplicate track for seamless infinite looping */
+.tech-marquee-duplicate {
+  display: flex;
+}
+
+/* Keyframes: exactly -50% shifts 1 full sequence width seamlessly */
+@keyframes techMarqueeScroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ------------------------------------------------------------
+   Desktop Breakpoint (min-width: 1180px):
+   Preserve existing static single-row layout without animation
+------------------------------------------------------------ */
 @media (min-width: 1180px) {
-  .tech-grid {
-    gap: 2rem 2rem;
-    flex-wrap: nowrap;
+  .tech-marquee-wrapper {
+    overflow: visible;
+    max-width: 1160px;
+    padding: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .tech-marquee-track {
+    width: 100%;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .tech-marquee-duplicate {
+    display: none !important;
+  }
+
+  .tech-marquee-group {
+    width: 100%;
+    gap: 2rem;
+    padding-right: 0;
     justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+
+/* ------------------------------------------------------------
+   Accessibility: prefers-reduced-motion: reduce
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .tech-marquee-duplicate {
+    display: none !important;
+  }
+
+  .tech-marquee-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding-bottom: 0.5rem;
+  }
+
+  .tech-marquee-group {
+    padding-right: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 1rem;
   }
 }
 
@@ -2252,6 +2353,7 @@ body.theme-light .asset-placeholder-pattern {
   justify-content: flex-start;
   width: 76px;
   min-width: 68px;
+  flex-shrink: 0;
   padding: 0.375rem 0.25rem;
   background: transparent !important;
   border: none !important;

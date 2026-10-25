@@ -27,8 +27,26 @@
     };
   </script>
   
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Cache Control Meta Tags -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <!-- Custom Stylesheet with Cache Busting -->
+  <link rel="stylesheet" href="styles.css?v=20261025-01" />
+
+  <!-- Section Eyebrow Label Borderless Guarantee -->
+  <style>
+    .editorial-badge,
+    body.theme-light .editorial-badge,
+    body.theme-light #resume .editorial-badge {
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+  </style>
 </head>
 <body class="theme-dark antialiased selection:bg-[#D98A7A] selection:text-[#170D13]">
 
@@ -1871,6 +1889,6 @@
   </div>
 
   <!-- Application Interaction Scripts -->
-  <script src="app.js"></script>
+  <script src="app.js?v=20261025-01"></script>
 </body>
 </html>

@@ -365,7 +365,7 @@ img, video {
   letter-spacing: 0.04em;
 }
 
-/* Editorial badge */
+/* Editorial badge (section eyebrow label: borderless, unboxed typography) */
 .editorial-badge {
   display: inline-flex;
   align-items: center;
@@ -376,6 +376,11 @@ img, video {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--accent);
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .nav-link {
@@ -2583,8 +2588,11 @@ body.theme-light .mobile-nav-item.is-active {
 
 /* Editorial Badges & Separators (Dusty Rose & Deep Red) */
 body.theme-light .editorial-badge {
-  background-color: rgba(217, 126, 131, 0.14) !important;
-  border: 1px solid rgba(217, 126, 131, 0.35) !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   color: var(--deep-red) !important;
 }
 
@@ -2834,8 +2842,11 @@ body.theme-light #resume {
 }
 
 body.theme-light #resume .editorial-badge {
-  background-color: rgba(255, 246, 240, 0.15) !important;
-  border-color: rgba(255, 246, 240, 0.30) !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   color: #FFF6F0 !important;
 }
 

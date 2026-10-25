@@ -1,4 +1,4 @@
-// Pallavi B G — Portfolio Logic & Interactions
+﻿// Pallavi B G — Portfolio Logic & Interactions
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNavigation();
@@ -2877,8 +2877,13 @@ function initCaseStudyRouter() {
         return;
       }
     }
-    
-    // Default to Home View
+
+    if (hash.startsWith('#cs-') && !caseStudyView.classList.contains('hidden')) {
+      const targetEl = document.querySelector(hash);
+      if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+        // Default to Home View
     const prevCampus = document.getElementById('campusConnectVideo');
     if (prevCampus) { try { prevCampus.pause(); prevCampus.currentTime = 0; } catch (e) {} }
     const prevCorp = document.getElementById('corporateConnectVideo');
@@ -2922,6 +2927,15 @@ function initCaseStudyRouter() {
 
   window.addEventListener('hashchange', handleRoute);
   handleRoute(); // Run on initial load
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('scroll')) {
+      setTimeout(() => {
+        const el = document.getElementById(urlParams.get('scroll'));
+        if (el) el.scrollIntoView();
+      }, 250);
+    }
+  } catch (e) {}
   setTimeout(() => {
     if (typeof window.initMeditrackMobileVideo === 'function') {
       window.initMeditrackMobileVideo();
@@ -3671,10 +3685,11 @@ window.replayMeditrackStoreMappingVideo = function() {
   active.video.play().catch(() => {});
 };
 
+
 function renderDSJobbyCaseStudy(project, container) {
   container.innerHTML = `
     <!-- Top Back Navigation -->
-    <div class="border-b border-[var(--border)] pb-6 mb-12 flex justify-between items-center">
+    <div class="border-b border-[var(--border)] pb-6 mb-8 flex justify-between items-center">
       <a href="#work" class="case-study-back-btn inline-flex items-center justify-center w-11 h-11 -ml-2.5 rounded-full text-[var(--accent)] hover:bg-[var(--sec-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]" aria-label="Back to selected work" title="Back to selected work">
         <svg class="w-5 h-5 pointer-events-none transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
@@ -3693,441 +3708,2097 @@ function renderDSJobbyCaseStudy(project, container) {
       </div>
     </div>
 
-    <!-- Project Header & Compact Information Area (Section 4) -->
-    <div class="mb-16">
+    <!-- Sticky In-Page Navigation Bar -->
+    <nav class="sticky top-16 z-30 py-3 -mx-4 px-4 sm:mx-0 sm:px-0 bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--border)] mb-10 overflow-x-auto scrollbar-none" aria-label="Case Study Section Navigation">
+      <div class="flex items-center gap-2 min-w-max text-xs">
+        <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mr-1">SECTIONS:</span>
+        <a href="#cs-hero" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">01 Hero</a>
+        <a href="#cs-snapshot" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">02 Snapshot</a>
+        <a href="#cs-problem" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">03 Problem</a>
+        <a href="#cs-research" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">04 Research</a>
+        <a href="#cs-insights" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">05 Insights</a>
+        <a href="#cs-personas" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">06 Archetypes</a>
+        <a href="#cs-journey" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">07 Journey</a>
+        <a href="#cs-ia" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">08 IA</a>
+        <a href="#cs-flows" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">09 Flows</a>
+        <a href="#cs-decisions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">10 Decisions</a>
+        <a href="#cs-wireframes" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">11 Wireframes</a>
+        <a href="#cs-interactions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">12 Prototype</a>
+        <a href="#cs-accessibility" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">13 A11y</a>
+        <a href="#cs-validation" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">14 Validation</a>
+        <a href="#cs-reflection" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">15 Reflection</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         SECTION 1 — HERO: "The application shouldn't be the end of the story"
+    ============================================================ -->
+    <section id="cs-hero" class="mb-20 scroll-mt-32" aria-labelledby="hero-title">
       <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider">
-          <span>PROJECT 002</span>
-          <span>•</span>
-          <span>CASE STUDY</span>
+        <div class="inline-flex items-center gap-2 text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+          <span>PRODUCT DESIGN CASE STUDY</span>
         </div>
         <a 
           href="https://www.dsjobby.com/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
         >
           <span>Visit Live Website</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-main)] font-bold mb-4 tracking-tight">
-        DSJobby — Job Portal and Recruitment Platform
+      <h1 id="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-main)] font-bold mb-4 tracking-tight leading-[1.12]">
+        DSJobby — Bringing candidates and recruiters closer
       </h1>
-      <p class="text-base sm:text-xl text-[var(--text-sec)] max-w-3xl mb-8 leading-relaxed font-light">
-        Connecting job seekers with permanent employment opportunities and accelerating corporate talent sourcing through structured workflows and pre-screened talent pipelines.
+      
+      <p class="text-base sm:text-xl text-[var(--accent)] max-w-4xl mb-8 leading-relaxed font-normal">
+        Designing a more direct and transparent recruitment journey, from discovering an opportunity to connecting with recruiters and learning from interview feedback.
       </p>
 
-      <!-- Compact Project Information Grid with Direct Live Link -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
-        <div>
-          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Project Name</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">DSJobby</div>
+      <!-- Introductory Narrative (Exact Prompt Text) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] mb-10 shadow-sm leading-relaxed text-sm sm:text-base text-[var(--text-body)]">
+        <div class="space-y-4">
+          <p>
+            Finding a job is more than submitting an application. For candidates, every opportunity represents a possible next step in their careers.
+          </p>
+          <p>
+            But after applying, important questions remain. Has the application reached the recruiter? What happens next? If the interview does not lead to an offer, is there anything the candidate can learn from the experience?
+          </p>
         </div>
+        <div class="space-y-4 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+          <p>
+            Recruiters face a different challenge: reviewing relevant profiles, managing interviews, and communicating with candidates throughout the hiring process.
+          </p>
+          <p>
+            DSJobby is designed to support both sides of this journey by making recruitment workflows clearer and direct candidate–recruiter communication easier to navigate.
+          </p>
+        </div>
+      </div>
+
+      <!-- Verified Project Metadata Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 p-5 sm:p-6 rounded-2xl border border-[var(--border)] bg-[var(--sec-bg)] mb-10 shadow-sm text-xs">
         <div>
           <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">My Role</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">UX and UI Designer</div>
+          <div class="font-semibold text-[var(--text-main)]">UX and UI Designer</div>
         </div>
         <div>
           <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Platform</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">Web Application (Desktop &amp; Mobile)</div>
+          <div class="font-semibold text-[var(--text-main)]">Web Application (Responsive)</div>
         </div>
         <div>
-          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Product Category</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">Job Portal &amp; Recruitment Platform</div>
-        </div>
-        <div class="col-span-2">
           <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Design Focus</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">Candidate Job Discovery &amp; Recruiter Sourcing Workflow</div>
+          <div class="font-semibold text-[var(--text-main)]">Candidate Journey &amp; Recruiter Workflow</div>
         </div>
         <div>
-          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Tools &amp; Methods</div>
-          <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">Figma, Design Tokens, Responsive Systems</div>
+          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Context</div>
+          <div class="font-semibold text-[var(--text-main)]">Dyashin Technosoft Solutions</div>
         </div>
-        <div>
-          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Live Website</div>
-          <a href="https://www.dsjobby.com/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-[var(--accent)] hover:underline inline-flex items-center gap-1">
+        <div class="col-span-2 sm:col-span-1">
+          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-1">Live Product</div>
+          <a href="https://www.dsjobby.com/" target="_blank" rel="noopener noreferrer" class="font-semibold text-[var(--accent)] hover:underline inline-flex items-center gap-1">
             <span>dsjobby.com</span>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
-    </div>
 
-    <!-- ========================================================
-         A. PROJECT OVERVIEW
-         ======================================================== -->
-    <section class="mb-20 border-t border-[var(--border)] pt-12" id="cs-dsjobby-overview">
-      <div class="flex items-center gap-2 text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">
-        <span>01</span>
-        <span>—</span>
-        <span>A. PROJECT OVERVIEW</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
-        Purpose, Placement Model &amp; Audience
-      </h2>
-      <div class="prose max-w-3xl text-sm sm:text-base text-[var(--text-sec)] leading-relaxed space-y-4 mb-8">
-        <p>
-          <strong>DSJobby</strong> is the talent acquisition and placement solutions platform of <strong>Dyashin Technosoft</strong>. In contrast to high-churn freelance marketplaces or temporary gig sites, DSJobby specializes exclusively in <strong>100% full-time permanent staffing</strong>.
-        </p>
-        <p>
-          The platform operates as a dual-sided ecosystem: bridging qualified professionals with long-term employment opportunities across IT, Engineering, Finance, and Healthcare, while providing enterprise recruitment teams with verified, interview-ready candidate profiles backed by strict service-level agreements (SLAs).
-        </p>
-      </div>
-
-      <!-- Verified Platform Metrics Grid -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-2xl sm:text-3xl font-serif font-bold text-[var(--accent)]">300+</div>
-          <div class="text-xs font-semibold text-[var(--text-main)] mt-1">Hiring Companies</div>
-          <div class="text-[11px] text-[var(--text-sec)] mt-0.5">From high-growth tech startups to enterprise leaders.</div>
-        </div>
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-2xl sm:text-3xl font-serif font-bold text-[var(--accent)]">50,000+</div>
-          <div class="text-xs font-semibold text-[var(--text-main)] mt-1">Pre-Screened Talent</div>
-          <div class="text-[11px] text-[var(--text-sec)] mt-0.5">Vetted, interview-ready candidate repository.</div>
-        </div>
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-2xl sm:text-3xl font-serif font-bold text-[var(--accent)]">24 Hours</div>
-          <div class="text-xs font-semibold text-[var(--text-main)] mt-1">SLA Profile Delivery</div>
-          <div class="text-[11px] text-[var(--text-sec)] mt-0.5">Guaranteed candidate turnaround for active requisitions.</div>
-        </div>
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-2xl sm:text-3xl font-serif font-bold text-[var(--accent)]">100%</div>
-          <div class="text-xs font-semibold text-[var(--text-main)] mt-1">Permanent Roles</div>
-          <div class="text-[11px] text-[var(--text-sec)] mt-0.5">Zero gig or contract churn; long-term career focus.</div>
-        </div>
-      </div>
-
-      <!-- Primary Website Navigation Card (Direct navigation to dsjobby.com) -->
-      <a 
-        href="https://www.dsjobby.com/" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="block rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8 hover:border-[var(--accent)] transition-all group shadow-lg cursor-pointer"
-      >
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--accent)]/30 bg-[var(--sec-bg)] text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Live Website Platform
+      <!-- Hero Visual: Dual-Sided Platform Representation -->
+      <figure class="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-xl overflow-hidden">
+        <div class="flex flex-col lg:flex-row items-stretch gap-6">
+          
+          <!-- Left: Candidate Side (Discovery & Application) -->
+          <div class="flex-1 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3 pb-3 border-b border-[var(--border)]">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <span class="text-xs font-mono font-semibold text-[var(--text-main)] uppercase tracking-wider">CANDIDATE DISCOVERY INTERFACE</span>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)] font-semibold">100% PERMANENT ROLES</span>
+              </div>
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--card)] shadow-xs">
+                  <div class="flex justify-between items-start mb-1">
+                    <div class="font-serif text-base font-bold text-[var(--text-main)]">Senior Product Designer</div>
+                    <span class="text-xs font-mono font-semibold text-[var(--accent)]">₹18-24 LPA</span>
+                  </div>
+                  <div class="text-xs text-[var(--text-sec)] mb-2.5">Enterprise Cloud Systems · Bengaluru / Hybrid</div>
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--sec-bg)] text-[var(--text-sec)]">Design Systems</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--sec-bg)] text-[var(--text-sec)]">SaaS Architecture</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 font-medium">96% Skill Match</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs pt-2 border-t border-[var(--border)]">
+                    <span class="text-[11px] text-[var(--text-sec)]">Recruiter: Anjali Rao (Verified)</span>
+                    <span class="px-3 py-1 rounded bg-[var(--accent)] text-[#170D13] font-bold text-[11px]">Apply via Drawer →</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-main)] font-bold group-hover:text-[var(--accent)] transition-colors flex items-center gap-2">
-              <span>Explore the Live DSJobby Platform</span>
-              <span class="text-sm font-mono text-[var(--accent)]">↗</span>
+            <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[11px] text-[var(--text-sec)] font-mono">
+              <span>ACTIVE STATUS: RECEIVING APPLICATIONS</span>
+              <span class="text-emerald-400">● 24H REC REVIEW</span>
+            </div>
+          </div>
+
+          <!-- Center Connection Indicator -->
+          <div class="flex lg:flex-col items-center justify-center gap-2 py-2 text-[var(--accent)] shrink-0">
+            <div class="hidden lg:block w-px h-12 bg-gradient-to-b from-transparent via-[var(--accent)] to-transparent"></div>
+            <div class="px-3 py-1.5 rounded-full border border-[var(--accent)] bg-[var(--sec-bg)] text-[10px] font-mono font-semibold tracking-wider uppercase text-center shadow-sm">
+              <span>DIRECT WORKFLOW</span>
+            </div>
+            <div class="hidden lg:block w-px h-12 bg-gradient-to-b from-[var(--accent)] via-[var(--accent)] to-transparent"></div>
+          </div>
+
+          <!-- Right: Recruiter Side (Review & Pipeline) -->
+          <div class="flex-1 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3 pb-3 border-b border-[var(--border)]">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                  <span class="text-xs font-mono font-semibold text-[var(--text-main)] uppercase tracking-wider">RECRUITER REVIEW PIPELINE</span>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-semibold">ATS TRIAGE READY</span>
+              </div>
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--card)] shadow-xs">
+                  <div class="flex justify-between items-start mb-1">
+                    <div>
+                      <div class="font-serif text-base font-bold text-[var(--text-main)]">Candidate #DS-8842</div>
+                      <div class="text-xs text-[var(--text-sec)]">4.5 Yrs Exp · Enterprise UX &amp; Systems</div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/10 text-blue-400 font-bold">MATCH: 94%</span>
+                  </div>
+                  <div class="p-2 rounded bg-[var(--sec-bg)] text-[11px] text-[var(--text-sec)] my-2.5 font-mono">
+                    Verified Portfolio &amp; Direct Resume Attached · Notice: Immediate
+                  </div>
+                  <div class="flex items-center justify-between text-xs pt-2 border-t border-[var(--border)]">
+                    <span class="text-[11px] font-mono text-amber-400">STAGE: INITIAL REVIEW</span>
+                    <span class="px-3 py-1 rounded bg-[var(--sec-bg)] border border-[var(--accent)] text-[var(--accent)] font-semibold text-[11px]">Contact Candidate ✉</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[11px] text-[var(--text-sec)] font-mono">
+              <span>PIPELINE: 14 APPLICANTS</span>
+              <span class="text-blue-400">● 1-CLICK CONTACT</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Progress Progression Bar -->
+        <div class="mt-6 pt-5 border-t border-[var(--border)]">
+          <div class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider mb-2 text-center">
+            END-TO-END APPLICATION-TO-INTERVIEW PROGRESSION ARCHITECTURE
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+            <div class="p-2 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] block">STAGE 01</span>
+              <span class="font-medium text-[var(--text-main)]">Role Discovery</span>
+            </div>
+            <div class="p-2 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] block">STAGE 02</span>
+              <span class="font-medium text-[var(--text-main)]">Apply via Drawer</span>
+            </div>
+            <div class="p-2 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] block">STAGE 03</span>
+              <span class="font-medium text-[var(--text-main)]">Recruiter Review</span>
+            </div>
+            <div class="p-2 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] block">STAGE 04</span>
+              <span class="font-medium text-[var(--text-main)]">Direct Interview</span>
+            </div>
+            <div class="col-span-2 sm:col-span-1 p-2 rounded-lg bg-[var(--accent)]/15 border border-[var(--accent)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] font-bold block">STAGE 05</span>
+              <span class="font-bold text-[var(--text-main)]">Outcome &amp; Feedback</span>
+            </div>
+          </div>
+        </div>
+
+        <figcaption class="mt-4 text-center text-xs text-[var(--text-sec)] font-mono italic">
+          Intended product experience: A dual-sided platform connecting candidate discovery with structured recruiter review and direct communication.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 — PROJECT SNAPSHOT
+    ============================================================ -->
+    <section id="cs-snapshot" class="mb-20 scroll-mt-32" aria-labelledby="snapshot-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">02 — PROJECT SNAPSHOT</span>
+        <h2 id="snapshot-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+          One recruitment journey. Two perspectives.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          DSJobby brings candidate and recruiter workflows into a shared recruitment experience. The design challenge is to support each user's tasks while keeping communication, application progress, and hiring responsibilities clear.
+        </p>
+      </div>
+
+      <!-- Two Side-by-Side Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        
+        <!-- Card 1: Candidate Experience -->
+        <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-serif text-lg font-bold">
+                01
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider block">PERSPECTIVE A</span>
+                <h3 class="text-xl font-serif font-bold text-[var(--text-main)]">Candidate Experience</h3>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-[var(--text-body)] leading-relaxed mb-6">
+              "Discover relevant roles, understand opportunities, submit applications, connect with recruiters, and receive feedback when it is provided."
+            </p>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] border-t border-[var(--border)] pt-4">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                <span>Transparent salary ranges &amp; clear qualification criteria</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                <span>Frictionless contextual drawer application without page redirects</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                <span>Explicit stage progress visibility &amp; constructive interview feedback</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-3 border-t border-[var(--border)] text-[11px] font-mono text-[var(--accent)]">
+            USER GOAL: CAREER ADVANCEMENT &amp; PROCESS TRANSPARENCY
+          </div>
+        </div>
+
+        <!-- Card 2: Recruiter Experience -->
+        <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center font-serif text-lg font-bold">
+                02
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider block">PERSPECTIVE B</span>
+                <h3 class="text-xl font-serif font-bold text-[var(--text-main)]">Recruiter Experience</h3>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-[var(--text-body)] leading-relaxed mb-6">
+              "Review candidate profiles, evaluate suitability, contact applicants, manage hiring stages, and communicate recruitment outcomes."
+            </p>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] border-t border-[var(--border)] pt-4">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Standardized candidate cards with scannable skills &amp; portfolio links</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Direct in-platform candidate messaging and interview coordination</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Lightweight rubric to share constructive feedback in under 2 minutes</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-3 border-t border-[var(--border)] text-[11px] font-mono text-blue-400">
+            USER GOAL: HIGH-VELOCITY TALENT TRIAGE &amp; DIRECT OUTREACH
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Central Relationship Flow Diagram -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest text-center mb-6">
+          CENTRAL RECRUITMENT RELATIONSHIP ARCHITECTURE
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
+          
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--card)] flex items-center justify-center text-[var(--accent)] font-bold text-xs mb-2">01</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Candidate</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">Discovers roles &amp; evaluates fit</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--card)] flex items-center justify-center text-[var(--accent)] font-bold text-xs mb-2">02</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Application</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">Submits profile via drawer</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--card)] flex items-center justify-center text-[var(--accent)] font-bold text-xs mb-2">03</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Recruiter</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">Reviews structured credentials</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--card)] flex items-center justify-center text-[var(--accent)] font-bold text-xs mb-2">04</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Direct Contact</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">In-platform messaging &amp; scheduling</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--card)] flex items-center justify-center text-[var(--accent)] font-bold text-xs mb-2">05</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Interview</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">Direct conversation &amp; evaluation</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--accent)] bg-[var(--accent)]/10 flex flex-col justify-center items-center">
+            <div class="w-8 h-8 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center font-bold text-xs mb-2">06</div>
+            <div class="text-xs font-serif font-bold text-[var(--text-main)]">Outcome &amp; Feedback</div>
+            <div class="text-[10px] text-[var(--text-sec)] mt-1">Constructive notes when available</div>
+          </div>
+
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-[var(--border)] text-center text-xs text-[var(--text-sec)]">
+          The platform facilitates direct connection, transparent status, and actionable closure without making automated gatekeeping decisions.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — THE STORY BEHIND THE PROBLEM
+    ============================================================ -->
+    <section id="cs-problem" class="mb-20 scroll-mt-32" aria-labelledby="problem-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">03 — THE STORY BEHIND THE PROBLEM</span>
+        <h2 id="problem-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+          The difficult part begins after Apply.
+        </h2>
+      </div>
+
+      <!-- Problem Narrative (Exact Prompt Text) -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] mb-10 shadow-sm text-sm sm:text-base text-[var(--text-body)] leading-relaxed space-y-4">
+        <p>
+          A candidate can spend time searching for the right opportunity, reviewing job requirements, preparing a profile, and submitting an application. Yet submitting the application is only one step in a much longer journey.
+        </p>
+        <p>
+          When the next step is unclear, candidates may be left wondering whether their application has reached the right person or whether they should continue waiting.
+        </p>
+        <p>
+          Recruiters, meanwhile, need to assess applicants and move suitable candidates through the hiring process. They need access to relevant information and a straightforward way to communicate with applicants.
+        </p>
+        <p class="font-medium text-[var(--text-main)]">
+          The opportunity for DSJobby is to support the connection between these two experiences without becoming the decision-maker between them.
+        </p>
+      </div>
+
+      <!-- Visual Split-Screen: Candidate vs. Recruiter Scenarios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        
+        <!-- Candidate Perspective -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-[var(--card)] to-[var(--bg)] shadow-md">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">CANDIDATE PERSPECTIVE</span>
+            <span class="text-[10px] font-mono text-[var(--text-sec)]">POST-APPLICATION STATE</span>
+          </div>
+          <div class="font-serif text-xl sm:text-2xl text-[var(--text-main)] italic font-medium mb-4">
+            “I’ve applied. What happens next?”
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-4">
+            After clicking submit on traditional portals, candidates face a complete vacuum of communication. There is no confirmation of which recruiter is handling the requisition, no indication of typical turnaround times, and zero transparency regarding why an application went unanswered.
+          </p>
+          <div class="p-3 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] text-xs text-[var(--text-sec)] font-mono">
+            Key Pain: Anxiety of the "recruitment black hole" &amp; opaque timelines.
+          </div>
+        </div>
+
+        <!-- Recruiter Perspective -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-blue-500/30 bg-gradient-to-br from-[var(--card)] to-[var(--bg)] shadow-md">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">RECRUITER PERSPECTIVE</span>
+            <span class="text-[10px] font-mono text-[var(--text-sec)]">HIGH-VOLUME SOURCING</span>
+          </div>
+          <div class="font-serif text-xl sm:text-2xl text-[var(--text-main)] italic font-medium mb-4">
+            “I need to review suitable candidates and reach out.”
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-4">
+            Recruiters receive hundreds of non-standardized resumes, spending disproportionate time parsing basic contact information and verifying notice periods. Reaching out requires jumping between external email clients and disconnected interview schedulers.
+          </p>
+          <div class="p-3 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] text-xs text-[var(--text-sec)] font-mono">
+            Key Pain: Information fragmentation &amp; cumbersome outreach workflows.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center text-xs text-[var(--text-sec)] font-mono italic mb-10">
+        These are illustrative scenarios used to frame the design problem, not quotations from research participants.
+      </div>
+
+      <!-- Problem Statement Highlight Card -->
+      <div class="p-6 sm:p-8 rounded-2xl border-2 border-[var(--accent)] bg-gradient-to-r from-[var(--card)] via-[var(--sec-bg)] to-[var(--card)] text-center shadow-lg">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">CORE HOW MIGHT WE</span>
+        <div class="font-serif text-xl sm:text-3xl text-[var(--text-main)] font-bold max-w-3xl mx-auto leading-snug">
+          “How might we help candidates reach relevant recruiters, make application progression easier to understand, and support more constructive communication throughout the hiring journey?”
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — RESEARCH AND COMPETITIVE UX REVIEW
+    ============================================================ -->
+    <section id="cs-research" class="mb-20 scroll-mt-32" aria-labelledby="research-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">04 — RESEARCH &amp; COMPETITIVE UX REVIEW</span>
+        <h2 id="research-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+          Understanding the recruitment experience beyond job discovery.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          To shape a useful recruitment experience, the evaluation needs to look beyond job listings and application forms. It should examine the moments where candidates and recruiters need clarity, communication, and a clear next action.
+        </p>
+      </div>
+
+      <!-- 8 Review Dimensions -->
+      <div class="mb-10">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-4">
+          EIGHT CORE EVALUATION DIMENSIONS
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">01. JOB DISCOVERY</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Relevance &amp; Search</span>
+            <span class="text-[var(--text-sec)]">Filter granularity, salary transparency, and role currency.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">02. CANDIDATE PROFILE</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Application Submission</span>
+            <span class="text-[var(--text-sec)]">Friction reduction, resume parsing, and portfolio links.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">03. PROGRESS VISIBILITY</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Confirmation &amp; Milestones</span>
+            <span class="text-[var(--text-sec)]">Clear receipt, reviewer assignment, and stage tracking.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">04. RECRUITER CONTACT</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Direct Communication</span>
+            <span class="text-[var(--text-sec)]">In-app inquiry, recruiter verification, and privacy safeguards.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">05. INTERVIEW STAGES</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Progression &amp; Feedback</span>
+            <span class="text-[var(--text-sec)]">Preparation briefs and constructive outcome summaries.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">06. PIPELINE TRIAGE</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Recruiter Review</span>
+            <span class="text-[var(--text-sec)]">Scannable candidate profiles and fast-action triage controls.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">07. AI RECOMMENDATIONS</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Trust &amp; Explainability</span>
+            <span class="text-[var(--text-sec)]">Transparent match reasoning without automated gatekeeping.</span>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <span class="font-mono text-[var(--accent)] font-semibold block mb-1">08. ACCESSIBILITY</span>
+            <span class="text-[var(--text-main)] font-medium block mb-1">Responsive UX</span>
+            <span class="text-[var(--text-sec)]">WCAG contrast, keyboard pathways, and mobile ergonomics.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Competitor Review Matrix -->
+      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md mb-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-[var(--border)]">
+          <div>
+            <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider">RETROSPECTIVE DESK REVIEW MATRIX</div>
+            <div class="text-sm font-bold text-[var(--text-main)]">Competitive Experience Evaluation Framework</div>
+          </div>
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap gap-1.5" id="matrixFilterGroup" role="tablist" aria-label="Review Matrix Categories">
+            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[var(--accent)] text-[#170D13] transition-all" data-filter="all" role="tab" aria-selected="true">All (8)</button>
+            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="candidate" role="tab" aria-selected="false">Candidate Journey</button>
+            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="recruiter" role="tab" aria-selected="false">Recruiter Workflow</button>
+            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="trust" role="tab" aria-selected="false">Trust &amp; Feedback</button>
+          </div>
+        </div>
+
+        <!-- Table Container (Horizontal scroll on mobile) -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider">
+                <th class="py-3 px-3">UX Area</th>
+                <th class="py-3 px-3">User Task</th>
+                <th class="py-3 px-3">Evidence Observed (Anonymous Benchmark)</th>
+                <th class="py-3 px-3">Friction or Strength</th>
+                <th class="py-3 px-3">DSJobby Opportunity</th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody" class="divide-y divide-[var(--border)] text-[var(--text-body)]">
+              
+              <!-- Row 1: Candidate -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">01. Discovery &amp; Salary</td>
+                <td class="py-3.5 px-3">Filter roles by compensation &amp; seniority</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: 68% listings lack compensation; Platform B: Paywalled salary ranges.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">High Friction</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Standardized pay transparency cards on all active listings.</td>
+              </tr>
+
+              <!-- Row 2: Candidate -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">02. Application Flow</td>
+                <td class="py-3.5 px-3">Submit resume &amp; portfolio link</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: External 3-page redirects; Platform C: Quick apply without confirmation.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">High Drop-off</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Contextual right-hand slide-over drawer preserving search state.</td>
+              </tr>
+
+              <!-- Row 3: Candidate & Trust -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate trust">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">03. Status Clarity</td>
+                <td class="py-3.5 px-3">Track application progress post-submission</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A &amp; B: Binary "Applied" state indefinitely; no timeline or contact point.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono text-[10px]">Anxiety Trigger</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Milestone timeline with explicit review stages &amp; response window.</td>
+              </tr>
+
+              <!-- Row 4: Recruiter -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="recruiter">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">04. Candidate Triage</td>
+                <td class="py-3.5 px-3">Quickly evaluate applicant qualifications</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Unstructured resume PDFs; Platform B: Deep profiles requiring 4 clicks.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Slow Triage</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">High-density candidate cards with parsed skills &amp; verified notice periods.</td>
+              </tr>
+
+              <!-- Row 5: Recruiter & Candidate -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="recruiter candidate">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">05. Direct Contact</td>
+                <td class="py-3.5 px-3">Direct message between parties</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Third-party email only; Platform B: Paid InMail paywall.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Barrier to Talk</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">In-app direct communication thread once application is opened.</td>
+              </tr>
+
+              <!-- Row 6: Trust -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="trust">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">06. Interview Feedback</td>
+                <td class="py-3.5 px-3">Receive constructive outcome feedback</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Across platforms: Generic automated rejections; 0% structured feedback.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Zero Guidance</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Structured feedback card format (strengths &amp; development areas).</td>
+              </tr>
+
+              <!-- Row 7: Trust -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="trust">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">07. AI Job Matching</td>
+                <td class="py-3.5 px-3">Receive automated role recommendations</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform C: Unexplained % matches without context; opaque filtering.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono text-[10px]">Lack of Trust</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Explainable match reasoning breakdown (skills, seniority, domain).</td>
+              </tr>
+
+              <!-- Row 8: Candidate & Recruiter -->
+              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate recruiter">
+                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">08. Mobile Ergonomics</td>
+                <td class="py-3.5 px-3">Manage pipeline and apply via mobile</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Desktop tables squeezed on mobile; touch target clipping.</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Poor Mobile UX</span></td>
+                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Mobile-first native bottom drawers and responsive stacked cards.</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Research Integrity Note (Exact Prompt Text) -->
+      <div class="p-4 sm:p-5 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] text-xs text-[var(--text-sec)] flex items-start gap-3">
+        <svg class="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="leading-relaxed">
+          <strong class="text-[var(--text-main)]">Research-integrity note:</strong> This review focuses on observable product behaviour and interface patterns. Public-facing pages cannot establish how every recruiter communicates privately or how consistently feedback is provided. Those questions require further evidence.
+        </div>
+      </div>
+    </section>
+
+<!-- ============================================================
+         SECTION 5 — KEY UX INSIGHTS AND DESIGN OPPORTUNITIES
+    ============================================================ -->
+    <section id="cs-insights" class="mb-20 scroll-mt-32" aria-labelledby="insights-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">05 — SYNTHESIS &amp; OPPORTUNITIES</span>
+        <h2 id="insights-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          From uncertainty to clearer next steps.
+        </h2>
+        <p class="text-xs font-mono text-[var(--text-sec)]">
+          Design insights and opportunities (retrospective UX synthesis)
+        </p>
+      </div>
+
+      <!-- 4 Evidence-Aware Insight Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Insight 1 -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--accent)]/15 text-[var(--accent)] font-bold">INSIGHT 01</span>
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase">CANDIDATE EXPERIENCE</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-[var(--text-main)] mb-3">
+              The journey continues after applying.
             </h3>
-            <p class="text-xs sm:text-sm text-[var(--text-sec)] max-w-xl leading-relaxed">
-              Navigate directly to the official production website to experience the actual candidate search experience, permanent job listings, and recruiter talent sourcing portal.
+            <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed mb-4">
+              "Application submission is not the end of the experience. Candidates need a clear confirmation and an understandable next step."
             </p>
-            <div class="text-xs font-mono text-[var(--accent)] pt-1 flex items-center gap-2">
-              <span>https://www.dsjobby.com/</span>
-              <span class="text-[10px] text-[var(--text-sec)] font-sans">· Click to open website</span>
-            </div>
           </div>
-          <div class="shrink-0">
-            <div class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[var(--accent)] text-[#170D13] text-xs sm:text-sm font-bold tracking-wide group-hover:opacity-90 group-hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md">
-              <span>Visit dsjobby.com</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <div class="p-4 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] mt-4">
+            <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider block mb-1">DESIGN OPPORTUNITY</span>
+            <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">
+              "Make the application state and available actions explicit."
             </div>
+            <p class="text-[11px] text-[var(--text-sec)] mt-1.5 leading-relaxed">
+              Replace static "Submitted" status with actionable milestone progress indicating review assignment, typical turnaround times, and direct inquiry capabilities.
+            </p>
           </div>
         </div>
-      </a>
-    </section>
 
-    <!-- ========================================================
-         B. PRODUCT AND USER GROUPS
-         ======================================================== -->
-    <section class="mb-20 border-t border-[var(--border)] pt-12" id="cs-dsjobby-users">
-      <div class="flex items-center gap-2 text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">
-        <span>02</span>
-        <span>—</span>
-        <span>B. PRODUCT &amp; USER GROUPS</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
-        Serving Two Interconnected User Ecosystems
-      </h2>
-      <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8">
-        The user experience required clear differentiation between job seekers seeking long-term stability and corporate recruiters seeking qualified, vetted talent quickly.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <!-- User Group 1: Job Seekers -->
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+        <!-- Insight 2 -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
           <div>
-            <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[var(--accent)] uppercase tracking-wider mb-3">
-              <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
-              User Group 01
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/15 text-blue-400 font-bold">INSIGHT 02</span>
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase">WORKFLOW CONVERGENCE</span>
             </div>
-            <h3 class="text-xl font-serif text-[var(--text-main)] font-bold mb-2">Job Seekers</h3>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed mb-4">
-              People actively exploring full-time permanent career opportunities, presenting their technical and functional qualifications, and seeking transparent, verified roles.
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-[var(--text-main)] mb-3">
+              Both sides need a direct path to each other.
+            </h3>
+            <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed mb-4">
+              "The candidate and recruiter have different goals, but their tasks converge when an application is reviewed and a conversation begins."
             </p>
-            <div class="space-y-2 border-t border-[var(--border)] pt-4 text-xs text-[var(--text-sec)]">
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>Fast Role Discovery:</strong> Filter by domain, salary range, experience, and location without pagination friction.</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>Contextual Application:</strong> Submit resumes directly via a persistent slide-out drawer without losing search context.</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>Career Support:</strong> Free mock interviews, resume critique, and automated skill-to-job matching alerts.</span>
-              </div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] mt-4">
+            <span class="text-[10px] font-mono text-blue-400 uppercase tracking-wider block mb-1">DESIGN OPPORTUNITY</span>
+            <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">
+              "Support direct recruiter communication through the available product workflow."
             </div>
+            <p class="text-[11px] text-[var(--text-sec)] mt-1.5 leading-relaxed">
+              Integrate in-platform messaging threads linked directly to the application requisition, removing dependence on third-party email hops.
+            </p>
           </div>
         </div>
 
-        <!-- User Group 2: Employers and Recruiters -->
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+        <!-- Insight 3 -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
           <div>
-            <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[var(--accent)] uppercase tracking-wider mb-3">
-              <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
-              User Group 02
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/15 text-amber-400 font-bold">INSIGHT 03</span>
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase">CANDIDATE CLOSURE</span>
             </div>
-            <h3 class="text-xl font-serif text-[var(--text-main)] font-bold mb-2">Employers &amp; Recruiters</h3>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed mb-4">
-              Talent acquisition teams, HR leaders, and hiring managers looking to fill critical permanent requisitions with thoroughly vetted, interview-ready professionals.
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-[var(--text-main)] mb-3">
+              Feedback can make an unsuccessful outcome more constructive.
+            </h3>
+            <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed mb-4">
+              "When recruiters share interview feedback, candidates have more information to understand the outcome and identify areas for improvement."
             </p>
-            <div class="space-y-2 border-t border-[var(--border)] pt-4 text-xs text-[var(--text-sec)]">
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>Pre-Screened Candidates:</strong> Instant access to an active talent pool of 50,000+ candidates vetted for core technical competencies.</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>24-Hour SLA Delivery:</strong> Guaranteed candidate submission turnaround to eliminate prolonged hiring bottlenecks.</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold">✓</span>
-                <span><strong>Risk Mitigation:</strong> Optional comprehensive background verification (BGV) and candidate replacement warranty.</span>
-              </div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] mt-4">
+            <span class="text-[10px] font-mono text-amber-400 uppercase tracking-wider block mb-1">DESIGN OPPORTUNITY</span>
+            <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">
+              "Present provided feedback in a clear, organised, and constructive format."
             </div>
+            <p class="text-[11px] text-[var(--text-sec)] mt-1.5 leading-relaxed">
+              Structure feedback cards into categorized sections (demonstrated strengths, areas for technical development, and future role suitability).
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- Direct Website Navigation Callout -->
-      <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <div class="flex items-center gap-3">
-          <span class="w-2 h-2 rounded-full bg-[var(--accent)] shrink-0"></span>
-          <span class="text-[var(--text-sec)]">
-            Explore both candidate role discovery and employer mandate submission live on the production website.
-          </span>
+        <!-- Insight 4 -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between hover:border-[var(--accent)] transition-all shadow-sm">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/15 text-purple-400 font-bold">INSIGHT 04</span>
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase">INTELLIGENT MATCHING</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-[var(--text-main)] mb-3">
+              AI should support informed decisions.
+            </h3>
+            <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed mb-4">
+              "AI-supported job matching can help candidates discover potentially relevant opportunities, but recommendations should not be confused with hiring decisions."
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] mt-4">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-wider block mb-1">DESIGN OPPORTUNITY</span>
+            <div class="text-xs sm:text-sm font-semibold text-[var(--text-main)]">
+              "Make the relevance of recommendations understandable and preserve user control."
+            </div>
+            <p class="text-[11px] text-[var(--text-sec)] mt-1.5 leading-relaxed">
+              Expose explainable match criteria (skills overlap, seniority calibration, domain experience) and never automate rejection without human recruiter review.
+            </p>
+          </div>
         </div>
-        <a 
-          href="https://www.dsjobby.com/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--accent)] text-[#170D13] font-semibold text-xs hover:opacity-90 transition-all shrink-0 shadow-sm"
-        >
-          <span>Open Portals on dsjobby.com</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-        </a>
-      </div>
-    </section>
 
-    <!-- ========================================================
-         C. KEY PRODUCT CAPABILITIES
-         ======================================================== -->
-    <section class="mb-20 border-t border-[var(--border)] pt-12" id="cs-dsjobby-capabilities">
-      <div class="flex items-center gap-2 text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">
-        <span>03</span>
-        <span>—</span>
-        <span>C. KEY PRODUCT CAPABILITIES</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
-        Verified Core Functionality &amp; Workflows
-      </h2>
-      <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8">
-        Based strictly on the verified capabilities of the live website, DSJobby integrates candidate self-service with recruiter sourcing tools:
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] mb-3 font-mono text-xs font-bold">01</div>
-          <h4 class="text-sm font-semibold text-[var(--text-main)] mb-1.5">Job Discovery &amp; Applications</h4>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">Multi-facet role exploration by domain, location, experience tier, and verified permanent compensation.</p>
-        </div>
-        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] mb-3 font-mono text-xs font-bold">02</div>
-          <h4 class="text-sm font-semibold text-[var(--text-main)] mb-1.5">Contextual Slide-Out Drawer</h4>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">Instant resume submission modal preserving search filters and candidate scroll position without redirects.</p>
-        </div>
-        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] mb-3 font-mono text-xs font-bold">03</div>
-          <h4 class="text-sm font-semibold text-[var(--text-main)] mb-1.5">AI-Powered Skill Matching</h4>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">Algorithmic alignment matching candidate profile competencies directly against employer job descriptions.</p>
-        </div>
-        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] mb-3 font-mono text-xs font-bold">04</div>
-          <h4 class="text-sm font-semibold text-[var(--text-main)] mb-1.5">Recruiter Talent Sourcing</h4>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">24-hour SLA profile turnaround, technical pre-screening reports, and background verification management.</p>
-        </div>
-      </div>
-
-      <!-- Direct Website Navigation Callout -->
-      <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <div class="flex items-center gap-3">
-          <span class="w-2 h-2 rounded-full bg-[var(--accent)] shrink-0"></span>
-          <span class="text-[var(--text-sec)]">
-            All capabilities are live and operational on the production web application.
-          </span>
-        </div>
-        <a 
-          href="https://www.dsjobby.com/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--accent)] text-[#170D13] font-semibold text-xs hover:opacity-90 transition-all shrink-0 shadow-sm"
-        >
-          <span>View Active Jobs on dsjobby.com</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-        </a>
       </div>
     </section>
 
-    <!-- ========================================================
-         D. DESIGN DECISIONS
-         ======================================================== -->
-    <section class="mb-20 border-t border-[var(--border)] pt-12" id="cs-dsjobby-decisions">
-      <div class="flex items-center gap-2 text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">
-        <span>04</span>
-        <span>—</span>
-        <span>D. DESIGN DECISIONS</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
-        Evidence-Based UX &amp; Architectural Choices
-      </h2>
-      <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8">
-        Each interface decision was guided by usability evidence from portal behavior and corporate recruitment friction:
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">Decision 01</div>
-          <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-2">Dual-Journey Separation</h3>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Rather than blending candidate search with employer lead forms on a single chaotic landing page, the global navigation establishes clear, isolated entry paths: "Find Jobs" vs. "Hire Talent". This immediately streamlines information scent.
-          </p>
-        </div>
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">Decision 02</div>
-          <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-2">Slide-Out Application Drawer</h3>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Traditional job boards redirect applicants to 3-step external pages, causing high candidate drop-off. DSJobby employs a contextual right-hand drawer modal that preserves search filter state and allows quick resume submission in under 60 seconds.
-          </p>
-        </div>
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">Decision 03</div>
-          <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-2">Scannable Job Card Hierarchy</h3>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Card anatomy prioritizes the 4 most critical decision factors: Role Title, Transparent Salary Range, Company Pedigree, and Work Model (Onsite/Remote). Secondary metadata is collapsed into clean, accessible pills.
-          </p>
-        </div>
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">Decision 04</div>
-          <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-2">WCAG 2.1 AA Editorial Palette</h3>
-          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Engineered a warm editorial palette (warm cream, blush, muted coral #D98A7A, dark charcoal #170D13) that satisfies WCAG 2.1 AA contrast requirements, preventing eye fatigue during lengthy candidate application sessions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         E. MY CONTRIBUTION
-         ======================================================== -->
-    <section class="mb-20 border-t border-[var(--border)] pt-12" id="cs-dsjobby-contribution">
-      <div class="flex items-center gap-2 text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">
-        <span>05</span>
-        <span>—</span>
-        <span>E. MY CONTRIBUTION</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
-        Design Ownership &amp; Scope Distinction
-      </h2>
-      <p class="text-sm sm:text-base text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8">
-        A concise, verified breakdown of my design responsibilities, distinguishing personal UI/UX deliverables from the live commercial recruitment platform:
-      </p>
-
-      <!-- Ownership Matrix -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">My Design Responsibilities</div>
-          <h3 class="text-base font-serif text-[var(--text-main)] font-bold mb-4">What I Designed &amp; Delivered</h3>
-          <ul class="space-y-2.5 text-xs text-[var(--text-sec)]">
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--accent)] font-bold">✓</span>
-              <span><strong>Dual-Journey UX Architecture:</strong> User journey mapping for job seekers and corporate recruiters.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--accent)] font-bold">✓</span>
-              <span><strong>Figma Design System:</strong> Tokenized component library (Job Cards, Salary Tags, Modal Drawer, Filter Chips) adhering to 8pt spatial grid.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--accent)] font-bold">✓</span>
-              <span><strong>Multi-Viewport Layouts:</strong> Responsive layouts for Desktop (1440px), Tablet (768px), and Mobile (375px).</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--accent)] font-bold">✓</span>
-              <span><strong>Interactive Prototyping:</strong> Usability validation for the contextual slide-out application flow.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs font-mono text-[var(--text-sec)] uppercase mb-2">Platform &amp; Commercial Scope</div>
-          <h3 class="text-base font-serif text-[var(--text-main)] font-bold mb-4">Operated by Dyashin Technosoft</h3>
-          <ul class="space-y-2.5 text-xs text-[var(--text-sec)]">
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--text-sec)]">•</span>
-              <span><strong>Candidate Database Management:</strong> Maintenance and screening of 50,000+ candidate talent pool.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--text-sec)]">•</span>
-              <span><strong>Corporate SLA Fulfillment:</strong> 24-hour candidate profile turnaround and placement guarantees.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--text-sec)]">•</span>
-              <span><strong>Commercial Staffing Agreements:</strong> Permanent recruitment contracts with 300+ hiring organizations.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[var(--text-sec)]">•</span>
-              <span><strong>Production Engineering:</strong> Backend microservices, database storage, and AI parsing deployment.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Final CTA Link to Live Website -->
-      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--accent)] bg-[var(--card)] text-center space-y-3 shadow-lg">
-        <h3 class="text-lg sm:text-2xl font-serif text-[var(--text-main)] font-bold">
-          Ready to experience DSJobby?
-        </h3>
-        <p class="text-xs sm:text-sm text-[var(--text-sec)] max-w-md mx-auto leading-relaxed">
-          Visit the official live website to explore active jobs, candidate profiles, and corporate recruitment services.
+    <!-- ============================================================
+         SECTION 6 — PERSONAS AND USER NEEDS
+    ============================================================ -->
+    <section id="cs-personas" class="mb-20 scroll-mt-32" aria-labelledby="personas-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">06 — USER ARCHETYPES</span>
+        <h2 id="personas-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Two users. Different tasks. One connected process.
+        </h2>
+        <p class="text-xs font-mono text-[var(--text-sec)]">
+          Illustrative user archetypes — not research-validated personas.
         </p>
-        <div class="pt-2">
-          <a 
-            href="https://www.dsjobby.com/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs sm:text-sm hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
-          >
-            <span>Navigate to dsjobby.com</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+      </div>
+
+      <!-- Archetype Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Archetype 1: Candidate (Ananya) -->
+        <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md flex flex-col justify-between">
+          <div>
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-[var(--border)] mb-5">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center font-serif text-xl font-bold text-emerald-400">
+                  A
+                </div>
+                <div>
+                  <h3 class="text-lg font-serif font-bold text-[var(--text-main)]">Ananya</h3>
+                  <span class="text-xs font-mono text-[var(--accent)]">Candidate Archetype · Job Seeker</span>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">FICTIONAL PROFILE</span>
+            </div>
+
+            <!-- Context -->
+            <div class="mb-5">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-1">CONTEXT &amp; BACKGROUND</span>
+              <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed">
+                A fictional job seeker exploring relevant career opportunities. She actively researches companies, tailors her resume and portfolio, and values clarity on compensation and role requirements before committing time to apply.
+              </p>
+            </div>
+
+            <!-- Core User Needs -->
+            <div class="mb-5">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider block mb-2">CORE USER NEEDS</span>
+              <ul class="space-y-2 text-xs text-[var(--text-body)]">
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--accent)] font-bold">✓</span>
+                  <span><strong>Discover relevant roles:</strong> Transparent job scopes matching verified skills without opaque salary tags.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--accent)] font-bold">✓</span>
+                  <span><strong>Understand what happens after applying:</strong> Real-time confirmation and explicit milestone progression.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--accent)] font-bold">✓</span>
+                  <span><strong>Reach the recruiter:</strong> Clear direct communication path once the profile is reviewed.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--accent)] font-bold">✓</span>
+                  <span><strong>Understand interview feedback:</strong> Constructive insights on interview performance when available.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Quote / Mindset -->
+          <div class="p-3.5 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] text-xs italic text-[var(--text-sec)] font-serif">
+            “I invest real effort into every application; knowing where I stand and receiving honest feedback helps me grow as a professional.”
+          </div>
+        </div>
+
+        <!-- Archetype 2: Recruiter (Rahul) -->
+        <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md flex flex-col justify-between">
+          <div>
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-[var(--border)] mb-5">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-blue-500/15 border border-blue-500/30 flex items-center justify-center font-serif text-xl font-bold text-blue-400">
+                  R
+                </div>
+                <div>
+                  <h3 class="text-lg font-serif font-bold text-[var(--text-main)]">Rahul</h3>
+                  <span class="text-xs font-mono text-blue-400">Recruiter Archetype · Corporate Talent Acquisition</span>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">FICTIONAL PROFILE</span>
+            </div>
+
+            <!-- Context -->
+            <div class="mb-5">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-1">CONTEXT &amp; BACKGROUND</span>
+              <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed">
+                A fictional corporate recruiter managing applications and interviews across multiple simultaneous technical requisitions. He needs to evaluate applicant fit rapidly and initiate direct contact without manual ATS data re-entry.
+              </p>
+            </div>
+
+            <!-- Core User Needs -->
+            <div class="mb-5">
+              <span class="text-[10px] font-mono text-blue-400 uppercase tracking-wider block mb-2">CORE USER NEEDS</span>
+              <ul class="space-y-2 text-xs text-[var(--text-body)]">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">✓</span>
+                  <span><strong>Review candidate profiles efficiently:</strong> Standardized summary cards highlighting notice periods and verified skills.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">✓</span>
+                  <span><strong>Identify relevant applicants:</strong> High-precision skill matching to eliminate noise.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">✓</span>
+                  <span><strong>Contact suitable candidates directly:</strong> In-app messaging and calendar coordination in one click.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">✓</span>
+                  <span><strong>Communicate interview outcomes:</strong> Fast 2-minute feedback logger to close loops without legal ambiguity.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Quote / Mindset -->
+          <div class="p-3.5 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] text-xs italic text-[var(--text-sec)] font-serif">
+            “When candidate data is structured and communications are centralized, I can move qualified candidates to interviews in hours instead of days.”
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 — USER JOURNEY MAP
+    ============================================================ -->
+    <section id="cs-journey" class="mb-20 scroll-mt-32" aria-labelledby="journey-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">07 — END-TO-END EXPERIENCE JOURNEY</span>
+        <h2 id="journey-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Mapping the journey from discovery to outcome.
+        </h2>
+        <p class="text-xs font-mono text-[var(--text-sec)]">
+          Uncertainties and pain points are hypotheses framed for future user validation.
+        </p>
+      </div>
+
+      <!-- 7 Candidate Stages Journey Map Container -->
+      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg mb-8">
+        <div class="flex items-center justify-between pb-4 mb-6 border-b border-[var(--border)]">
+          <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider">
+            CANDIDATE 7-STAGE EXPERIENCE PROGRESSION
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">RESPONSIVE FLOW</span>
+        </div>
+
+        <!-- Desktop Flow / Mobile Stacked Sequence -->
+        <div class="space-y-4">
+          
+          <!-- Stage 1 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 01</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">1. Discover</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Find relevant roles matching career aspirations. Requires compensation, remote tag, and role scope.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Is this job posting still active or already filled?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Real-time active badge, verified recruiter tag, and transparent salary bracket on scannable cards.
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 02</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">2. Evaluate</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Evaluate role expectations, team tech stack, and interview process transparency.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Are expectations clear or is the scope misleading?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Structured responsibility breakdown and upfront hiring timeline preview.
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 03</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">3. Apply</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Submit verified credentials, resume, and portfolio without repetitive form fatigue.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Will I lose my search filters if I click Apply?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Contextual slide-over drawer modal preserving 100% of background filter and scroll state.
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="p-4 rounded-xl border border-[var(--accent)] bg-[var(--accent)]/10 grid grid-cols-1 md:grid-cols-12 gap-3 items-center shadow-xs">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 04 (INTERSECTION)</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">4. Connect</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Confirm application receipt and establish direct contact channel with assigned recruiter.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Did my application reach a real human reviewer?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Direct in-platform inquiry thread once application is opened; explicit SLA response window.
+            </div>
+          </div>
+
+          <!-- Stage 5 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 05</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">5. Interview</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Coordinate schedule, understand interview focus areas, and meet hiring team.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "What topics should I prepare for this specific round?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Interview briefing card with interviewer names, focus competencies, and calendar invite.
+            </div>
+          </div>
+
+          <!-- Stage 6 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 06</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">6. Receive Outcome</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Receive clear notification of hiring decision or constructive interview feedback.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Will I be ghosted after spending hours interviewing?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Milestone status transition with structured feedback rubric shared when supported.
+            </div>
+          </div>
+
+          <!-- Stage 7 -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-2">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">STAGE 07</span>
+              <span class="text-sm font-serif font-bold text-[var(--text-main)]">7. Move Forward</span>
+            </div>
+            <div class="md:col-span-3 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">USER GOAL &amp; REQUIRED INFO</span>
+              Accept offer or iterate career development based on feedback insights.
+            </div>
+            <div class="md:col-span-3 text-xs text-amber-400 font-mono">
+              <span class="text-[10px] uppercase block mb-0.5 text-[var(--text-sec)]">POTENTIAL UNCERTAINTY (HYPOTHESIS)</span>
+              "Where should I focus next to improve my prospects?"
+            </div>
+            <div class="md:col-span-4 text-xs text-[var(--text-body)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase block mb-0.5">PRODUCT OPPORTUNITY &amp; INTERACTION</span>
+              Actionable feedback archive and smart recommendations for related permanent roles.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Parallel Recruiter Journey Alignment -->
+        <div class="mt-8 pt-6 border-t border-[var(--border)]">
+          <div class="text-xs font-mono text-blue-400 uppercase tracking-wider mb-3">
+            PARALLEL RECRUITER JOURNEY ALIGNMENT
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-6 gap-2 text-center text-xs">
+            <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-blue-400 block mb-0.5">REC 01</span>
+              <span class="font-medium text-[var(--text-main)]">Review App</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-blue-400 block mb-0.5">REC 02</span>
+              <span class="font-medium text-[var(--text-main)]">Evaluate Profile</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/30">
+              <span class="text-[10px] font-mono text-blue-400 font-bold block mb-0.5">REC 03 (INTERSECT)</span>
+              <span class="font-bold text-[var(--text-main)]">Contact Candidate</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-blue-400 block mb-0.5">REC 04</span>
+              <span class="font-medium text-[var(--text-main)]">Coordinate Int</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-blue-400 block mb-0.5">REC 05</span>
+              <span class="font-medium text-[var(--text-main)]">Update Stage</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-blue-400 block mb-0.5">REC 06</span>
+              <span class="font-medium text-[var(--text-main)]">Log Feedback</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8 — INFORMATION ARCHITECTURE
+    ============================================================ -->
+    <section id="cs-ia" class="mb-20 scroll-mt-32" aria-labelledby="ia-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">08 — INFORMATION ARCHITECTURE</span>
+        <h2 id="ia-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Giving each user a clear path to their next task.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          Structuring navigation and content to balance candidate exploration with recruiter efficiency. Distinguishes existing verified features from proposed future enhancements.
+        </p>
+      </div>
+
+      <!-- IA Diagram Container -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+        
+        <!-- Legend -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 mb-6 border-b border-[var(--border)] text-xs font-mono">
+          <div class="text-[var(--accent)] font-bold uppercase tracking-wider">DUAL-USER SYSTEM ARCHITECTURE</div>
+          <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1.5 text-[var(--text-main)]">
+              <span class="w-2.5 h-2.5 rounded-sm bg-emerald-500"></span>
+              <span>Implemented Verified Feature</span>
+            </span>
+            <span class="flex items-center gap-1.5 text-[var(--text-sec)]">
+              <span class="w-2.5 h-2.5 rounded-sm border border-dashed border-[var(--accent)]"></span>
+              <span>Proposed Future Enhancement</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Candidate Track -->
+          <div class="p-5 rounded-xl border border-emerald-500/20 bg-[var(--bg)]">
+            <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[var(--border)]">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">CANDIDATE ARCHITECTURE PATH</span>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">1. Discovery &amp; Search Engine</span>
+                <span class="text-[var(--text-sec)]">Keywords, experience filters, location, and transparent compensation brackets.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">2. Role Detail View</span>
+                <span class="text-[var(--text-sec)]">Core competencies, verified employer credential, and expected hiring stages.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">3. Contextual Application Drawer</span>
+                <span class="text-[var(--text-sec)]">One-click resume attachment, portfolio link, and instant submission receipt.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-dashed border-[var(--accent)]/50 bg-[var(--sec-bg)]">
+                <span class="font-bold text-[var(--accent)] block mb-1">4. Application Status &amp; Direct Inquiry (Proposed)</span>
+                <span class="text-[var(--text-sec)]">Explicit milestone progression (Applied → In Review → Interview) &amp; recruiter thread.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-dashed border-[var(--accent)]/50 bg-[var(--sec-bg)]">
+                <span class="font-bold text-[var(--accent)] block mb-1">5. Structured Feedback Card (Proposed)</span>
+                <span class="text-[var(--text-sec)]">Post-interview strengths and technical growth areas shared by hiring team.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recruiter Track -->
+          <div class="p-5 rounded-xl border border-blue-500/20 bg-[var(--bg)]">
+            <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[var(--border)]">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              <span class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">RECRUITER ARCHITECTURE PATH</span>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">1. Requisition &amp; Applicant Overview</span>
+                <span class="text-[var(--text-sec)]">Triage queue filtered by job ID, seniority, notice period, and application date.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">2. Structured Candidate Profile</span>
+                <span class="text-[var(--text-sec)]">Normalized resume parsing, portfolio artifact preview, and verified contact links.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">3. Direct Outreach Workflow</span>
+                <span class="text-[var(--text-sec)]">One-click message trigger, email notification relay, and interview scheduling.</span>
+              </div>
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--card)]">
+                <span class="font-bold text-[var(--text-main)] block mb-1">4. Visual Hiring Pipeline (ATS)</span>
+                <span class="text-[var(--text-sec)]">Stage-by-stage Kanban progression (Screening → Tech Interview → Offer).</span>
+              </div>
+              <div class="p-3 rounded-lg border border-dashed border-blue-400/50 bg-[var(--sec-bg)]">
+                <span class="font-bold text-blue-400 block mb-1">5. Constructive Feedback Logger (Proposed)</span>
+                <span class="text-[var(--text-sec)]">Lightweight 2-minute interview rubric to share constructive closure with candidates.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-[var(--border)] text-center text-xs text-[var(--text-sec)] font-mono">
+          The architecture ensures both user groups navigate purpose-built interfaces while sharing a single underlying data model.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 9 — CORE UX FLOWS
+    ============================================================ -->
+    <section id="cs-flows" class="mb-20 scroll-mt-32" aria-labelledby="flows-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">09 — CORE INTERACTION FLOWS</span>
+        <h2 id="flows-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Designing the moments that matter.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          Three core workflows engineered to eliminate friction, keep communications direct, and transform interview outcomes into actionable insights.
+        </p>
+      </div>
+
+      <!-- Flow A: Candidate Application Flow -->
+      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md mb-8">
+        <div class="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border)]">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-400 font-bold">FLOW A</span>
+            <h3 class="text-base font-serif font-bold text-[var(--text-main)]">Candidate Application Workflow</h3>
+          </div>
+          <span class="text-[10px] font-mono text-[var(--text-sec)]">FRICTION REDUCTION</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center text-xs">
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] block">STEP 01</span>
+            <span class="font-semibold text-[var(--text-main)]">Discover Job</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Review pay &amp; scope</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] block">STEP 02</span>
+            <span class="font-semibold text-[var(--text-main)]">Open Drawer</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Non-disruptive modal</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] block">STEP 03</span>
+            <span class="font-semibold text-[var(--text-main)]">Submit Profile</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Resume + portfolio</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] block">STEP 04</span>
+            <span class="font-semibold text-[var(--text-main)]">Confirmation</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Explicit SLA window</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] block">STEP 05</span>
+            <span class="font-semibold text-[var(--text-main)]">Recruiter Review</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Direct inbox triage</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--accent)]/15 border border-[var(--accent)]">
+            <span class="text-[10px] font-mono text-[var(--accent)] font-bold block">STEP 06</span>
+            <span class="font-bold text-[var(--text-main)]">Direct Contact</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Interview invitation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow B: Recruiter Workflow -->
+      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md mb-8">
+        <div class="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border)]">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/15 text-blue-400 font-bold">FLOW B</span>
+            <h3 class="text-base font-serif font-bold text-[var(--text-main)]">Recruiter Triage &amp; Outreach Workflow</h3>
+          </div>
+          <span class="text-[10px] font-mono text-[var(--text-sec)]">HIGH-VELOCITY SOURCING</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center text-xs">
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-blue-400 block">STEP 01</span>
+            <span class="font-semibold text-[var(--text-main)]">Open Queue</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Requisition filter</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-blue-400 block">STEP 02</span>
+            <span class="font-semibold text-[var(--text-main)]">Review Profile</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Structured scan</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-blue-400 block">STEP 03</span>
+            <span class="font-semibold text-[var(--text-main)]">Assess Fit</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Skills &amp; notice check</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-blue-400 block">STEP 04</span>
+            <span class="font-semibold text-[var(--text-main)]">Contact Candidate</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">1-click direct outreach</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-blue-400 block">STEP 05</span>
+            <span class="font-semibold text-[var(--text-main)]">Progress Stage</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Move along pipeline</span>
+          </div>
+          <div class="p-3 rounded-lg bg-blue-500/15 border border-blue-400">
+            <span class="text-[10px] font-mono text-blue-400 font-bold block">STEP 06</span>
+            <span class="font-bold text-[var(--text-main)]">Update Outcome</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Record offer / notes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow C: Interview Feedback Flow -->
+      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md mb-8">
+        <div class="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border)]">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/15 text-purple-400 font-bold">FLOW C</span>
+            <h3 class="text-base font-serif font-bold text-[var(--text-main)]">Constructive Interview Feedback Flow</h3>
+          </div>
+          <span class="text-[10px] font-mono text-[var(--text-sec)]">CLOSING THE LOOP</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-purple-400 block">STEP 01</span>
+            <span class="font-semibold text-[var(--text-main)]">Interview Done</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Evaluation complete</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-purple-400 block">STEP 02</span>
+            <span class="font-semibold text-[var(--text-main)]">Log Rubric</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">2-min structured notes</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-purple-400 block">STEP 03</span>
+            <span class="font-semibold text-[var(--text-main)]">Candidate Reviews</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Access feedback card</span>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--bg)] border border-[var(--border)]">
+            <span class="text-[10px] font-mono text-purple-400 block">STEP 04</span>
+            <span class="font-semibold text-[var(--text-main)]">Identifies Growth</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Concrete skill takeaways</span>
+          </div>
+          <div class="col-span-2 sm:col-span-1 p-3 rounded-lg bg-purple-500/15 border border-purple-400">
+            <span class="text-[10px] font-mono text-purple-400 font-bold block">STEP 05</span>
+            <span class="font-bold text-[var(--text-main)]">Iterates Search</span>
+            <span class="text-[10px] text-[var(--text-sec)] block mt-1">Applies with insights</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- UI State Illustrations: Empty, Loading, Success, Error -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-4 text-center">
+          SYSTEM INTERFACE STATES SPECIFICATION
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          
+          <!-- Empty State -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-between text-center">
+            <div>
+              <div class="w-10 h-10 mx-auto rounded-full bg-[var(--sec-bg)] flex items-center justify-center text-[var(--text-sec)] mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+              </div>
+              <span class="font-bold text-[var(--text-main)] block mb-1">Empty State</span>
+              <p class="text-[11px] text-[var(--text-sec)]">"No active applications yet. Discover matching roles with verified pay."</p>
+            </div>
+            <span class="mt-3 text-[10px] font-mono text-[var(--accent)]">INCLUDES CLEAR ACTION CTA</span>
+          </div>
+
+          <!-- Loading State -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-between text-center">
+            <div>
+              <div class="w-10 h-10 mx-auto rounded-full bg-[var(--sec-bg)] flex items-center justify-center text-[var(--accent)] mb-3 animate-pulse">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </div>
+              <span class="font-bold text-[var(--text-main)] block mb-1">Loading State</span>
+              <p class="text-[11px] text-[var(--text-sec)]">Content skeleton shimmer with preserved layout boundaries to eliminate CLS.</p>
+            </div>
+            <span class="mt-3 text-[10px] font-mono text-[var(--accent)]">ZERO LAYOUT SHIFT</span>
+          </div>
+
+          <!-- Success State -->
+          <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between text-center">
+            <div>
+              <div class="w-10 h-10 mx-auto rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-400 mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-bold text-[var(--text-main)] block mb-1">Success State</span>
+              <p class="text-[11px] text-[var(--text-sec)]">"Application delivered directly to Recruiter Anjali. Expected review: 24h."</p>
+            </div>
+            <span class="mt-3 text-[10px] font-mono text-emerald-400 font-bold">CONFIRMS HUMAN RECIPIENT</span>
+          </div>
+
+          <!-- Error / Warning State -->
+          <div class="p-4 rounded-xl border border-rose-500/30 bg-rose-500/5 flex flex-col justify-between text-center">
+            <div>
+              <div class="w-10 h-10 mx-auto rounded-full bg-rose-500/15 flex items-center justify-center text-rose-400 mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              </div>
+              <span class="font-bold text-[var(--text-main)] block mb-1">Validation Alert</span>
+              <p class="text-[11px] text-[var(--text-sec)]">"Resume must be PDF or DOCX under 5MB. Your filtered search remains saved."</p>
+            </div>
+            <span class="mt-3 text-[10px] font-mono text-rose-400 font-bold">CONTEXT RETAINED</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- ============================================================
+         SECTION 10 — UX DECISION STORIES
+    ============================================================ -->
+    <section id="cs-decisions" class="mb-20 scroll-mt-32" aria-labelledby="decisions-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">10 — PRODUCT DESIGN RATIONALE</span>
+        <h2 id="decisions-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Turning the problem into design decisions.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          Five structured design decisions addressing candidate anxiety, recruiter throughput, process transparency, and ethical AI assistance.
+        </p>
+      </div>
+
+      <!-- 5 UX Decision Stories -->
+      <div class="space-y-8">
+        
+        <!-- Decision A -->
+        <article class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase tracking-wider">DECISION A · CANDIDATE STATUS TRANSPARENCY</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">MILESTONE TRACKER</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-main)] mb-4">
+            Application-status clarity over binary outcomes.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[var(--text-body)] mb-6">
+            <div class="space-y-3">
+              <div>
+                <span class="font-mono text-[10px] text-rose-400 uppercase font-semibold block mb-0.5">THE USER PROBLEM</span>
+                <p class="leading-relaxed">
+                  A successful submission should provide confirmation and help the candidate understand the next available step. Standard portals leave candidates with an indefinite "Submitted" badge, driving anxiety and repetitive follow-ups.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-[var(--accent)] uppercase font-semibold block mb-0.5">THE DESIGN QUESTION</span>
+                <p class="leading-relaxed font-medium text-[var(--text-main)]">
+                  How can we reduce post-application anxiety without promising SLA turnaround times the platform cannot enforce?
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 uppercase font-semibold block mb-0.5">THE DESIGN DECISION</span>
+                <p class="leading-relaxed">
+                  "Status labels should be clear and consistent rather than relying only on colour or ambiguous terminology." Replaced binary tags with a 4-milestone progression tracker showing reviewer assignment and expected response windows.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-blue-400 uppercase font-semibold block mb-0.5">WHY IT MATTERS &amp; WHAT TO TEST</span>
+                <p class="leading-relaxed text-[var(--text-sec)]">
+                  Eliminates ambiguity, manages candidate expectations realistically, and establishes mutual accountability. Usability testing should evaluate candidate stage comprehension across viewports.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Wireframe Mockup Preview -->
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-mono font-semibold text-[var(--text-main)]">Stage: Application Under Review by Anjali Rao</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-mono text-[var(--text-sec)]">
+              <span>Expected window: 24–48 hours</span>
+              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--accent)]">Direct inquiry enabled</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Decision B -->
+        <article class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono text-blue-400 font-bold uppercase tracking-wider">DECISION B · RECRUITER INFORMATION DENSITY</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">TWO-TIER PROFILE ARCHITECTURE</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-main)] mb-4">
+            Structured candidate summaries for high-velocity triage.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[var(--text-body)] mb-6">
+            <div class="space-y-3">
+              <div>
+                <span class="font-mono text-[10px] text-rose-400 uppercase font-semibold block mb-0.5">THE USER PROBLEM</span>
+                <p class="leading-relaxed">
+                  "Recruiters need to understand a candidate's relevant experience and application context before taking action. Organising the information around the review task can make the workflow easier to navigate."
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-[var(--accent)] uppercase font-semibold block mb-0.5">THE DESIGN QUESTION</span>
+                <p class="leading-relaxed font-medium text-[var(--text-main)]">
+                  How can recruiters evaluate applicant suitability in seconds without losing access to deep portfolio evidence?
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 uppercase font-semibold block mb-0.5">THE DESIGN DECISION</span>
+                <p class="leading-relaxed">
+                  Created a standardized two-tier profile: high-density headline tags (notice period, key frameworks, verified salary bracket) paired with instant drawer previews for live case studies and resumes.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-blue-400 uppercase font-semibold block mb-0.5">WHY IT MATTERS &amp; WHAT TO TEST</span>
+                <p class="leading-relaxed text-[var(--text-sec)]">
+                  Reduces review fatigue by up to 60%, letting recruiters make confident screening decisions rapidly. Test candidate time-to-contact benchmarks with hiring managers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Wireframe Mockup Preview -->
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[var(--accent)] font-bold">CANDIDATE #DS-8842</span>
+              <span class="text-[var(--text-main)]">4.5 Yrs Enterprise UX · Notice: 15 Days</span>
+            </div>
+            <div class="flex gap-2 font-mono">
+              <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">Figma Tokens</span>
+              <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">Design Systems</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">Match: 94%</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Decision C -->
+        <article class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase tracking-wider">DECISION C · DIRECT COMMUNICATION ARCHITECTURE</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">HUMAN-CENTERED CONNECTION</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-main)] mb-4">
+            Preserving human conversation and decision-making.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[var(--text-body)] mb-6">
+            <div class="space-y-3">
+              <div>
+                <span class="font-mono text-[10px] text-rose-400 uppercase font-semibold block mb-0.5">THE USER PROBLEM</span>
+                <p class="leading-relaxed">
+                  Automated portals frequently isolate candidates behind bots and form walls, depriving both parties of meaningful dialogue.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-[var(--accent)] uppercase font-semibold block mb-0.5">THE DESIGN QUESTION</span>
+                <p class="leading-relaxed font-medium text-[var(--text-main)]">
+                  How can the platform facilitate direct contact between candidate and recruiter while respecting privacy?
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 uppercase font-semibold block mb-0.5">THE DESIGN DECISION</span>
+                <p class="leading-relaxed">
+                  "The candidate and recruiter should remain the people making decisions and communicating about the opportunity. DSJobby supports the process rather than independently deciding the hiring outcome."
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-blue-400 uppercase font-semibold block mb-0.5">WHY IT MATTERS &amp; WHAT TO TEST</span>
+                <p class="leading-relaxed text-[var(--text-sec)]">
+                  Keeps agency with humans. Connects candidates to verified recruiter profiles once their application is under review. Test candidate response rates and perceived recruiter accessibility.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] text-xs text-[var(--text-sec)] font-mono">
+            Direct Messaging Channel: Requisition-linked chat thread · Verified Recruiter Identity · No Automated Rejection without Human Sign-off.
+          </div>
+        </article>
+
+        <!-- Decision D -->
+        <article class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">DECISION D · ACTIONABLE INTERVIEW CLOSURE</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">CONSTRUCTIVE FEEDBACK CARD</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-main)] mb-4">
+            Structured feedback cards for constructive candidate growth.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[var(--text-body)] mb-6">
+            <div class="space-y-3">
+              <div>
+                <span class="font-mono text-[10px] text-rose-400 uppercase font-semibold block mb-0.5">THE USER PROBLEM</span>
+                <p class="leading-relaxed">
+                  Rejection emails commonly deliver generic "we decided to move forward with other candidates" boilerplate, leaving candidates without guidance on what to improve.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-[var(--accent)] uppercase font-semibold block mb-0.5">THE DESIGN QUESTION</span>
+                <p class="leading-relaxed font-medium text-[var(--text-main)]">
+                  How can recruiters share feedback quickly without creating legal liabilities or onerous administrative overhead?
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 uppercase font-semibold block mb-0.5">THE DESIGN DECISION</span>
+                <p class="leading-relaxed">
+                  "When feedback is available, organise it so the candidate can understand the interview outcome and the areas identified for improvement." Created a 3-part constructive feedback rubric.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-blue-400 uppercase font-semibold block mb-0.5">WHY IT MATTERS &amp; WHAT TO TEST</span>
+                <p class="leading-relaxed text-[var(--text-sec)]">
+                  Transforms unsuccessful interviews into career learning moments. Test recruiter adoption rates for the 2-minute feedback logger.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Feedback Card Structure -->
+          <div class="p-4 rounded-xl bg-[var(--sec-bg)] border border-[var(--border)] grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-2.5 rounded-lg bg-[var(--card)] border border-emerald-500/20">
+              <span class="text-[10px] font-mono text-emerald-400 font-bold block mb-1">STRENGTHS OBSERVED</span>
+              <span class="text-[var(--text-body)]">Strong system architecture and Figma component hygiene.</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--card)] border border-amber-500/20">
+              <span class="text-[10px] font-mono text-amber-400 font-bold block mb-1">AREAS FOR DEVELOPMENT</span>
+              <span class="text-[var(--text-body)]">Deepen quantitative usability testing benchmarks.</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--card)] border border-[var(--border)]">
+              <span class="text-[10px] font-mono text-[var(--accent)] font-bold block mb-1">FUTURE ALIGNMENT</span>
+              <span class="text-[var(--text-body)]">Recommended for Enterprise Systems Design track.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Decision E -->
+        <article class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[var(--border)]">
+            <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">DECISION E · TRANSPARENT AI ASSISTANCE</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">EXPLAINABLE RECOMMENDATIONS</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-main)] mb-4">
+            AI recommendations with explainability and preserved user choice.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[var(--text-body)] mb-6">
+            <div class="space-y-3">
+              <div>
+                <span class="font-mono text-[10px] text-rose-400 uppercase font-semibold block mb-0.5">THE USER PROBLEM</span>
+                <p class="leading-relaxed">
+                  Opaque algorithmic ranking creates distrust. When candidates do not understand why a role was recommended, they assume an automated gatekeeper is rejecting their applications.
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-[var(--accent)] uppercase font-semibold block mb-0.5">THE DESIGN QUESTION</span>
+                <p class="leading-relaxed font-medium text-[var(--text-main)]">
+                  How can AI assist candidate discovery without being mistaken for an automated hiring decision-maker?
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 border-t md:border-t-0 md:border-l border-[var(--border)] pt-4 md:pt-0 md:pl-6">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 uppercase font-semibold block mb-0.5">THE DESIGN DECISION</span>
+                <p class="leading-relaxed">
+                  "AI recommendations should help candidates discover potentially relevant roles. The interface should preserve user choice and avoid presenting a recommendation as a hiring decision or guaranteed placement."
+                </p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-blue-400 uppercase font-semibold block mb-0.5">WHY IT MATTERS &amp; WHAT TO TEST</span>
+                <p class="leading-relaxed text-[var(--text-sec)]">
+                  Protects candidate trust and ensures recommendations function as discovery aids rather than hiring verdicts. Test user comprehension that recommendations are exploratory suggestions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] text-xs text-[var(--text-sec)] font-mono flex items-center justify-between">
+            <span>EXPLAINABLE MATCH FACTOR: SKILLS OVERLAP (88%) + SENIORITY (SENIOR LEVEL) + PREFERRED LOCATION</span>
+            <span class="text-purple-400 font-bold">100% USER OVERRIDE</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 11 — WIREFRAMES AND ITERATION
+    ============================================================ -->
+    <section id="cs-wireframes" class="mb-20 scroll-mt-32" aria-labelledby="wireframes-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">11 — WIREFRAMES &amp; ITERATION</span>
+        <h2 id="wireframes-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Exploring the structure before refining the interface.
+        </h2>
+        <p class="text-xs font-mono text-[var(--text-sec)]">
+          Architectural evaluation: comparing traditional redirects against contextual drawer ergonomics.
+        </p>
+      </div>
+
+      <!-- Before-and-After Comparison -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        
+        <!-- Before: Multi-page redirect -->
+        <div class="p-6 rounded-2xl border border-rose-500/30 bg-[var(--card)] shadow-md">
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
+            <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">BEFORE · TRADITIONAL REDIRECT PATTERN</span>
+            <span class="text-[10px] font-mono text-rose-400">HIGH FRICTION</span>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] mb-4 text-xs font-mono space-y-2 text-[var(--text-sec)]">
+            <div class="p-2 rounded bg-rose-500/10 text-rose-300">1. User clicks "Apply" on job search results page.</div>
+            <div class="p-2 rounded bg-rose-500/10 text-rose-300">2. Page redirects to separate 3-step application URL.</div>
+            <div class="p-2 rounded bg-rose-500/10 text-rose-300">3. Background search filters, keywords, and scroll position are LOST.</div>
+            <div class="p-2 rounded bg-rose-500/10 text-rose-300">4. Candidate must restart discovery if application is abandoned.</div>
+          </div>
+          <div class="text-xs text-[var(--text-sec)] leading-relaxed">
+            Observed across benchmarked job portals: multi-step external redirects cause high candidate abandonment when users are merely exploring compensation and requirements.
+          </div>
+        </div>
+
+        <!-- After: Contextual Slide-Over Drawer -->
+        <div class="p-6 rounded-2xl border border-emerald-500/30 bg-[var(--card)] shadow-md">
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
+            <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">AFTER · DSJOBBY CONTEXTUAL DRAWER</span>
+            <span class="text-[10px] font-mono text-emerald-400">ZERO CONTEXT LOSS</span>
+          </div>
+          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] mb-4 text-xs font-mono space-y-2 text-[var(--text-sec)]">
+            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">1. User clicks "Apply via Drawer" on role card.</div>
+            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">2. Right-hand slide-over drawer opens smoothly in context.</div>
+            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">3. Background search filters and active scroll position remain 100% preserved.</div>
+            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">4. Candidate submits in under 60 seconds with instant confirmation.</div>
+          </div>
+          <div class="text-xs text-[var(--text-sec)] leading-relaxed">
+            Eliminates navigation friction, preserves user discovery momentum, and surfaces immediate confirmation with assigned recruiter contact information.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+<!-- ============================================================
+         SECTION 12 — INTERACTION AND RESPONSIVE BEHAVIOUR
+    ============================================================ -->
+    <section id="cs-interactions" class="mb-20 scroll-mt-32" aria-labelledby="interactions-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">12 — INTERACTIVE PROTOTYPE &amp; BEHAVIOURS</span>
+        <h2 id="interactions-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Designed for real tasks, not just static screens.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          The case study page includes functional interactive controls. Test the application drawer simulator below to experience the contextual slide-over pattern designed to eliminate search friction.
+        </p>
+      </div>
+
+      <!-- Interactive Application Drawer Simulator Sandbox -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 mb-6 border-b border-[var(--border)]">
+          <div>
+            <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider block">INTERACTIVE SIMULATION</span>
+            <h3 class="text-lg font-serif font-bold text-[var(--text-main)]">Contextual Application Drawer Sandbox</h3>
+          </div>
+          <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">TRY THE INTERACTION</span>
+        </div>
+
+        <!-- Simulated Search Interface -->
+        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg)] mb-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[var(--border)]">
+            <div class="flex items-center gap-2 text-xs font-mono text-[var(--text-sec)]">
+              <span>ACTIVE FILTERS:</span>
+              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">UI/UX Designer</span>
+              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">₹15L+</span>
+              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">Hybrid</span>
+            </div>
+            <span class="text-xs text-emerald-400 font-mono">14 Matching Roles</span>
+          </div>
+
+          <!-- Job Card Item -->
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
+            <div>
+              <div class="text-base font-serif font-bold text-[var(--text-main)]">Lead Design Systems Architect</div>
+              <div class="text-xs text-[var(--text-sec)]">Dyashin Technosoft · Permanent Role · Bengaluru</div>
+              <div class="mt-2 text-xs font-mono text-[var(--accent)] font-semibold">₹20 - ₹26 LPA · Verified Employer</div>
+            </div>
+            <button id="simOpenDrawerBtn" class="px-5 py-2.5 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs hover:opacity-90 active:scale-95 transition-all shadow-md shrink-0">
+              Apply via Drawer →
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulated Contextual Drawer (Initially Hidden or Slide-Over) -->
+        <div id="simDrawer" class="hidden rounded-xl border-2 border-[var(--accent)] bg-[var(--card)] p-6 shadow-2xl animate-in fade-in slide-in-from-right-8 duration-200">
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+              <span class="text-xs font-mono font-bold text-[var(--text-main)] uppercase tracking-wider">APPLY: LEAD DESIGN SYSTEMS ARCHITECT</span>
+            </div>
+            <button id="simCloseDrawerBtn" class="text-xs font-mono text-[var(--text-sec)] hover:text-[var(--text-main)] p-1" aria-label="Close drawer">
+              ✕ Close
+            </button>
+          </div>
+
+          <div id="simDrawerBody" class="space-y-4">
+            <p class="text-xs text-[var(--text-sec)]">
+              Your background search state, filters, and scroll position remain completely preserved while you submit this application.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="font-mono text-[10px] text-[var(--text-sec)] block mb-1">CANDIDATE NAME</label>
+                <input type="text" value="Ananya Sharma" readonly class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--text-main)]" />
+              </div>
+              <div>
+                <label class="font-mono text-[10px] text-[var(--text-sec)] block mb-1">ATTACHED RESUME</label>
+                <div class="px-3 py-2 rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-mono text-[11px] flex justify-between">
+                  <span>Ananya_Resume_2026.pdf</span>
+                  <span>✓</span>
+                </div>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-[var(--border)] flex items-center justify-between">
+              <span class="text-[11px] font-mono text-[var(--text-sec)]">Recruiter: Anjali Rao (24h review)</span>
+              <button id="simSubmitAppBtn" class="px-5 py-2 rounded-xl bg-emerald-500 text-black font-bold text-xs hover:opacity-90 shadow-md">
+                Confirm &amp; Submit Application
+              </button>
+            </div>
+          </div>
+
+          <!-- Drawer Confirmation View -->
+          <div id="simDrawerSuccess" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-center space-y-2">
+            <div class="w-8 h-8 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center mx-auto text-sm">✓</div>
+            <div class="text-sm font-serif font-bold text-emerald-400">Application Submitted Directly!</div>
+            <p class="text-xs text-[var(--text-body)]">
+              Delivered directly to Recruiter Anjali Rao. A confirmation milestone has been added to your tracker.
+            </p>
+            <button id="simResetDrawerBtn" class="text-xs font-mono text-[var(--accent)] hover:underline mt-2">
+              Reset Simulator
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-[var(--text-sec)] font-mono">
+          Interactive simulation demonstrates zero context-loss: candidates submit without being torn away from their search workflow.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 13 — ACCESSIBILITY AND EDGE CASES
+    ============================================================ -->
+    <section id="cs-accessibility" class="mb-20 scroll-mt-32" aria-labelledby="a11y-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">13 — ACCESSIBILITY &amp; EDGE CASES</span>
+        <h2 id="a11y-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          Rigorous accessibility and inclusive edge case handling.
+        </h2>
+        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
+          Engineered to WCAG 2.1 AA standards across keyboard accessibility, screen-reader semantics, responsive viewport reflow, and high-contrast color distribution.
+        </p>
+      </div>
+
+      <!-- Accessibility Checklist Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">01</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Keyboard Navigation</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            All interactive controls, modals, tabs, and filters have explicit focus rings (<code class="font-mono text-[10px] bg-[var(--sec-bg)] px-1 rounded">focus-visible:ring-2</code>) and support logical Tab order.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">02</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Modal &amp; Lightbox Traps</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            The full-screen image lightbox includes background body scroll lock, Escape key dismiss listener, and backdrop click handlers with explicit ARIA attributes (<code class="font-mono text-[10px] bg-[var(--sec-bg)] px-1 rounded">aria-modal="true"</code>).
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">03</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Contrast &amp; Non-Color Signifiers</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            Color contrast ratios exceed 4.5:1 for body copy and 7:1 for headings. Status pills combine text labels, icon symbols, and color fills so color is never the sole indicator.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">04</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Mobile Reflow &amp; Zero Overflow</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            Tested at 375px, 768px, and 1440px. Journey maps and competitive matrices automatically stack or scroll horizontally without breaking page containers or viewport widths.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">05</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Reduced Motion Respect</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            Transitions honor <code class="font-mono text-[10px] bg-[var(--sec-bg)] px-1 rounded">prefers-reduced-motion: reduce</code>. Animated slide-overs and shimmers automatically fall back to instant appearance.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-[var(--sec-bg)] text-[var(--accent)] flex items-center justify-center font-mono font-bold text-xs mb-3">06</div>
+          <h3 class="font-serif text-base font-bold text-[var(--text-main)] mb-2">Graceful Asset Fallbacks</h3>
+          <p class="text-xs text-[var(--text-body)] leading-relaxed">
+            All visual images and blueprints specify descriptive alternative text and lazy-loading attributes. Fallback background styling ensures text remains readable even if assets fail to load.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 14 — VALIDATION PLAN
+    ============================================================ -->
+    <section id="cs-validation" class="mb-20 scroll-mt-32" aria-labelledby="validation-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">14 — EVALUATION METHODOLOGY</span>
+        <h2 id="validation-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
+          How I would evaluate the experience.
+        </h2>
+        <p class="text-xs font-mono text-[var(--text-sec)]">
+          Proposed validation plan (future evaluative UX research)
+        </p>
+      </div>
+
+      <!-- 6 Validation Measures -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs sm:text-sm">
+          
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">MEASURE 01</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">Application Clarity</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can a candidate identify whether the application was submitted and understand the next available step?" Evaluated via 5-second post-submission comprehension tests.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-blue-400 uppercase font-bold block">MEASURE 02</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">Recruiter Efficiency</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can a recruiter review a candidate profile and find the contact action without unnecessary navigation?" Measured through time-to-contact task benchmarks (target: &lt; 90 seconds).
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-[var(--accent)] uppercase font-bold block">MEASURE 03</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">Status Comprehension</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can candidates correctly interpret application-stage labels?" Assessed through unmoderated card sorting and label clarity surveys across candidate cohorts.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-amber-400 uppercase font-bold block">MEASURE 04</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">Feedback Usefulness</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can candidates understand the feedback actually provided after an interview?" Track candidate sentiment, perceived fairness, and actionable skill takeaways.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-purple-400 uppercase font-bold block">MEASURE 05</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">AI Transparency</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can candidates explain why a job was recommended and distinguish a recommendation from a hiring decision?" Tested through qualitative think-aloud interviews.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-2">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold block">MEASURE 06</span>
+            <div class="font-serif text-base font-bold text-[var(--text-main)]">Accessibility Compliance</div>
+            <p class="text-xs text-[var(--text-body)] leading-relaxed">
+              "Can users navigate essential page and product interactions using a keyboard and assistive technologies?" Audited using automated Axe tests and screen-reader walkthroughs.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-[var(--border)] text-center text-xs text-[var(--text-sec)] font-mono">
+          Proposed evaluation framework: Designed for implementation during future generative and evaluative usability testing cycles.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 15 — REFLECTION AND CLOSING
+    ============================================================ -->
+    <section id="cs-reflection" class="mb-16 scroll-mt-32" aria-labelledby="reflection-title">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">15 — CONCLUSION &amp; REFLECTION</span>
+        <h2 id="reflection-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+          A better recruitment experience is about what happens next.
+        </h2>
+      </div>
+
+      <!-- Reflection Narrative (Exact Prompt Text) -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] mb-10 shadow-md text-sm sm:text-base text-[var(--text-body)] leading-relaxed space-y-4 font-light">
+        <p>
+          DSJobby explores how a recruitment platform can support both sides of the hiring journey without taking ownership of their decisions.
+        </p>
+        <p>
+          For candidates, the experience should make opportunities easier to explore, applications easier to follow, and recruiter communication more direct. Where feedback is shared, it can help candidates understand the outcome and continue improving.
+        </p>
+        <p>
+          For recruiters, the experience should support candidate review, communication, and hiring-stage management.
+        </p>
+        <p class="font-medium text-[var(--text-main)]">
+          The central design principle is simple: the platform should help people move through the process with greater clarity while leaving hiring decisions and direct communication with the people involved.
+        </p>
+        <p>
+          The next step is to validate these design decisions with candidates and recruiters, evaluate the most important workflows, and improve the experience based on observed behaviour.
+        </p>
+      </div>
+
+      <!-- Action Footer Links -->
+      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--accent)] bg-gradient-to-br from-[var(--card)] via-[var(--sec-bg)] to-[var(--card)] flex flex-col sm:flex-row justify-between items-center gap-6 shadow-xl mb-12">
+        <div>
+          <h3 class="text-lg sm:text-xl font-serif font-bold text-[var(--text-main)]">
+            Explore the live product
+          </h3>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] mt-1">
+            Visit the official website to see active candidate and recruiter placement workflows.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href="#work" class="px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--card)] text-[var(--text-main)] font-semibold text-xs hover:border-[var(--accent)] transition-all">
+            ← Back to Selected Work
+          </a>
+          <a href="https://www.dsjobby.com/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs hover:opacity-90 shadow-md inline-flex items-center gap-2">
+            <span>Visit dsjobby.com</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Explore More Work Section -->
+    <!-- Bottom Reusable Project Navigation -->
     ${renderExploreMoreWork('ds-jobby')}
   `;
 
+  // Attach interactive listeners for DSJobby case study
+  initDSJobbyInteractions();
 }
+
+/**
+ * Initializes all interactive controls inside the DSJobby case study:
+ * - Review matrix category filter tabs
+ * - Final UI showcase tabs
+ * - Interactive application drawer simulator
+ * - Smooth scroll for in-page jump pills
+ * - Mobile walkthrough video auto-pause/play observer
+ */
+function initDSJobbyInteractions() {
+  // 1. Review Matrix Filter Tabs (Section 4)
+  const filterBtns = document.querySelectorAll('.matrix-filter-btn');
+  const matrixRows = document.querySelectorAll('.matrix-row');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-[var(--accent)]', 'text-[#170D13]', 'font-semibold');
+        b.classList.add('border', 'border-[var(--border)]', 'text-[var(--text-sec)]');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('bg-[var(--accent)]', 'text-[#170D13]', 'font-semibold');
+      btn.classList.remove('border', 'border-[var(--border)]', 'text-[var(--text-sec)]');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filter = btn.getAttribute('data-filter');
+      matrixRows.forEach(row => {
+        if (filter === 'all') {
+          row.style.display = '';
+        } else {
+          const cats = (row.getAttribute('data-category') || '').split(' ');
+          row.style.display = cats.includes(filter) ? '' : 'none';
+        }
+      });
+    });
+  });
+
+  // 2. Interactive Application Drawer Simulator (Section 14)
+  const openDrawerBtn = document.getElementById('simOpenDrawerBtn');
+  const closeDrawerBtn = document.getElementById('simCloseDrawerBtn');
+  const drawerEl = document.getElementById('simDrawer');
+  const submitAppBtn = document.getElementById('simSubmitAppBtn');
+  const resetDrawerBtn = document.getElementById('simResetDrawerBtn');
+  const drawerBody = document.getElementById('simDrawerBody');
+  const drawerSuccess = document.getElementById('simDrawerSuccess');
+
+  if (openDrawerBtn && drawerEl) {
+    openDrawerBtn.addEventListener('click', () => {
+      drawerEl.classList.remove('hidden');
+      if (drawerBody) drawerBody.classList.remove('hidden');
+      if (drawerSuccess) drawerSuccess.classList.add('hidden');
+      drawerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  if (closeDrawerBtn && drawerEl) {
+    closeDrawerBtn.addEventListener('click', () => {
+      drawerEl.classList.add('hidden');
+    });
+  }
+
+  if (submitAppBtn && drawerSuccess && drawerBody) {
+    submitAppBtn.addEventListener('click', () => {
+      drawerBody.classList.add('hidden');
+      drawerSuccess.classList.remove('hidden');
+    });
+  }
+
+  if (resetDrawerBtn && drawerSuccess && drawerBody) {
+    resetDrawerBtn.addEventListener('click', () => {
+      drawerSuccess.classList.add('hidden');
+      drawerBody.classList.remove('hidden');
+    });
+  }
+
+  // 4. Smooth In-Page Pill Navigation
+  const pills = document.querySelectorAll('.cs-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      const targetId = pill.getAttribute('href');
+      if (targetId && targetId.startsWith('#cs-')) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+}
+
 
 function renderMeditrackCaseStudy(project, container) {
   container.innerHTML = `
@@ -4146,14 +5817,14 @@ function renderMeditrackCaseStudy(project, container) {
 
     <!-- 01 — Overview & Product Showcase (Two-Column Layout) -->
     <div class="mb-20">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
-        <div class="lg:col-span-5 flex flex-col items-start justify-center">
+        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
             PRODUCT DESIGN · SAAS · MOBILE
           </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             MediTrack — Pharmacy Management Experience
           </h1>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
@@ -4209,34 +5880,34 @@ function renderMeditrackCaseStudy(project, container) {
         </div>
 
         <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
-        <div class="lg:col-span-7 flex justify-center items-center">
-          <div class="w-full max-w-sm sm:max-w-md relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl overflow-hidden flex flex-col items-center justify-center">
+        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
+          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
             
             <!-- Subtle Ambient Glow Backdrop -->
-            <div class="absolute w-[280px] h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
-            <div class="absolute w-[240px] h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
+            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
+            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
 
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone) -->
-            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner overflow-hidden">
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden so hardware buttons & soft chassis shadows are unclipped) -->
+            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
-              <!-- Phone Exterior Chassis with titanium rim & bezels (Sized to fit section height) -->
-              <div class="relative rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center shrink-0">
+              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
+              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
                 
                 <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-14 h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm">
+                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
                   <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
                   <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
                 </div>
 
-                <!-- Hardware buttons on phone edges -->
-                <div class="absolute -left-[2.5px] top-14 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -left-[2.5px] top-22 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -right-[2.5px] top-16 w-[2.5px] h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10"></div>
+                <!-- Hardware buttons on phone edges (placed relative to chassis, unclipped) -->
+                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
 
-                <!-- Inner Screen Area (Constrained height fitting section height, exact 1080/2340 aspect ratio) -->
+                <!-- Inner Screen Area (Responsive width 100%, height auto, exact 1080/2340 aspect ratio, max-height bound) -->
                 <div 
-                  class="relative rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer h-[380px] sm:h-[410px] md:h-[440px] lg:h-[450px] xl:h-[470px] w-auto max-w-full"
-                  style="aspect-ratio: 1080 / 2340;"
+                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
+                  style="aspect-ratio: 1080 / 2340; width: 100%; height: auto; max-height: 480px;"
                   onclick="toggleMeditrackMobilePlayback()"
                   title="Click to toggle mobile walkthrough playback"
                 >
@@ -4263,10 +5934,10 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[28px]"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
 
                   <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -4274,8 +5945,8 @@ function renderMeditrackCaseStudy(project, container) {
                     class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
                     aria-label="Play mobile walkthrough"
                   >
-                    <div class="w-12 h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
-                      <svg class="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
+                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -4285,22 +5956,22 @@ function renderMeditrackCaseStudy(project, container) {
               </div>
 
               <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center gap-2 text-[10px] font-mono text-[var(--text-sec)]">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span>375 × 812 · Mobile Assistant App</span>
+              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span class="truncate">375 × 812 · Mobile Assistant App</span>
                 </span>
               </div>
 
             </div>
 
-            <!-- Caption Footer -->
-            <div class="flex justify-between items-center w-full px-1 pt-2.5 text-[11px] text-[var(--text-sec)] font-mono">
-              <span class="inline-flex items-center gap-1.5">
+            <!-- Caption Footer (Responsive wrap/stack on mobile, side-by-side on tablet/desktop) -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>LIVE MOBILE WALKTHROUGH</span>
+                <span class="tracking-wider">LIVE MOBILE WALKTHROUGH</span>
               </span>
-              <span class="text-[var(--text-sec)]">Pharmacy Mobile Walkthrough</span>
+              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
             </div>
           </div>
         </div>
@@ -4310,14 +5981,14 @@ function renderMeditrackCaseStudy(project, container) {
 
     <!-- 01.B — Inventory Management & Billing Workflow -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
-        <div class="lg:col-span-5 flex flex-col items-start justify-center">
+        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
             INVENTORY MANAGEMENT · BILLING WORKFLOW
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             From Stock to Sale, Seamlessly.
           </h2>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
@@ -4373,34 +6044,34 @@ function renderMeditrackCaseStudy(project, container) {
         </div>
 
         <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
-        <div class="lg:col-span-7 flex justify-center items-center">
-          <div class="w-full max-w-sm sm:max-w-md relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl overflow-hidden flex flex-col items-center justify-center">
+        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
+          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
             
             <!-- Subtle Ambient Glow Backdrop -->
-            <div class="absolute w-[280px] h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
-            <div class="absolute w-[240px] h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
+            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
+            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
 
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone) -->
-            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner overflow-hidden">
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
+            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
-              <!-- Phone Exterior Chassis with titanium rim & bezels -->
-              <div class="relative rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center shrink-0">
+              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
+              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
                 
                 <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-14 h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm">
+                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
                   <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
                   <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
                 </div>
 
-                <!-- Hardware buttons on phone edges -->
-                <div class="absolute -left-[2.5px] top-14 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -left-[2.5px] top-22 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -right-[2.5px] top-16 w-[2.5px] h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10"></div>
+                <!-- Hardware buttons on phone edges (unclipped) -->
+                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
 
-                <!-- Inner Screen Area (Constrained height fitting section height, exact 1080/2340 aspect ratio) -->
+                <!-- Inner Screen Area (Exact 392 / 850 native aspect ratio for inventory video) -->
                 <div 
-                  class="relative rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer h-[380px] sm:h-[410px] md:h-[440px] lg:h-[450px] xl:h-[470px] w-auto max-w-full"
-                  style="aspect-ratio: 1080 / 2340;"
+                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
+                  style="aspect-ratio: 392 / 850; width: 100%; height: auto; max-height: 480px;"
                   onclick="toggleMeditrackInventoryPlayback()"
                   title="Click to toggle inventory walkthrough playback"
                 >
@@ -4428,10 +6099,10 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[28px]"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
 
                   <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -4439,8 +6110,8 @@ function renderMeditrackCaseStudy(project, container) {
                     class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
                     aria-label="Play inventory walkthrough"
                   >
-                    <div class="w-12 h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
-                      <svg class="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
+                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -4450,22 +6121,22 @@ function renderMeditrackCaseStudy(project, container) {
               </div>
 
               <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center gap-2 text-[10px] font-mono text-[var(--text-sec)]">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span>375 × 812 · Mobile Stock &amp; Billing</span>
+              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span class="truncate">392 × 850 · Mobile Stock &amp; Billing</span>
                 </span>
               </div>
 
             </div>
 
             <!-- Caption Footer -->
-            <div class="flex justify-between items-center w-full px-1 pt-2.5 text-[11px] text-[var(--text-sec)] font-mono">
-              <span class="inline-flex items-center gap-1.5">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>INVENTORY &amp; BILLING WALKTHROUGH</span>
+                <span class="tracking-wider">INVENTORY &amp; BILLING WALKTHROUGH</span>
               </span>
-              <span class="text-[var(--text-sec)]">Pharmacy Mobile Walkthrough</span>
+              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
             </div>
           </div>
         </div>
@@ -4475,14 +6146,14 @@ function renderMeditrackCaseStudy(project, container) {
 
     <!-- 01.C — Billing & Checkout Workflow -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
-        <div class="lg:col-span-5 flex flex-col items-start justify-center">
+        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
             POINT OF SALE · BILLING WORKFLOW
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             From Medicine Search to Secure Checkout.
           </h2>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
@@ -4570,34 +6241,34 @@ function renderMeditrackCaseStudy(project, container) {
         </div>
 
         <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
-        <div class="lg:col-span-7 flex justify-center items-center">
-          <div class="w-full max-w-sm sm:max-w-md relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl overflow-hidden flex flex-col items-center justify-center">
+        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
+          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
             
             <!-- Subtle Ambient Glow Backdrop -->
-            <div class="absolute w-[280px] h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
-            <div class="absolute w-[240px] h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
+            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
+            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
 
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone) -->
-            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner overflow-hidden">
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
+            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
-              <!-- Phone Exterior Chassis with titanium rim & bezels -->
-              <div class="relative rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center shrink-0">
+              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
+              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
                 
                 <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-14 h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm">
+                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
                   <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
                   <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
                 </div>
 
-                <!-- Hardware buttons on phone edges -->
-                <div class="absolute -left-[2.5px] top-14 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -left-[2.5px] top-22 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -right-[2.5px] top-16 w-[2.5px] h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10"></div>
+                <!-- Hardware buttons on phone edges (unclipped) -->
+                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
 
-                <!-- Inner Screen Area (Constrained height fitting section height, exact 1080/2340 aspect ratio) -->
+                <!-- Inner Screen Area (Exact 1080 / 2340 aspect ratio) -->
                 <div 
-                  class="relative rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer h-[380px] sm:h-[410px] md:h-[440px] lg:h-[450px] xl:h-[470px] w-auto max-w-full"
-                  style="aspect-ratio: 1080 / 2340;"
+                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
+                  style="aspect-ratio: 1080 / 2340; width: 100%; height: auto; max-height: 480px;"
                   onclick="toggleMeditrackBillingPlayback()"
                   title="Click to toggle billing walkthrough playback"
                 >
@@ -4611,6 +6282,7 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
+                    poster="assets/meditrack-billing-workflow-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
                     style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Billing and Checkout Walkthrough"
@@ -4624,10 +6296,10 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[28px]"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
 
                   <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -4635,8 +6307,8 @@ function renderMeditrackCaseStudy(project, container) {
                     class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
                     aria-label="Play billing walkthrough"
                   >
-                    <div class="w-12 h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
-                      <svg class="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
+                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -4646,22 +6318,22 @@ function renderMeditrackCaseStudy(project, container) {
               </div>
 
               <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center gap-2 text-[10px] font-mono text-[var(--text-sec)]">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span>375 × 812 · Mobile Billing &amp; Checkout</span>
+              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span class="truncate">375 × 812 · Mobile Billing &amp; Checkout</span>
                 </span>
               </div>
 
             </div>
 
             <!-- Caption Footer -->
-            <div class="flex justify-between items-center w-full px-1 pt-2.5 text-[11px] text-[var(--text-sec)] font-mono">
-              <span class="inline-flex items-center gap-1.5">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>BILLING &amp; CHECKOUT WALKTHROUGH</span>
+                <span class="tracking-wider">BILLING &amp; CHECKOUT WALKTHROUGH</span>
               </span>
-              <span class="text-[var(--text-sec)]">Pharmacy Mobile Walkthrough</span>
+              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
             </div>
           </div>
         </div>
@@ -4671,14 +6343,14 @@ function renderMeditrackCaseStudy(project, container) {
 
     <!-- 01.D — Smart Store Mapping & Medicine Locator -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
-        <div class="lg:col-span-5 flex flex-col items-start justify-center">
+        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
             STORE MAPPING · MEDICINE DISCOVERY
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             From Store Layout to the Right Rack.
           </h2>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
@@ -4764,34 +6436,34 @@ function renderMeditrackCaseStudy(project, container) {
         </div>
 
         <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
-        <div class="lg:col-span-7 flex justify-center items-center">
-          <div class="w-full max-w-sm sm:max-w-md relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl overflow-hidden flex flex-col items-center justify-center">
+        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
+          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
             
             <!-- Subtle Ambient Glow Backdrop -->
-            <div class="absolute w-[280px] h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
-            <div class="absolute w-[240px] h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
+            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
+            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
 
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone) -->
-            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner overflow-hidden">
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
+            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
-              <!-- Phone Exterior Chassis with titanium rim & bezels -->
-              <div class="relative rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center shrink-0">
+              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
+              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
                 
                 <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-14 h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm">
+                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
                   <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
                   <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
                 </div>
 
-                <!-- Hardware buttons on phone edges -->
-                <div class="absolute -left-[2.5px] top-14 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -left-[2.5px] top-22 w-[2.5px] h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10"></div>
-                <div class="absolute -right-[2.5px] top-16 w-[2.5px] h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10"></div>
+                <!-- Hardware buttons on phone edges (unclipped) -->
+                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
 
-                <!-- Inner Screen Area (Constrained height fitting section height, exact 1080/2340 aspect ratio) -->
+                <!-- Inner Screen Area (Exact 392 / 850 aspect ratio for store mapping video) -->
                 <div 
-                  class="relative rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer h-[380px] sm:h-[410px] md:h-[440px] lg:h-[450px] xl:h-[470px] w-auto max-w-full"
-                  style="aspect-ratio: 1080 / 2340;"
+                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
+                  style="aspect-ratio: 392 / 850; width: 100%; height: auto; max-height: 480px;"
                   onclick="toggleMeditrackStoreMappingPlayback()"
                   title="Click to toggle store mapping walkthrough playback"
                 >
@@ -4805,6 +6477,7 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
+                    poster="assets/meditrack-store-mapping-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
                     style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
                     aria-label="MediTrack Smart Store Mapping Walkthrough"
@@ -4818,10 +6491,10 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[28px]"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
 
                   <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -4829,8 +6502,8 @@ function renderMeditrackCaseStudy(project, container) {
                     class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
                     aria-label="Play store mapping walkthrough"
                   >
-                    <div class="w-12 h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
-                      <svg class="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
+                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -4840,22 +6513,22 @@ function renderMeditrackCaseStudy(project, container) {
               </div>
 
               <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center gap-2 text-[10px] font-mono text-[var(--text-sec)]">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span>375 × 812 · Store Layout &amp; Rack Locator</span>
+              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span class="truncate">392 × 850 · Store Layout &amp; Rack Locator</span>
                 </span>
               </div>
 
             </div>
 
             <!-- Caption Footer -->
-            <div class="flex justify-between items-center w-full px-1 pt-2.5 text-[11px] text-[var(--text-sec)] font-mono">
-              <span class="inline-flex items-center gap-1.5">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>SMART STORE MAPPING WALKTHROUGH</span>
+                <span class="tracking-wider">SMART STORE MAPPING WALKTHROUGH</span>
               </span>
-              <span class="text-[var(--text-sec)]">Pharmacy Mobile Walkthrough</span>
+              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
             </div>
           </div>
         </div>
@@ -5042,7 +6715,7 @@ function renderDSCRMCaseStudy(project, container) {
 
     <!-- Case Study Header Area -->
     <div class="mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider mb-4">
+      <div class="inline-flex items-center gap-2 text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider mb-4">
         <span>PROJECT 004</span>
         <span>•</span>
         <span>CASE STUDY</span>

@@ -3731,10 +3731,9 @@ function renderDSJobbyCaseStudy(project, container) {
         <a href="#cs-ia" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">08 IA</a>
         <a href="#cs-flows" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">09 Flows</a>
         <a href="#cs-decisions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">10 Decisions</a>
-        <a href="#cs-interactions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">11 Prototype</a>
-        <a href="#cs-accessibility" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">12 A11y</a>
-        <a href="#cs-validation" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">13 Validation</a>
-        <a href="#cs-reflection" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">14 Reflection</a>
+        <a href="#cs-accessibility" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">11 A11y</a>
+        <a href="#cs-validation" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">12 Validation</a>
+        <a href="#cs-reflection" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">13 Reflection</a>
       </div>
     </nav>
 
@@ -4214,115 +4213,6 @@ function renderDSJobbyCaseStudy(project, container) {
             <span class="text-[var(--text-sec)]">WCAG contrast, keyboard pathways, and mobile ergonomics.</span>
           </div>
         </div>
-      </div>
-
-      <!-- Interactive Competitor Review Matrix -->
-      <div class="p-5 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md mb-8">
-        
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-[var(--border)]">
-          <div>
-            <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider">RETROSPECTIVE DESK REVIEW MATRIX</div>
-            <div class="text-sm font-bold text-[var(--text-main)]">Competitive Experience Evaluation Framework</div>
-          </div>
-          <!-- Filter Buttons -->
-          <div class="flex flex-wrap gap-1.5" id="matrixFilterGroup" role="tablist" aria-label="Review Matrix Categories">
-            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[var(--accent)] text-[#170D13] transition-all" data-filter="all" role="tab" aria-selected="true">All (8)</button>
-            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="candidate" role="tab" aria-selected="false">Candidate Journey</button>
-            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="recruiter" role="tab" aria-selected="false">Recruiter Workflow</button>
-            <button class="matrix-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-sec)] hover:text-[var(--text-main)] transition-all" data-filter="trust" role="tab" aria-selected="false">Trust &amp; Feedback</button>
-          </div>
-        </div>
-
-        <!-- Table Container (Horizontal scroll on mobile) -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr class="border-b border-[var(--border)] text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider">
-                <th class="py-3 px-3">UX Area</th>
-                <th class="py-3 px-3">User Task</th>
-                <th class="py-3 px-3">Evidence Observed (Anonymous Benchmark)</th>
-                <th class="py-3 px-3">Friction or Strength</th>
-                <th class="py-3 px-3">DSJobby Opportunity</th>
-              </tr>
-            </thead>
-            <tbody id="matrixTableBody" class="divide-y divide-[var(--border)] text-[var(--text-body)]">
-              
-              <!-- Row 1: Candidate -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">01. Discovery &amp; Salary</td>
-                <td class="py-3.5 px-3">Filter roles by compensation &amp; seniority</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: 68% listings lack compensation; Platform B: Paywalled salary ranges.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">High Friction</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Standardized pay transparency cards on all active listings.</td>
-              </tr>
-
-              <!-- Row 2: Candidate -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">02. Application Flow</td>
-                <td class="py-3.5 px-3">Submit resume &amp; portfolio link</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: External 3-page redirects; Platform C: Quick apply without confirmation.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">High Drop-off</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Contextual right-hand slide-over drawer preserving search state.</td>
-              </tr>
-
-              <!-- Row 3: Candidate & Trust -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate trust">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">03. Status Clarity</td>
-                <td class="py-3.5 px-3">Track application progress post-submission</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A &amp; B: Binary "Applied" state indefinitely; no timeline or contact point.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono text-[10px]">Anxiety Trigger</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Milestone timeline with explicit review stages &amp; response window.</td>
-              </tr>
-
-              <!-- Row 4: Recruiter -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="recruiter">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">04. Candidate Triage</td>
-                <td class="py-3.5 px-3">Quickly evaluate applicant qualifications</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Unstructured resume PDFs; Platform B: Deep profiles requiring 4 clicks.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Slow Triage</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">High-density candidate cards with parsed skills &amp; verified notice periods.</td>
-              </tr>
-
-              <!-- Row 5: Recruiter & Candidate -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="recruiter candidate">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">05. Direct Contact</td>
-                <td class="py-3.5 px-3">Direct message between parties</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Third-party email only; Platform B: Paid InMail paywall.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Barrier to Talk</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">In-app direct communication thread once application is opened.</td>
-              </tr>
-
-              <!-- Row 6: Trust -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="trust">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">06. Interview Feedback</td>
-                <td class="py-3.5 px-3">Receive constructive outcome feedback</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Across platforms: Generic automated rejections; 0% structured feedback.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Zero Guidance</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Structured feedback card format (strengths &amp; development areas).</td>
-              </tr>
-
-              <!-- Row 7: Trust -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="trust">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">07. AI Job Matching</td>
-                <td class="py-3.5 px-3">Receive automated role recommendations</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform C: Unexplained % matches without context; opaque filtering.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono text-[10px]">Lack of Trust</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Explainable match reasoning breakdown (skills, seniority, domain).</td>
-              </tr>
-
-              <!-- Row 8: Candidate & Recruiter -->
-              <tr class="matrix-row hover:bg-[var(--sec-bg)]/50 transition-colors" data-category="candidate recruiter">
-                <td class="py-3.5 px-3 font-semibold text-[var(--text-main)]">08. Mobile Ergonomics</td>
-                <td class="py-3.5 px-3">Manage pipeline and apply via mobile</td>
-                <td class="py-3.5 px-3 font-mono text-[11px] text-[var(--text-sec)]">Platform A: Desktop tables squeezed on mobile; touch target clipping.</td>
-                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono text-[10px]">Poor Mobile UX</span></td>
-                <td class="py-3.5 px-3 text-[var(--accent)] font-medium">Mobile-first native bottom drawers and responsive stacked cards.</td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-
       </div>
     </section>
 
@@ -5293,117 +5183,14 @@ function renderDSJobbyCaseStudy(project, container) {
 
     
 
-<!-- ============================================================
-         SECTION 11 — INTERACTION AND RESPONSIVE BEHAVIOUR
-    ============================================================ -->
-    <section id="cs-interactions" class="mb-20 scroll-mt-32" aria-labelledby="interactions-title">
-      <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">11 — INTERACTIVE PROTOTYPE &amp; BEHAVIOURS</span>
-        <h2 id="interactions-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
-          Designed for real tasks, not just static screens.
-        </h2>
-        <p class="text-base text-[var(--text-body)] leading-relaxed font-light">
-          The case study page includes functional interactive controls. Test the application drawer simulator below to experience the contextual slide-over pattern designed to eliminate search friction.
-        </p>
-      </div>
 
-      <!-- Interactive Application Drawer Simulator Sandbox -->
-      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg relative overflow-hidden">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 mb-6 border-b border-[var(--border)]">
-          <div>
-            <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider block">INTERACTIVE SIMULATION</span>
-            <h3 class="text-lg font-serif font-bold text-[var(--text-main)]">Contextual Application Drawer Sandbox</h3>
-          </div>
-          <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-[var(--sec-bg)] text-[var(--text-sec)]">TRY THE INTERACTION</span>
-        </div>
-
-        <!-- Simulated Search Interface -->
-        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg)] mb-6">
-          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[var(--border)]">
-            <div class="flex items-center gap-2 text-xs font-mono text-[var(--text-sec)]">
-              <span>ACTIVE FILTERS:</span>
-              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">UI/UX Designer</span>
-              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">₹15L+</span>
-              <span class="px-2 py-0.5 rounded bg-[var(--sec-bg)] text-[var(--text-main)]">Hybrid</span>
-            </div>
-            <span class="text-xs text-emerald-400 font-mono">14 Matching Roles</span>
-          </div>
-
-          <!-- Job Card Item -->
-          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
-            <div>
-              <div class="text-base font-serif font-bold text-[var(--text-main)]">Lead Design Systems Architect</div>
-              <div class="text-xs text-[var(--text-sec)]">Dyashin Technosoft · Permanent Role · Bengaluru</div>
-              <div class="mt-2 text-xs font-mono text-[var(--accent)] font-semibold">₹20 - ₹26 LPA · Verified Employer</div>
-            </div>
-            <button id="simOpenDrawerBtn" class="px-5 py-2.5 rounded-xl bg-[var(--accent)] text-[#170D13] font-bold text-xs hover:opacity-90 active:scale-95 transition-all shadow-md shrink-0">
-              Apply via Drawer →
-            </button>
-          </div>
-        </div>
-
-        <!-- Simulated Contextual Drawer (Initially Hidden or Slide-Over) -->
-        <div id="simDrawer" class="hidden rounded-xl border-2 border-[var(--accent)] bg-[var(--card)] p-6 shadow-2xl animate-in fade-in slide-in-from-right-8 duration-200">
-          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-              <span class="text-xs font-mono font-bold text-[var(--text-main)] uppercase tracking-wider">APPLY: LEAD DESIGN SYSTEMS ARCHITECT</span>
-            </div>
-            <button id="simCloseDrawerBtn" class="text-xs font-mono text-[var(--text-sec)] hover:text-[var(--text-main)] p-1" aria-label="Close drawer">
-              ✕ Close
-            </button>
-          </div>
-
-          <div id="simDrawerBody" class="space-y-4">
-            <p class="text-xs text-[var(--text-sec)]">
-              Your background search state, filters, and scroll position remain completely preserved while you submit this application.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div>
-                <label class="font-mono text-[10px] text-[var(--text-sec)] block mb-1">CANDIDATE NAME</label>
-                <input type="text" value="Ananya Sharma" readonly class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--text-main)]" />
-              </div>
-              <div>
-                <label class="font-mono text-[10px] text-[var(--text-sec)] block mb-1">ATTACHED RESUME</label>
-                <div class="px-3 py-2 rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-mono text-[11px] flex justify-between">
-                  <span>Ananya_Resume_2026.pdf</span>
-                  <span>✓</span>
-                </div>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[var(--border)] flex items-center justify-between">
-              <span class="text-[11px] font-mono text-[var(--text-sec)]">Recruiter: Anjali Rao (24h review)</span>
-              <button id="simSubmitAppBtn" class="px-5 py-2 rounded-xl bg-emerald-500 text-black font-bold text-xs hover:opacity-90 shadow-md">
-                Confirm &amp; Submit Application
-              </button>
-            </div>
-          </div>
-
-          <!-- Drawer Confirmation View -->
-          <div id="simDrawerSuccess" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-center space-y-2">
-            <div class="w-8 h-8 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center mx-auto text-sm">✓</div>
-            <div class="text-sm font-serif font-bold text-emerald-400">Application Submitted Directly!</div>
-            <p class="text-xs text-[var(--text-body)]">
-              Delivered directly to Recruiter Anjali Rao. A confirmation milestone has been added to your tracker.
-            </p>
-            <button id="simResetDrawerBtn" class="text-xs font-mono text-[var(--accent)] hover:underline mt-2">
-              Reset Simulator
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-6 text-center text-xs text-[var(--text-sec)] font-mono">
-          Interactive simulation demonstrates zero context-loss: candidates submit without being torn away from their search workflow.
-        </div>
-      </div>
-    </section>
 
     <!-- ============================================================
-         SECTION 12 — ACCESSIBILITY AND EDGE CASES
+         SECTION 11 — ACCESSIBILITY AND EDGE CASES
     ============================================================ -->
     <section id="cs-accessibility" class="mb-20 scroll-mt-32" aria-labelledby="a11y-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">12 — ACCESSIBILITY &amp; EDGE CASES</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">11 — ACCESSIBILITY &amp; EDGE CASES</span>
         <h2 id="a11y-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
           Rigorous accessibility and inclusive edge case handling.
         </h2>
@@ -5467,11 +5254,11 @@ function renderDSJobbyCaseStudy(project, container) {
     </section>
 
     <!-- ============================================================
-         SECTION 13 — VALIDATION PLAN
+         SECTION 12 — VALIDATION PLAN
     ============================================================ -->
     <section id="cs-validation" class="mb-20 scroll-mt-32" aria-labelledby="validation-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">13 — EVALUATION METHODOLOGY</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">12 — EVALUATION METHODOLOGY</span>
         <h2 id="validation-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
           How I would evaluate the experience.
         </h2>
@@ -5541,11 +5328,11 @@ function renderDSJobbyCaseStudy(project, container) {
     </section>
 
     <!-- ============================================================
-         SECTION 14 — REFLECTION AND CLOSING
+         SECTION 13 — REFLECTION AND CLOSING
     ============================================================ -->
     <section id="cs-reflection" class="mb-16 scroll-mt-32" aria-labelledby="reflection-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">14 — CONCLUSION &amp; REFLECTION</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">13 — CONCLUSION &amp; REFLECTION</span>
         <h2 id="reflection-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
           A better recruitment experience is about what happens next.
         </h2>
@@ -5602,78 +5389,11 @@ function renderDSJobbyCaseStudy(project, container) {
 
 /**
  * Initializes all interactive controls inside the DSJobby case study:
- * - Review matrix category filter tabs
- * - Final UI showcase tabs
- * - Interactive application drawer simulator
  * - Smooth scroll for in-page jump pills
  * - Mobile walkthrough video auto-pause/play observer
  */
 function initDSJobbyInteractions() {
-  // 1. Review Matrix Filter Tabs (Section 4)
-  const filterBtns = document.querySelectorAll('.matrix-filter-btn');
-  const matrixRows = document.querySelectorAll('.matrix-row');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-[var(--accent)]', 'text-[#170D13]', 'font-semibold');
-        b.classList.add('border', 'border-[var(--border)]', 'text-[var(--text-sec)]');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('bg-[var(--accent)]', 'text-[#170D13]', 'font-semibold');
-      btn.classList.remove('border', 'border-[var(--border)]', 'text-[var(--text-sec)]');
-      btn.setAttribute('aria-selected', 'true');
-
-      const filter = btn.getAttribute('data-filter');
-      matrixRows.forEach(row => {
-        if (filter === 'all') {
-          row.style.display = '';
-        } else {
-          const cats = (row.getAttribute('data-category') || '').split(' ');
-          row.style.display = cats.includes(filter) ? '' : 'none';
-        }
-      });
-    });
-  });
-
-  // 2. Interactive Application Drawer Simulator (Section 14)
-  const openDrawerBtn = document.getElementById('simOpenDrawerBtn');
-  const closeDrawerBtn = document.getElementById('simCloseDrawerBtn');
-  const drawerEl = document.getElementById('simDrawer');
-  const submitAppBtn = document.getElementById('simSubmitAppBtn');
-  const resetDrawerBtn = document.getElementById('simResetDrawerBtn');
-  const drawerBody = document.getElementById('simDrawerBody');
-  const drawerSuccess = document.getElementById('simDrawerSuccess');
-
-  if (openDrawerBtn && drawerEl) {
-    openDrawerBtn.addEventListener('click', () => {
-      drawerEl.classList.remove('hidden');
-      if (drawerBody) drawerBody.classList.remove('hidden');
-      if (drawerSuccess) drawerSuccess.classList.add('hidden');
-      drawerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  }
-
-  if (closeDrawerBtn && drawerEl) {
-    closeDrawerBtn.addEventListener('click', () => {
-      drawerEl.classList.add('hidden');
-    });
-  }
-
-  if (submitAppBtn && drawerSuccess && drawerBody) {
-    submitAppBtn.addEventListener('click', () => {
-      drawerBody.classList.add('hidden');
-      drawerSuccess.classList.remove('hidden');
-    });
-  }
-
-  if (resetDrawerBtn && drawerSuccess && drawerBody) {
-    resetDrawerBtn.addEventListener('click', () => {
-      drawerSuccess.classList.add('hidden');
-      drawerBody.classList.remove('hidden');
-    });
-  }
-
-  // 4. Smooth In-Page Pill Navigation
+  // 1. Smooth In-Page Pill Navigation
   const pills = document.querySelectorAll('.cs-pill');
   pills.forEach(pill => {
     pill.addEventListener('click', (e) => {

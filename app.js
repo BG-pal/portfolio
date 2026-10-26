@@ -1,4 +1,4 @@
-﻿// Pallavi B G — Portfolio Logic & Interactions
+// Pallavi B G — Portfolio Logic & Interactions
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNavigation();
@@ -2875,7 +2875,14 @@ function initCaseStudyRouter() {
         renderCaseStudy(caseStudies[projectId]);
         homeView.classList.add('hidden');
         caseStudyView.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const urlParams = new URLSearchParams(window.location.search);
+        const sectionParam = urlParams.get('section');
+        if (sectionParam) {
+          const el = document.getElementById(sectionParam);
+          if (el) el.scrollIntoView();
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         return;
       }
     }
@@ -3724,11 +3731,10 @@ function renderDSJobbyCaseStudy(project, container) {
         <a href="#cs-ia" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">08 IA</a>
         <a href="#cs-flows" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">09 Flows</a>
         <a href="#cs-decisions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">10 Decisions</a>
-        <a href="#cs-wireframes" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">11 Wireframes</a>
-        <a href="#cs-interactions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">12 Prototype</a>
-        <a href="#cs-accessibility" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">13 A11y</a>
-        <a href="#cs-validation" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">14 Validation</a>
-        <a href="#cs-reflection" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">15 Reflection</a>
+        <a href="#cs-interactions" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">11 Prototype</a>
+        <a href="#cs-accessibility" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">12 A11y</a>
+        <a href="#cs-validation" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">13 Validation</a>
+        <a href="#cs-reflection" class="cs-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-sec)] hover:text-[var(--text-main)] hover:border-[var(--accent)] transition-all">14 Reflection</a>
       </div>
     </nav>
 
@@ -4317,14 +4323,6 @@ function renderDSJobbyCaseStudy(project, container) {
           </table>
         </div>
 
-      </div>
-
-      <!-- Research Integrity Note (Exact Prompt Text) -->
-      <div class="p-4 sm:p-5 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] text-xs text-[var(--text-sec)] flex items-start gap-3">
-        <svg class="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <div class="leading-relaxed">
-          <strong class="text-[var(--text-main)]">Research-integrity note:</strong> This review focuses on observable product behaviour and interface patterns. Public-facing pages cannot establish how every recruiter communicates privately or how consistently feedback is provided. Those questions require further evidence.
-        </div>
       </div>
     </section>
 
@@ -5021,64 +5019,6 @@ function renderDSJobbyCaseStudy(project, container) {
           </div>
         </div>
       </div>
-
-      <!-- UI State Illustrations: Empty, Loading, Success, Error -->
-      <div class="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-md">
-        <div class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-4 text-center">
-          SYSTEM INTERFACE STATES SPECIFICATION
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-          
-          <!-- Empty State -->
-          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-between text-center">
-            <div>
-              <div class="w-10 h-10 mx-auto rounded-full bg-[var(--sec-bg)] flex items-center justify-center text-[var(--text-sec)] mb-3">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
-              </div>
-              <span class="font-bold text-[var(--text-main)] block mb-1">Empty State</span>
-              <p class="text-[11px] text-[var(--text-sec)]">"No active applications yet. Discover matching roles with verified pay."</p>
-            </div>
-            <span class="mt-3 text-[10px] font-mono text-[var(--accent)]">INCLUDES CLEAR ACTION CTA</span>
-          </div>
-
-          <!-- Loading State -->
-          <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-between text-center">
-            <div>
-              <div class="w-10 h-10 mx-auto rounded-full bg-[var(--sec-bg)] flex items-center justify-center text-[var(--accent)] mb-3 animate-pulse">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              </div>
-              <span class="font-bold text-[var(--text-main)] block mb-1">Loading State</span>
-              <p class="text-[11px] text-[var(--text-sec)]">Content skeleton shimmer with preserved layout boundaries to eliminate CLS.</p>
-            </div>
-            <span class="mt-3 text-[10px] font-mono text-[var(--accent)]">ZERO LAYOUT SHIFT</span>
-          </div>
-
-          <!-- Success State -->
-          <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between text-center">
-            <div>
-              <div class="w-10 h-10 mx-auto rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-400 mb-3">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              </div>
-              <span class="font-bold text-[var(--text-main)] block mb-1">Success State</span>
-              <p class="text-[11px] text-[var(--text-sec)]">"Application delivered directly to Recruiter Anjali. Expected review: 24h."</p>
-            </div>
-            <span class="mt-3 text-[10px] font-mono text-emerald-400 font-bold">CONFIRMS HUMAN RECIPIENT</span>
-          </div>
-
-          <!-- Error / Warning State -->
-          <div class="p-4 rounded-xl border border-rose-500/30 bg-rose-500/5 flex flex-col justify-between text-center">
-            <div>
-              <div class="w-10 h-10 mx-auto rounded-full bg-rose-500/15 flex items-center justify-center text-rose-400 mb-3">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              </div>
-              <span class="font-bold text-[var(--text-main)] block mb-1">Validation Alert</span>
-              <p class="text-[11px] text-[var(--text-sec)]">"Resume must be PDF or DOCX under 5MB. Your filtered search remains saved."</p>
-            </div>
-            <span class="mt-3 text-[10px] font-mono text-rose-400 font-bold">CONTEXT RETAINED</span>
-          </div>
-
-        </div>
-      </div>
     </section>
 
 <!-- ============================================================
@@ -5351,66 +5291,14 @@ function renderDSJobbyCaseStudy(project, container) {
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 11 — WIREFRAMES AND ITERATION
-    ============================================================ -->
-    <section id="cs-wireframes" class="mb-20 scroll-mt-32" aria-labelledby="wireframes-title">
-      <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">11 — WIREFRAMES &amp; ITERATION</span>
-        <h2 id="wireframes-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
-          Exploring the structure before refining the interface.
-        </h2>
-        <p class="text-xs font-mono text-[var(--text-sec)]">
-          Architectural evaluation: comparing traditional redirects against contextual drawer ergonomics.
-        </p>
-      </div>
-
-      <!-- Before-and-After Comparison -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-        
-        <!-- Before: Multi-page redirect -->
-        <div class="p-6 rounded-2xl border border-rose-500/30 bg-[var(--card)] shadow-md">
-          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
-            <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">BEFORE · TRADITIONAL REDIRECT PATTERN</span>
-            <span class="text-[10px] font-mono text-rose-400">HIGH FRICTION</span>
-          </div>
-          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] mb-4 text-xs font-mono space-y-2 text-[var(--text-sec)]">
-            <div class="p-2 rounded bg-rose-500/10 text-rose-300">1. User clicks "Apply" on job search results page.</div>
-            <div class="p-2 rounded bg-rose-500/10 text-rose-300">2. Page redirects to separate 3-step application URL.</div>
-            <div class="p-2 rounded bg-rose-500/10 text-rose-300">3. Background search filters, keywords, and scroll position are LOST.</div>
-            <div class="p-2 rounded bg-rose-500/10 text-rose-300">4. Candidate must restart discovery if application is abandoned.</div>
-          </div>
-          <div class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Observed across benchmarked job portals: multi-step external redirects cause high candidate abandonment when users are merely exploring compensation and requirements.
-          </div>
-        </div>
-
-        <!-- After: Contextual Slide-Over Drawer -->
-        <div class="p-6 rounded-2xl border border-emerald-500/30 bg-[var(--card)] shadow-md">
-          <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
-            <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">AFTER · DSJOBBY CONTEXTUAL DRAWER</span>
-            <span class="text-[10px] font-mono text-emerald-400">ZERO CONTEXT LOSS</span>
-          </div>
-          <div class="p-4 rounded-xl bg-[var(--bg)] border border-[var(--border)] mb-4 text-xs font-mono space-y-2 text-[var(--text-sec)]">
-            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">1. User clicks "Apply via Drawer" on role card.</div>
-            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">2. Right-hand slide-over drawer opens smoothly in context.</div>
-            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">3. Background search filters and active scroll position remain 100% preserved.</div>
-            <div class="p-2 rounded bg-emerald-500/10 text-emerald-300">4. Candidate submits in under 60 seconds with instant confirmation.</div>
-          </div>
-          <div class="text-xs text-[var(--text-sec)] leading-relaxed">
-            Eliminates navigation friction, preserves user discovery momentum, and surfaces immediate confirmation with assigned recruiter contact information.
-          </div>
-        </div>
-
-      </div>
-    </section>
+    
 
 <!-- ============================================================
-         SECTION 12 — INTERACTION AND RESPONSIVE BEHAVIOUR
+         SECTION 11 — INTERACTION AND RESPONSIVE BEHAVIOUR
     ============================================================ -->
     <section id="cs-interactions" class="mb-20 scroll-mt-32" aria-labelledby="interactions-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">12 — INTERACTIVE PROTOTYPE &amp; BEHAVIOURS</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">11 — INTERACTIVE PROTOTYPE &amp; BEHAVIOURS</span>
         <h2 id="interactions-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
           Designed for real tasks, not just static screens.
         </h2>
@@ -5511,11 +5399,11 @@ function renderDSJobbyCaseStudy(project, container) {
     </section>
 
     <!-- ============================================================
-         SECTION 13 — ACCESSIBILITY AND EDGE CASES
+         SECTION 12 — ACCESSIBILITY AND EDGE CASES
     ============================================================ -->
     <section id="cs-accessibility" class="mb-20 scroll-mt-32" aria-labelledby="a11y-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">13 — ACCESSIBILITY &amp; EDGE CASES</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">12 — ACCESSIBILITY &amp; EDGE CASES</span>
         <h2 id="a11y-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
           Rigorous accessibility and inclusive edge case handling.
         </h2>
@@ -5579,11 +5467,11 @@ function renderDSJobbyCaseStudy(project, container) {
     </section>
 
     <!-- ============================================================
-         SECTION 14 — VALIDATION PLAN
+         SECTION 13 — VALIDATION PLAN
     ============================================================ -->
     <section id="cs-validation" class="mb-20 scroll-mt-32" aria-labelledby="validation-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">14 — EVALUATION METHODOLOGY</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">13 — EVALUATION METHODOLOGY</span>
         <h2 id="validation-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-3">
           How I would evaluate the experience.
         </h2>
@@ -5653,11 +5541,11 @@ function renderDSJobbyCaseStudy(project, container) {
     </section>
 
     <!-- ============================================================
-         SECTION 15 — REFLECTION AND CLOSING
+         SECTION 14 — REFLECTION AND CLOSING
     ============================================================ -->
     <section id="cs-reflection" class="mb-16 scroll-mt-32" aria-labelledby="reflection-title">
       <div class="max-w-3xl mb-8">
-        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">15 — CONCLUSION &amp; REFLECTION</span>
+        <span class="text-xs font-mono text-[var(--accent)] uppercase tracking-widest block mb-2">14 — CONCLUSION &amp; REFLECTION</span>
         <h2 id="reflection-title" class="text-2xl sm:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
           A better recruitment experience is about what happens next.
         </h2>

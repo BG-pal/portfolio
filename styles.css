@@ -2543,12 +2543,6 @@ body.theme-light .hero-left-col h1 svg {
   color: var(--deep-red) !important;
 }
 
-.hero-metric-number {
-  font-family: var(--font-sans) !important;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
 body.theme-light .hero-metric-number {
   color: var(--deep-red) !important;
 }

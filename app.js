@@ -5565,14 +5565,6 @@ function renderMeditrackCaseStudy(project, container) {
 
               </div>
 
-              <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="truncate">375 × 812 · Mobile Assistant App</span>
-                </span>
-              </div>
-
             </div>
 
             <!-- Caption Footer (Responsive wrap/stack on mobile, side-by-side on tablet/desktop) -->
@@ -5728,14 +5720,6 @@ function renderMeditrackCaseStudy(project, container) {
                   </div>
                 </div>
 
-              </div>
-
-              <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="truncate">392 × 850 · Mobile Stock &amp; Billing</span>
-                </span>
               </div>
 
             </div>
@@ -5927,14 +5911,6 @@ function renderMeditrackCaseStudy(project, container) {
 
               </div>
 
-              <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="truncate">375 × 812 · Mobile Billing &amp; Checkout</span>
-                </span>
-              </div>
-
             </div>
 
             <!-- Caption Footer -->
@@ -6120,14 +6096,6 @@ function renderMeditrackCaseStudy(project, container) {
                   </div>
                 </div>
 
-              </div>
-
-              <!-- Device Spec Label Tag -->
-              <div class="mt-2.5 flex items-center justify-center gap-2 text-[10px] font-mono text-[var(--text-sec)] w-full text-center">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 max-w-full truncate">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                  <span class="truncate">392 × 850 · Store Layout &amp; Rack Locator</span>
-                </span>
               </div>
 
             </div>

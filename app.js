@@ -5501,23 +5501,20 @@ function renderMeditrackCaseStudy(project, container) {
             <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
               <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
-              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
+              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
                 
-                <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
-                  <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
-                  <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
-                </div>
+                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
 
                 <!-- Hardware buttons on phone edges (placed relative to chassis, unclipped) -->
-                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
 
-                <!-- Inner Screen Area (Responsive width 100%, height auto, exact 1080/2340 aspect ratio, max-height bound) -->
+                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
                 <div 
-                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
-                  style="aspect-ratio: 1080 / 2340; width: 100%; height: auto; max-height: 480px;"
+                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
+                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
                   onclick="toggleMeditrackMobilePlayback()"
                   title="Click to toggle mobile walkthrough playback"
                 >
@@ -5533,7 +5530,7 @@ function renderMeditrackCaseStudy(project, container) {
                     preload="auto"
                     poster="assets/meditrack-mobile-walkthrough-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
-                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
                     aria-label="MediTrack Mobile Walkthrough"
                   >
                     <source src="assets/meditrack-mobile-walkthrough.mp4#t=0.001" type="video/mp4">
@@ -5544,10 +5541,7 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
-
-                  <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -5657,23 +5651,20 @@ function renderMeditrackCaseStudy(project, container) {
             <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
               <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
-              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
+              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
                 
-                <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
-                  <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
-                  <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
-                </div>
+                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
 
                 <!-- Hardware buttons on phone edges (unclipped) -->
-                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
 
-                <!-- Inner Screen Area (Exact 392 / 850 native aspect ratio for inventory video) -->
+                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
                 <div 
-                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
-                  style="aspect-ratio: 392 / 850; width: 100%; height: auto; max-height: 480px;"
+                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
+                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
                   onclick="toggleMeditrackInventoryPlayback()"
                   title="Click to toggle inventory walkthrough playback"
                 >
@@ -5689,7 +5680,7 @@ function renderMeditrackCaseStudy(project, container) {
                     preload="auto"
                     poster="assets/meditrack-inventory-walkthrough-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
-                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
                     aria-label="MediTrack Inventory and Billing Walkthrough"
                   >
                     <source src="assets/meditrack-inventory-walkthrough.mp4#t=0.001" type="video/mp4">
@@ -5701,10 +5692,7 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
-
-                  <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -5846,23 +5834,20 @@ function renderMeditrackCaseStudy(project, container) {
             <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
               <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
-              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
+              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
                 
-                <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
-                  <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
-                  <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
-                </div>
+                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
 
                 <!-- Hardware buttons on phone edges (unclipped) -->
-                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
 
-                <!-- Inner Screen Area (Exact 1080 / 2340 aspect ratio) -->
+                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
                 <div 
-                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
-                  style="aspect-ratio: 1080 / 2340; width: 100%; height: auto; max-height: 480px;"
+                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
+                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
                   onclick="toggleMeditrackBillingPlayback()"
                   title="Click to toggle billing walkthrough playback"
                 >
@@ -5876,9 +5861,8 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
-                    poster="assets/meditrack-billing-workflow-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
-                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
                     aria-label="MediTrack Billing and Checkout Walkthrough"
                   >
                     <source src="assets/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
@@ -5890,10 +5874,7 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
-
-                  <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 
@@ -6033,23 +6014,20 @@ function renderMeditrackCaseStudy(project, container) {
             <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
               <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
-              <div class="relative w-full max-w-[190px] min-[360px]:max-w-[205px] sm:max-w-[215px] md:max-w-[205px] lg:max-w-[225px] xl:max-w-[235px] rounded-[32px] sm:rounded-[36px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all">
+              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
                 
-                <!-- Top Speaker / Dynamic Island on Outer Bezel -->
-                <div class="w-12 sm:w-14 h-2 sm:h-2.5 bg-black rounded-full mx-auto mb-1.5 border border-white/10 flex items-center justify-center gap-1 shadow-sm shrink-0">
-                  <div class="w-1 h-1 rounded-full bg-[#1c2c44]/80"></div>
-                  <div class="w-0.5 h-0.5 rounded-full bg-white/20"></div>
-                </div>
+                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
 
                 <!-- Hardware buttons on phone edges (unclipped) -->
-                <div class="absolute -left-[2.5px] top-12 sm:top-14 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -left-[2.5px] top-19 sm:top-22 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none"></div>
-                <div class="absolute -right-[2.5px] top-14 sm:top-16 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none"></div>
+                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
 
-                <!-- Inner Screen Area (Exact 392 / 850 aspect ratio for store mapping video) -->
+                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
                 <div 
-                  class="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer"
-                  style="aspect-ratio: 392 / 850; width: 100%; height: auto; max-height: 480px;"
+                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
+                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
                   onclick="toggleMeditrackStoreMappingPlayback()"
                   title="Click to toggle store mapping walkthrough playback"
                 >
@@ -6063,9 +6041,8 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
-                    poster="assets/meditrack-store-mapping-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
-                    style="width: 100%; height: 100%; object-fit: contain; background-color: #000000;"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
                     aria-label="MediTrack Smart Store Mapping Walkthrough"
                   >
                     <source src="assets/meditrack-store-mapping.mp4#t=0.001" type="video/mp4">
@@ -6077,10 +6054,7 @@ function renderMeditrackCaseStudy(project, container) {
                   </video>
 
                   <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] z-10 rounded-[24px] sm:rounded-[28px]"></div>
-
-                  <!-- Bottom Home Bar Indicator inside screen -->
-                  <div class="pointer-events-none absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-0.5 bg-white/40 rounded-full z-10"></div>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
 
                   <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
                   <div 

@@ -600,53 +600,55 @@ const caseStudies = {
     number: '003',
     title: 'MediTrack — Pharmacy Management Experience',
     category: 'Product Design · SaaS · Mobile',
-    role: 'UI/UX Design',
-    platform: 'Desktop SaaS Dashboard · Mobile Application',
-    tools: 'Figma, Mobile Wireframing, Responsive Layout Systems',
+    role: 'UI/UX Designer — Mobile Experience',
+    platform: 'Mobile Application, supported by a separately designed Desktop SaaS Dashboard',
+    tools: 'Figma, Mobile Wireframing, Responsive Layout Systems, Physical Ergonomics',
     previewImg: 'assets/meditrack-preview.jpg',
-    description: 'A pharmacy-focused digital experience designed to bring medicine lookup, barcode scanning, prescription verification, inventory visibility, and task management into a connected workflow.',
-    designFocus: 'Creating a consistent experience across desktop and mobile, with clear information hierarchy, quick access to frequent tasks, and responsive layouts suited to pharmacy workflows.',
-    problem: 'Pharmacists operate in high-pressure, rapid-turnaround environments. Legacy POS software required extensive nested sub-menus to locate medications, check physical shelf rack numbers, verify prescription mandates, and calculate taxes. Speed of checkout and zero-error inventory dispatch were non-negotiable requirements.',
+    description: 'A pharmacy-focused digital experience designed to connect medicine discovery, barcode scanning, inventory management, physical store and rack mapping, prescription-related verification, billing, operational updates, and administrative insights into a unified workflow.',
+    designFocus: 'Creating an ergonomic mobile experience for on-the-floor pharmacy staff, connecting physical rack mapping with digital inventory, non-blocking billing sessions, and secure prescription gating.',
+    problem: 'Pharmacy staff operate under high counter pressure with frequent catalog updates, disconnected physical shelf locations, and strict regulatory dispensing rules. Smaller pharmacies often rely entirely on mobile devices rather than fixed desktop terminals, requiring an agile, zero-confusion handheld interface.',
     users: [
-      { role: 'Chief Pharmacist', need: 'Instant barcode/SKU medicine lookup, batch expiry alerts, and stock transfer management.' },
-      { role: 'Sales / Billing Desk', need: 'Ultra-fast POS keystroke navigation, prescription flag checks, and immediate invoice generation.' },
-      { role: 'Mobile Stock Incharge', need: 'Mobile companion app to scan incoming deliveries, locate rack coordinates, and perform stock audits.' }
+      { role: 'Pharmacist', need: 'Search medicines, locate racks, review chemical compositions, process counter billing, and authorize regulated medicine sales via OTP.' },
+      { role: 'Local In-charge', need: 'Admin-provisioned access to manage daily floor activities, inventory intake, shelf restocking, and initiate billing requiring pharmacist OTP.' },
+      { role: 'Admin', need: 'Desktop SaaS dashboard to manage user access, audit billing activities, view store-wise and doctor-wise revenue, and monitor pharmacy performance.' }
     ],
-    context: 'Desktop SaaS for the billing counter complemented by a mobile assistant app for warehouse shelf stock runners: SEARCH MEDICINE → PRODUCT → ADD TO BILL → PRESCRIPTION → PAYMENT.',
+    context: 'Mobile Application designed for on-the-floor pharmacists and store runners, supported by a separately designed Desktop SaaS Dashboard for administrative oversight.',
     challenges: [
-      { title: 'High-Velocity Keystroke Ergonomics', desc: 'Designing POS interactions that require minimal mouse movement and zero lag.' },
-      { title: 'Physical Rack Location Visibility', desc: 'Surfacing shelf coordinates (e.g., Rack B-04) alongside price and dosage info.' },
-      { title: 'Prescription Compliance Warning', desc: 'Ensuring schedule drugs cannot be dispensed without active prescription verification.' }
+      { title: 'Availability vs. Physical Location', desc: 'Connecting digital inventory counts directly to physical store racks so runners find items immediately.' },
+      { title: 'Counter Bottlenecks & Interrupted Payments', desc: 'Allowing staff to hold delayed billing sessions and serve waiting customers without losing progress.' },
+      { title: 'Conditional Prescription Compliance', desc: 'Enforcing patient verification and pharmacist OTP authorization dynamically on regulated drugs.' }
     ],
     iaNodes: [
-      { label: 'Meditrack Core', sub: 'POS & Store Operations' },
-      { label: 'Instant Search', sub: 'SKU, Brand, Generic Molecule' },
-      { label: 'Stock & Shelf Matrix', sub: 'Rack Locations, Expiry Batches' },
-      { label: 'Active Sale Cart', sub: 'Dosage, Line-Item Taxes' },
-      { label: 'Rx Verification Gate', sub: 'Doctor License & Patient Info' },
-      { label: 'Checkout & Receipt', sub: 'Cash, UPI, Split Payment' }
+      { label: 'Admin-Issued Auth', sub: "Role-based access & What's New" },
+      { label: 'Medicine Discovery', sub: 'Search, barcode scan & composition' },
+      { label: 'Physical Rack Matrix', sub: 'Visual floorplan & rack coordinates' },
+      { label: 'Multi-Session POS', sub: 'Hold/Resume active carts' },
+      { label: 'Rx Compliance Gate', sub: 'Customer details & Pharmacist OTP' },
+      { label: 'Multi-Mode Settlement', sub: 'Cash, UPI, split & pay-later' }
     ],
     userFlow: [
-      'Type Molecule / SKU',
-      'Select Matching Batch & Rack',
-      'Add Item to Cart',
-      'Toggle Rx Compliance Check',
-      'Complete Payment & Print'
+      "Login & What's New Briefing",
+      'Search Brand / Scan Barcode / Composition',
+      'Locate Physical Shelf / Rack Coordinate',
+      'Add Item to Cart / Hold Pending Sessions',
+      'Conditional Rx Patient & OTP Check',
+      'Complete Multi-Mode Settlement'
     ],
     designSystem: {
-      colors: ['#FFF7F1 / #170D13 (Theme Aware)', '#D98A7A (Primary)', '#4CAF50 (Verified Rx)', '#E57373 (Expiring)'],
-      components: ['Fast Auto-Suggest Bar', 'Shelf Location Badges', 'Split-Screen Cart Layout', 'Prescription Verification Toggle', 'Compact Mobile Bottom Bar']
+      colors: ['#FFF7F1 / #170D13 (Theme Aware)', '#D98A7A (Primary)', '#4CAF50 (Verified Rx / In-Stock)', '#E57373 (Expiring / Action Required)'],
+      components: ['Fast Auto-Suggest Bar', 'Visual Rack Locator Pills', 'Multi-Session Hold Tabs', 'Prescription OTP Gate', 'Compact Mobile Bottom Bar']
     },
     prototypeType: 'meditrack',
     solutions: [
-      { challenge: 'Counter bottlenecks during peak hours', solution: 'Created a unified single-screen POS combining auto-suggest search, rack indicator, and checkout cart in one viewport.' },
-      { challenge: 'Inventory misplaced in physical racks', solution: 'Promoted shelf coordinates (e.g. Rack B-04) as high-contrast primary metadata on every search card.' }
+      { challenge: 'Counter bottlenecks from stalled payments', solution: 'Designed multi-session billing allowing transactions to be held and resumed instantly while serving next customer.' },
+      { challenge: 'Medicines misplaced in physical store aisles', solution: 'Developed visual store mapping connecting uploaded floorplans to shelf coordinates displayed on every search card.' }
     ],
-    outcome: 'Streamlined the checkout journey into an intuitive 5-step flow with synchronized physical rack locations and clear prescription verification cues.',
-    learnings: 'Designing for physical workflows highlighted how digital interfaces directly impact physical human speed and operational safety in healthcare.',
+    outcome: 'Delivered an integrated mobile experience bridging inventory setup, physical rack discovery, multi-session billing, and regulatory Rx compliance.',
+    learnings: 'Designing for healthcare retail demonstrated that mobile interfaces must harmonize directly with physical human movement, crowded store environments, and clinical safety.',
     prev: 'ds-jobby',
     next: 'dscrm'
   },
+
 
   'dscrm': {
     id: 'dscrm',
@@ -5425,67 +5427,65 @@ function renderMeditrackCaseStudy(project, container) {
       </div>
     </div>
 
-    <!-- 01 — Overview & Product Showcase (Two-Column Layout) -->
+    <!-- 01 — Project Overview (Two-Column Layout) -->
     <div class="mb-20">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
         <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
-            PRODUCT DESIGN · SAAS · MOBILE
+            01 — PROJECT OVERVIEW · PHARMACY MANAGEMENT SYSTEM
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             MediTrack — Pharmacy Management Experience
           </h1>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
-            A pharmacy-focused digital experience designed to bring medicine lookup, barcode scanning, prescription verification, inventory visibility, and task management into a connected workflow.
+            A pharmacy-focused digital experience designed to connect medicine discovery, barcode scanning, inventory management, physical store and rack mapping, prescription-related verification, billing, operational updates, and administrative insights into a unified mobile-first ecosystem.
           </p>
 
           <!-- Metadata Cards: My Role & Platform -->
           <div class="grid grid-cols-2 gap-3 w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
             <div>
               <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">My role</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">UI/UX Design</span>
+              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">UI/UX Designer — Mobile Experience</span>
             </div>
             <div>
               <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">Platform</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">Desktop SaaS Dashboard · Mobile Application</span>
+              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">Mobile Application, supported by a separately designed Desktop SaaS Dashboard</span>
             </div>
           </div>
 
-          <!-- Key Experiences -->
+          <!-- Platform Distinction Scope Note -->
           <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs text-[var(--text-sec)] leading-relaxed">
+              <strong class="text-[var(--accent)] font-mono text-[10px] uppercase tracking-wider block mb-1">Platform Distinction &amp; Scope</strong>
+              My primary design responsibility was the <strong class="text-[var(--text-main)] font-medium">handheld Mobile Application</strong>, tailoring interactions for on-the-floor pharmacists and store runners. The supporting Desktop SaaS dashboard was separately designed for multi-store administrative and business oversight.
+            </div>
+          </div>
+
+          <!-- Key Connected Experiences -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-2">
             <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Key experiences
+              Key Connected Capabilities
             </div>
             <ul class="space-y-1.5 text-xs text-[var(--text-sec)]">
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Medicine lookup:</strong> Find medicines using search and barcode scanning.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Medicine Discovery:</strong> Search via SKU, brand, barcode scanning, and chemical composition.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Prescription verification:</strong> Support prescription checks and verification tasks.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Store &amp; Rack Mapping:</strong> Visual store floorplan references connecting physical racks to stock items.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Inventory management:</strong> View stock information and related medicine details.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Resilient Billing:</strong> Multi-session POS checkout with hold/resume and conditional Rx OTP verification.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Task management:</strong> Surface assigned tasks and their current status.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Shift Awareness:</strong> Admin-provisioned credentials and upfront release visibility via "What's New".</span>
               </li>
             </ul>
-          </div>
-
-          <!-- Design Focus -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-semibold">
-              Design focus
-            </div>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-              Creating a consistent experience across desktop and mobile, with clear information hierarchy, quick access to frequent tasks, and responsive layouts suited to pharmacy workflows.
-            </p>
           </div>
         </div>
 
@@ -5497,7 +5497,7 @@ function renderMeditrackCaseStudy(project, container) {
             <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
             <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
 
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden so hardware buttons & soft chassis shadows are unclipped) -->
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
             <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
               
               <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
@@ -5506,7 +5506,7 @@ function renderMeditrackCaseStudy(project, container) {
                 <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
                 <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
 
-                <!-- Hardware buttons on phone edges (placed relative to chassis, unclipped) -->
+                <!-- Hardware buttons on phone edges (unclipped) -->
                 <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
                 <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
                 <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
@@ -5561,7 +5561,7 @@ function renderMeditrackCaseStudy(project, container) {
 
             </div>
 
-            <!-- Caption Footer (Responsive wrap/stack on mobile, side-by-side on tablet/desktop) -->
+            <!-- Caption Footer -->
             <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
               <span class="inline-flex items-center gap-1.5 shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -5575,67 +5575,421 @@ function renderMeditrackCaseStudy(project, container) {
       </div>
     </div>
 
-    <!-- 01.B — Inventory Management & Billing Workflow -->
+    <!-- 02 — The Problem: Operational Realities of Pharmacy Operations -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">02 — THE PROBLEM · OPERATIONAL REALITIES</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Operational Realities of Pharmacy Operations
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        Retail pharmacies are high-pressure, fast-turnaround healthcare environments where clinical precision and retail speed must coexist. Through product requirements and operational analysis, 8 distinct design challenges were identified:
+      </p>
+
+      <!-- 8 Operational Challenge Cards (2-column responsive grid) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">01</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Limited Desktop Access in Smaller &amp; Rural Stores</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Smaller and rural pharmacies frequently lack dedicated billing laptops or stable fixed workstations. Staff must maintain medicine records, audit inventory, and process point-of-sale transactions primarily through handheld mobile devices.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">02</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Continuous Daily Operational Maintenance</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Pharmacy staff must record incoming shipments, track batch expiry dates, audit discrepancies, and process bills throughout long, intense shifts without suffering cognitive or administrative fatigue.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">03</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Repetitive Manual Catalog Entry</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Adding extensive pharmaceutical catalogs line by line creates severe operational friction, delays store onboarding, and increases the likelihood of clerical entry mistakes in medicine dosage or pricing.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">04</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Availability vs. Physical Rack Disconnect</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Knowing a medicine is technically in stock does not tell runners where to find it. Staff lose valuable minutes hunting through crowded shelves without clear physical rack guidance.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">05</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Varied Digital Literacy Across Pharmacy Staff</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Pharmacy assistants and temporary floor helpers possess varying levels of technical familiarity. The system requires an intuitive, self-explanatory design free from complex nested menus.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">06</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Lack of Upfront Visibility into Software Updates</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              In fast-evolving products, staff frequently miss newly deployed billing shortcuts, regulatory checks, or feature additions if updates are not surfaced visibly at the beginning of their shift.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">07</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Single-Track Billing Counter Bottlenecks</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              When a customer's digital payment stalls or they step away to clarify a prescription, an active counter becomes blocked, forcing all subsequent customers in line to wait unnecessarily.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-5 h-5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center text-[10px] font-mono font-bold">08</span>
+              <h3 class="text-sm sm:text-base font-semibold text-[var(--text-main)]">Multi-Tiered Roles &amp; Clinical Compliance</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+              Dispensing Schedule drugs legally mandates verified pharmacist oversight, while routine stock intake can be handled by store assistants, demanding structured role-based access control.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- 03 — Users and Their Needs: Three Operational Roles -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">03 — USERS &amp; STAKEHOLDERS</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Designing for Three Distinct Pharmacy Roles
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        Pharmacies operate through clear tiers of clinical responsibility, physical stock handling, and administrative management. The application distinguishes between three interdependent roles:
+      </p>
+
+      <!-- 3 User Role Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        
+        <!-- Role 1: Pharmacist -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider font-bold">Clinical Oversight</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--accent)]/10 text-[var(--accent)]">Licensed</span>
+            </div>
+            <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-3">Pharmacist</h3>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Search and identify medicines via brand, SKU, and chemical composition.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Check live inventory and batch expiry dates before dispensing.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Locate medicines in physical aisles using visual rack mapping.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Cross-reference generic molecule substitutes when requested brands are out of stock.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Process billing and authorize regulated Rx medicine sales via OTP verification.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Platform: Mobile POS &amp; Dispensing App
+          </div>
+        </div>
+
+        <!-- Role 2: Local In-charge -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider font-bold">Floor Operations</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-500">Store Runner</span>
+            </div>
+            <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-3">Local In-charge</h3>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Access the application using credentials provisioned directly by Admin.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Supervise daily floor routines and restock shelves when the pharmacist is off-counter.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Manage stock intake and map incoming shipments to mapped rack coordinates.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Initiate customer billing sessions and draft cart line-items.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Obtain pharmacist OTP authorization whenever restricted medicines are in cart.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Platform: Handheld Inventory &amp; Floor Assistant
+          </div>
+        </div>
+
+        <!-- Role 3: Admin -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider font-bold">Business Oversight</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/10 text-blue-500">Multi-Store</span>
+            </div>
+            <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-3">Admin</h3>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Manage pharmacy user accounts, permissions, and assigned credentials.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Monitor live billing activities and hold states across all store branches.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>View store-wise sales performance and consolidate daily financial settlements.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Review doctor-wise revenue information to identify prescribing trends.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">•</span>
+                <span>Track overall pharmacy business health and regulatory audit compliance.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Platform: Desktop SaaS Management Suite
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 04 — Designing the Mobile Experience: Mobile-First Architecture -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">04 — MOBILE ARCHITECTURE &amp; ERGONOMICS</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Designing the Mobile Experience
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        Designing for pharmacy counters required connecting digital information directly with physical store workflows. Floor staff constantly move between narrow medicine aisles, counter drawers, barcode scanners, and waiting customers.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">Ergonomics</div>
+          <h3 class="text-base font-semibold text-[var(--text-main)] mb-2">Single-Handed Thumb Usability</h3>
+          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+            High-frequency action targets—barcode scanning, search shortcuts, and cart review—are placed within the lower 40% thumb zone, allowing runners to hold medicine boxes with one hand while operating the app with the other.
+          </p>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">Clinical Safety</div>
+          <h3 class="text-base font-semibold text-[var(--text-main)] mb-2">Zero-Ambiguity Hierarchy</h3>
+          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+            Critical medical metadata—generic salt formulation, dosage strength, expiry warning badges, and physical rack tags—are visually emphasized with clear typography to prevent dispensing errors under dim aisle lighting.
+          </p>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">Workflow Speed</div>
+          <h3 class="text-base font-semibold text-[var(--text-main)] mb-2">Non-Blocking Task Switching</h3>
+          <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+            Active counter checkouts are decoupled into modular background sessions. Staff can place an interrupted bill on hold, look up an unrelated medicine in the racks, and resume the transaction without losing progress.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 05 — Login and What's New: Onboarding & Upfront Awareness -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">05 — ONBOARDING &amp; CHANGE VISIBILITY</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Login &amp; What's New
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        Authentication sets the foundation for security and daily awareness. To ensure clinical compliance, user accounts are centrally issued, and operational updates are communicated proactively.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+        
+        <!-- Workflow Narrative (col 7) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <h3 class="text-sm font-semibold text-[var(--text-main)] mb-2">Centralized Admin Provisioning</h3>
+            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+              Users do not register independently. The Admin creates user accounts and provisions email credentials and temporary passwords, binding each account to a specific store location and role privilege tier.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <h3 class="text-sm font-semibold text-[var(--text-main)] mb-2">Dynamic Role-Based Environment</h3>
+            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+              Upon login, the mobile interface dynamically adapts: a Pharmacist accesses OTP authorization controls and clinical override tools, while a Local In-charge sees floor-level stock intake and mapped rack directories.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <h3 class="text-sm font-semibold text-[var(--text-main)] mb-2">Upfront "What's New" Briefing</h3>
+            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+              Immediately after successful sign-in, staff encounter a dedicated What's New briefing card highlighting recently released features, revised regulatory mandates, or workflow shortcuts before entering daily tasks.
+            </p>
+          </div>
+        </div>
+
+        <!-- UX Rationale Matrix (col 5) -->
+        <div class="lg:col-span-5 p-5 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">
+              UX Decision Rationale
+            </div>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">Problem</span>
+                <p class="text-[var(--text-main)] font-medium">Users with varying levels of technical familiarity do not discover updated application features or changed operational workflows if buried in sub-menus.</p>
+              </div>
+              <div class="border-t border-[var(--border)] pt-2">
+                <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">UX Consideration</span>
+                <p class="text-[var(--text-sec)]">Critical system updates must be surfaced proactively at the start of the shift without requiring manual exploration.</p>
+              </div>
+              <div class="border-t border-[var(--border)] pt-2">
+                <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">Design Decision</span>
+                <p class="text-[var(--text-sec)]">Introduced an upfront, dismissible 'What's New' module immediately post-login displaying release highlights and workflow direct links.</p>
+              </div>
+              <div class="border-t border-[var(--border)] pt-2">
+                <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase block mb-0.5">Intended Benefit</span>
+                <p class="text-[var(--accent)] font-medium">Improves team-wide awareness of application changes and prevents counter delays caused by outdated routines.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[10px] font-mono text-[var(--text-sec)]">
+            Authentication Pattern · Role Gate &amp; Changelog Surface
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 06 — From Stock to Sale, Seamlessly: Inventory Management & Billing Workflow -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
         <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
-            INVENTORY MANAGEMENT · BILLING WORKFLOW
+            06 — INVENTORY MANAGEMENT · BILLING WORKFLOW
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             From Stock to Sale, Seamlessly.
           </h2>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
-            A connected pharmacy workflow that helps staff add medicines to inventory, manage stock details, find available medicines, and move selected medicines into the billing cart.
+            A connected pharmacy workflow that helps staff add medicines to inventory, manage stock details, find available medicines, and move selected products into the billing cart without friction.
           </p>
 
-          <!-- Metadata Cards: My Role & Platform -->
-          <div class="grid grid-cols-2 gap-3 w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">My role</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">UI/UX Design</span>
-            </div>
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">Platform</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">Desktop SaaS Dashboard · Mobile Application</span>
-            </div>
-          </div>
-
-          <!-- Key Experiences -->
+          <!-- Key Experiences Checklist -->
           <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
             <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Key experiences
+              Key Experiences &amp; Interactions
             </div>
             <ul class="space-y-1.5 text-xs text-[var(--text-sec)]">
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Add to inventory:</strong> Register medicines and maintain stock information.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Add to inventory:</strong> Register medicines manually or via bulk Excel upload.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Find medicines:</strong> Locate existing medicines using search or barcode scanning where supported.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Find medicines:</strong> Search via brand name, barcode scan, or chemical composition.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Add to bill:</strong> Select medicines and quantities for the current sale.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Add to bill:</strong> Select medicines, inspect batch numbers, and adjust quantities.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Review the cart:</strong> Check selected items and bill details before proceeding.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Review the cart:</strong> Verify selected items, prices, and tax lines before checkout.</span>
               </li>
             </ul>
           </div>
 
-          <!-- Design Focus -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-semibold">
-              Design focus
+          <!-- UX Decisions: Bulk Excel & Composition -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 space-y-4">
+            
+            <!-- Decision 1: Bulk Excel -->
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs">
+              <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-bold">
+                UX Decision · Bulk Excel Upload
+              </div>
+              <div class="space-y-1 text-[11px] text-[var(--text-sec)]">
+                <div><strong class="text-[var(--text-main)]">Problem:</strong> Adding a large medicine catalogue one medicine at a time can become repetitive.</div>
+                <div><strong class="text-[var(--text-main)]">Consideration:</strong> Users need an efficient way to register multiple medicines.</div>
+                <div><strong class="text-[var(--text-main)]">Decision:</strong> Provide Excel-based bulk upload alongside manual medicine entry.</div>
+                <div class="text-[var(--accent)]"><strong class="text-[var(--accent)]">Intended Benefit:</strong> Reduce repetitive individual entry and support faster inventory setup.</div>
+              </div>
             </div>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-              Connecting inventory and billing through clear information hierarchy, efficient interactions, visible feedback, and error-prevention patterns.
-            </p>
+
+            <!-- Decision 2: Similar Medicine Search -->
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs">
+              <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-bold">
+                UX Decision · Composition-Based Discovery
+              </div>
+              <div class="space-y-1 text-[11px] text-[var(--text-sec)]">
+                <div><strong class="text-[var(--text-main)]">Problem:</strong> When a prescribed brand is out of stock, pharmacists struggle to manually match generic chemical equivalents.</div>
+                <div><strong class="text-[var(--text-main)]">Consideration:</strong> Pharmacists need immediate chemical substitute discovery without losing the current transaction.</div>
+                <div><strong class="text-[var(--text-main)]">Decision:</strong> Integrated a real-time composition filter surfacing equivalent generic formulations with active stock and rack positions.</div>
+                <div class="text-[var(--accent)]"><strong class="text-[var(--accent)]">Intended Benefit:</strong> Prevents lost counter sales and ensures patients receive safe alternative therapies.</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -5726,279 +6080,70 @@ function renderMeditrackCaseStudy(project, container) {
       </div>
     </div>
 
-    <!-- 01.C — Billing & Checkout Workflow -->
+    <!-- 07 — From Store Layout to the Right Rack: Store Mapping & Medicine Discovery -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
         
         <!-- Left Column (45% ~ lg:col-span-5) -->
         <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
           <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
-            POINT OF SALE · BILLING WORKFLOW
-          </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
-            From Medicine Search to Secure Checkout.
-          </h2>
-          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
-            A structured pharmacy billing experience that guides pharmacists from medicine selection and cart review to discount application, customer verification, and payment.
-          </p>
-
-          <!-- Metadata Cards: My Role & Platform -->
-          <div class="grid grid-cols-2 gap-3 w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">My role</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">UI/UX Design</span>
-            </div>
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">Platform</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">Desktop SaaS Dashboard · Mobile Application</span>
-            </div>
-          </div>
-
-          <!-- Key Experiences -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Key experiences
-            </div>
-            <ul class="space-y-1.5 text-xs text-[var(--text-sec)]">
-              <li class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Medicine search:</strong> Find the required medicine and add it to the cart.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Bill summary:</strong> Review selected medicines, quantities, prices, subtotal, and applicable discounts before confirming the bill.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Customer details:</strong> Capture the required customer information when prescription (Rx) medicines are included.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Payment mode:</strong> Proceed to the payment-method selection after completing the required details.</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Design Focus -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-semibold">
-              Design focus
-            </div>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-              Creating a clear, step-by-step checkout journey with transparent pricing, contextual validation, prescription-related information requirements, and clear next actions at every stage.
-            </p>
-          </div>
-
-          <!-- UX Decisions & Checkout Progression -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Checkout Progression &amp; UX Decisions
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5 mb-3 text-[10px] font-mono text-[var(--text-sec)]">
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Search Medicine</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Add to Cart</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Review Bill &amp; Discounts</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--accent)]">Customer Details (Rx)</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Select Payment</span>
-            </div>
-            <ul class="space-y-1 text-[11px] text-[var(--text-sec)] leading-normal">
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Transparent price breakdown distinctly separates subtotal, discount deductions, and final payable amount.</span>
-              </li>
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Contextual validation requires customer details only when prescription (Rx) medicines are present in the cart.</span>
-              </li>
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Progressive disclosure reveals payment mode selection only after all prerequisite validation checks are fulfilled.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
-        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
-          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
-            
-            <!-- Subtle Ambient Glow Backdrop -->
-            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
-            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
-
-            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
-            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
-              
-              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
-              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
-                
-                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
-                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
-
-                <!-- Hardware buttons on phone edges (unclipped) -->
-                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
-                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
-                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
-
-                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
-                <div 
-                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
-                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
-                  onclick="toggleMeditrackBillingPlayback()"
-                  title="Click to toggle billing walkthrough playback"
-                >
-                  <!-- Billing Walkthrough Video -->
-                  <video
-                    id="csMeditrackBillingVideo"
-                    autoplay
-                    muted
-                    defaultMuted
-                    loop
-                    playsinline
-                    webkit-playsinline
-                    preload="auto"
-                    class="w-full h-full object-contain block select-none bg-black"
-                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
-                    aria-label="MediTrack Billing and Checkout Walkthrough"
-                  >
-                    <source src="assets/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
-                    <source src="public/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
-                    <source src="videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
-                    <source src="assets/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
-                    <source src="/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
-                    <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
-                  </video>
-
-                  <!-- Screen Gloss Reflection -->
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
-
-                  <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
-                  <div 
-                    id="csMeditrackBillingPlayOverlay" 
-                    class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
-                    aria-label="Play billing walkthrough"
-                  >
-                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
-                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-            <!-- Caption Footer -->
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
-              <span class="inline-flex items-center gap-1.5 shrink-0">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span class="tracking-wider">BILLING &amp; CHECKOUT WALKTHROUGH</span>
-              </span>
-              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 01.D — Smart Store Mapping & Medicine Locator -->
-    <div class="mb-20 border-t border-[var(--border)] pt-12">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
-        
-        <!-- Left Column (45% ~ lg:col-span-5) -->
-        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
-          <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
-            STORE MAPPING · MEDICINE DISCOVERY
+            07 — STORE MAPPING · MEDICINE DISCOVERY
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
             From Store Layout to the Right Rack.
           </h2>
           <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
-            A visual store-mapping experience that helps pharmacists locate medicines by connecting the pharmacy layout, rack locations, and product information in one accessible workflow.
+            A visual store-mapping experience that bridges the physical-digital divide, helping pharmacists locate medicines by connecting the physical store layout, rack positions, and product information in one seamless workflow.
           </p>
 
-          <!-- Metadata Cards: My Role & Platform -->
-          <div class="grid grid-cols-2 gap-3 w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">My role</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">UI/UX Design</span>
-            </div>
-            <div>
-              <span class="text-[10px] font-mono text-[var(--text-sec)] uppercase tracking-wider block mb-0.5">Platform</span>
-              <span class="text-[var(--text-main)] font-semibold text-xs sm:text-sm">Desktop SaaS Dashboard · Mobile Application</span>
-            </div>
+          <!-- Core Value Differentiator Note -->
+          <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] mb-5 text-xs text-[var(--text-sec)] leading-relaxed">
+            <strong class="text-[var(--accent)] font-mono text-[10px] uppercase tracking-wider block mb-1">Key MediTrack Differentiator</strong>
+            Store layout mapping transforms physical orientation into an actionable digital asset, eliminating shelf-hunting guesswork for floor runners and onboarding staff.
           </div>
 
-          <!-- Key Experiences -->
+          <!-- Key Experiences Checklist -->
           <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
             <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Key experiences
+              Mapping Workflow &amp; Capabilities
             </div>
             <ul class="space-y-1.5 text-xs text-[var(--text-sec)]">
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Store image upload:</strong> Add a store layout or image to establish a visual reference for the pharmacy.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Add store information:</strong> Configure pharmacy details and store profile.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Rack identification:</strong> Locate and identify racks within the store layout.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Store image upload:</strong> Upload a physical floorplan, store layout photo, or aisle diagram.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Product-to-rack mapping:</strong> Associate medicines with their corresponding rack locations.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Rack identification:</strong> Demarcate and tag physical racks (e.g., Rack A-01, Shelf 3, Cold Storage).</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
-                <span><strong class="text-[var(--text-main)] font-medium">Faster medicine discovery:</strong> Help pharmacists identify where a medicine is stored before retrieving it.</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Multi-product mapping:</strong> Associate multiple medicines with their corresponding physical racks.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Visual location references:</strong> Display high-contrast rack pills on search cards guiding staff straight to the shelf.</span>
               </li>
             </ul>
           </div>
 
-          <!-- Design Focus -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-5 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-semibold">
-              Design focus
+          <!-- UX Decision: Visual Store Mapping -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-2">
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs">
+              <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-bold">
+                UX Decision · Visual Store Mapping
+              </div>
+              <div class="space-y-1 text-[11px] text-[var(--text-sec)]">
+                <div><strong class="text-[var(--text-main)]">Problem:</strong> Staff may know a medicine is available but struggle to identify its physical location.</div>
+                <div><strong class="text-[var(--text-main)]">Consideration:</strong> Rack information needs to connect clearly with the physical store layout.</div>
+                <div><strong class="text-[var(--text-main)]">Decision:</strong> Allow users to upload a store image, map racks and associate multiple medicines with each rack.</div>
+                <div class="text-[var(--accent)]"><strong class="text-[var(--accent)]">Intended Benefit:</strong> Make physical medicine identification easier through visual references.</div>
+              </div>
             </div>
-            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
-              Turning physical store information into a clear digital reference through visual mapping, recognizable rack labels, and easily accessible product-location details.
-            </p>
-          </div>
-
-          <!-- UX & UI Decisions -->
-          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 text-xs">
-            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
-              Mapping Workflow &amp; UX Decisions
-            </div>
-            <div class="flex flex-wrap items-center gap-1.5 mb-3 text-[10px] font-mono text-[var(--text-sec)]">
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Upload Layout Image</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Identify &amp; Tag Racks</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--accent)]">Map Products to Racks</span>
-              <span>→</span>
-              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Instant Medicine Discovery</span>
-            </div>
-            <ul class="space-y-1 text-[11px] text-[var(--text-sec)] leading-normal">
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Upload or select store image provides a clear starting point for establishing the floorplan.</span>
-              </li>
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Visually distinct rack labels and consistent zone codes ensure effortless physical-to-digital orientation.</span>
-              </li>
-              <li class="flex items-start gap-1.5">
-                <span class="text-[var(--accent)]">•</span>
-                <span>Clear feedback confirms saving or updating rack mappings, keeping layouts legible and zoomable on mobile.</span>
-              </li>
-            </ul>
           </div>
         </div>
 
@@ -6041,6 +6186,7 @@ function renderMeditrackCaseStudy(project, container) {
                     playsinline
                     webkit-playsinline
                     preload="auto"
+                    poster="assets/meditrack-store-mapping-poster.jpg"
                     class="w-full h-full object-contain block select-none bg-black"
                     style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
                     aria-label="MediTrack Smart Store Mapping Walkthrough"
@@ -6088,144 +6234,356 @@ function renderMeditrackCaseStudy(project, container) {
       </div>
     </div>
 
-    <!-- 02 — The Problem -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">02 — THE PROBLEM</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-4">Core Design Challenge</h2>
-      <p class="text-base text-[var(--text-sec)] leading-relaxed max-w-3xl">${project.problem}</p>
-    </div>
-
-    <!-- 03 — Users & Stakeholders -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">03 — USERS &amp; STAKEHOLDERS</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Who I Designed For</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        ${project.users.map(u => `
-          <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-            <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-wider mb-2">${u.role}</div>
-            <p class="text-sm text-[var(--text-sec)] leading-relaxed">${u.need}</p>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- 04 — Context and Requirements -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">04 — CONTEXT &amp; REQUIREMENTS</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-4">Scoping the Solution</h2>
-      <p class="text-base text-[var(--text-sec)] leading-relaxed max-w-3xl mb-6">${project.context}</p>
-    </div>
-
-    <!-- 05 — UX Challenges -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">05 — UX CHALLENGES</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Key Complexities Addressed</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        ${project.challenges.map(c => `
-          <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg font-serif text-[var(--text-main)] mb-2">${c.title}</h3>
-              <p class="text-sm text-[var(--text-sec)] leading-relaxed">${c.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- 06 — Information Architecture -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">06 — INFORMATION ARCHITECTURE</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Structural Hierarchy</h2>
-      <div class="p-6 sm:p-8 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          ${project.iaNodes.map((node, i) => `
-            <div class="p-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] flex flex-col justify-center">
-              <div class="text-xs font-mono text-[var(--accent)] mb-1">NODE 0${i + 1}</div>
-              <div class="text-sm font-semibold text-[var(--text-main)]">${node.label}</div>
-              <div class="text-xs text-[var(--text-sec)] mt-1">${node.sub}</div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>
-
-    <!-- 07 — User Flow -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">07 — USER FLOW</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Primary Interaction Path</h2>
-      <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] flex flex-wrap items-center justify-between gap-4">
-        ${project.userFlow.map((step, idx) => `
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full border border-[var(--accent)] bg-[var(--card)] flex items-center justify-center text-xs font-bold text-[var(--accent)]">
-              ${idx + 1}
-            </div>
-            <div class="text-sm font-medium text-[var(--text-main)]">${step}</div>
-          </div>
-          ${idx < project.userFlow.length - 1 ? '<span class="text-[var(--text-sec)] hidden sm:inline">→</span>' : ''}
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- 08 — Design System -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">08 — DESIGN SYSTEM &amp; TOKENS</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Component Foundations</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-        <div>
-          <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-wider mb-3">Color Foundations</div>
-          <ul class="space-y-2 text-sm text-[var(--text-sec)]">
-            ${project.designSystem.colors.map(col => `
-              <li class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full border border-[var(--border)] bg-[var(--accent)]"></span>
-                ${col}
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-        <div>
-          <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-wider mb-3">Component Library</div>
-          <ul class="space-y-2 text-sm text-[var(--text-sec)]">
-            ${project.designSystem.components.map(comp => `
-              <li class="flex items-center gap-2">
-                <span class="text-[var(--accent)]">✓</span>
-                ${comp}
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 09 — Challenges and Solutions -->
-    <div class="mb-16 border-t border-[var(--border)] pt-12">
-      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">09 — CHALLENGES &amp; SOLUTIONS</div>
-      <h2 class="text-3xl font-serif text-[var(--text-main)] mb-6">Design Decisions</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        ${project.solutions.map(s => `
-          <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)]">
-            <div class="text-xs font-mono text-[var(--accent)] uppercase mb-2">Challenge</div>
-            <div class="text-base font-semibold text-[var(--text-main)] mb-4">${s.challenge}</div>
-            <div class="text-xs font-mono text-[var(--text-sec)] uppercase mb-2">Design Response</div>
-            <p class="text-sm text-[var(--text-sec)] leading-relaxed">${s.solution}</p>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- 10 & 11 — Outcome and Learnings -->
+    <!-- 08 — From Medicine Search to Secure Checkout: Point of Sale & Compliance -->
     <div class="mb-20 border-t border-[var(--border)] pt-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">10 — OUTCOME</div>
-          <h3 class="text-2xl font-serif text-[var(--text-main)] mb-3">Qualitative Impact</h3>
-          <p class="text-sm text-[var(--text-sec)] leading-relaxed">${project.outcome}</p>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column (45% ~ lg:col-span-5) -->
+        <div class="md:col-span-6 lg:col-span-5 flex flex-col items-start justify-center">
+          <div class="text-xs font-mono text-[var(--accent)] tracking-wider uppercase mb-2 font-semibold">
+            08 — POINT OF SALE · BILLING WORKFLOW
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-3 tracking-tight break-words">
+            From Medicine Search to Secure Checkout.
+          </h2>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-6 font-light">
+            A structured pharmacy checkout experience that guides counter staff from medicine search and cart review to discount application, conditional prescription validation, and multi-mode payment.
+          </p>
+
+          <!-- Checkout Progression Flow -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
+            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
+              Checkout Progression
+            </div>
+            <div class="flex flex-wrap items-center gap-1.5 mb-2 text-[10px] font-mono text-[var(--text-sec)]">
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Search</span>
+              <span>→</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Add to Cart</span>
+              <span>→</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Review Bill</span>
+              <span>→</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--accent)]">Customer (Rx)</span>
+              <span>→</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--accent)]">OTP Gate</span>
+              <span>→</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[var(--text-main)]">Payment Mode</span>
+            </div>
+          </div>
+
+          <!-- Key Experiences Checklist -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-5">
+            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-semibold">
+              Key Checkout Experiences
+            </div>
+            <ul class="space-y-1.5 text-xs text-[var(--text-sec)]">
+              <li class="flex items-start gap-2">
+                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Medicine search &amp; staging:</strong> Add single or multiple medicines directly to active cart.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Transparent bill summary:</strong> Clear line-item deductions, taxes, and final payable amount.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Conditional Rx gating:</strong> Enforces customer name capture and pharmacist OTP authorization for regulated medicines.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[var(--accent)] font-bold mt-0.5">✓</span>
+                <span><strong class="text-[var(--text-main)] font-medium">Multi-mode payments:</strong> Accommodates Cash, UPI, Split Payment, and Store Credit / Pay-Later.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- UX Decisions: Multiple Sessions & Conditional Rx -->
+          <div class="w-full border-t border-[var(--border)] pt-4 mb-2 space-y-4">
+            
+            <!-- Decision 1: Multiple Billing Sessions -->
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs">
+              <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-bold">
+                UX Decision · Multiple Billing Sessions
+              </div>
+              <div class="space-y-1 text-[11px] text-[var(--text-sec)]">
+                <div><strong class="text-[var(--text-main)]">Problem:</strong> A pending payment can interrupt the billing counter when another customer is waiting.</div>
+                <div><strong class="text-[var(--text-main)]">Consideration:</strong> Staff should be able to continue serving another customer without losing the pending transaction.</div>
+                <div><strong class="text-[var(--text-main)]">Decision:</strong> Allow one billing session to be placed on hold while another billing session is initiated.</div>
+                <div class="text-[var(--accent)]"><strong class="text-[var(--accent)]">Intended Benefit:</strong> Reduce unnecessary interruptions in the billing workflow.</div>
+              </div>
+            </div>
+
+            <!-- Decision 2: Conditional Rx Verification -->
+            <div class="p-3.5 rounded-lg border border-[var(--border)] bg-[var(--sec-bg)] text-xs">
+              <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-1 font-bold">
+                UX Decision · Conditional Rx Verification
+              </div>
+              <div class="space-y-1 text-[11px] text-[var(--text-sec)]">
+                <div><strong class="text-[var(--text-main)]">Problem:</strong> Applicable prescription medicines require additional customer information and pharmacist authorisation.</div>
+                <div><strong class="text-[var(--text-main)]">Consideration:</strong> Verification requirements should appear in the relevant transaction context.</div>
+                <div><strong class="text-[var(--text-main)]">Decision:</strong> Require customer name for applicable Rx medicines and use OTP-based pharmacist authorisation where required.</div>
+                <div class="text-[var(--accent)]"><strong class="text-[var(--accent)]">Intended Benefit:</strong> Make the verification requirement visible at the appropriate stage of the sale.</div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
-          <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">11 — LEARNINGS</div>
-          <h3 class="text-2xl font-serif text-[var(--text-main)] mb-3">Reflection</h3>
-          <p class="text-sm text-[var(--text-sec)] leading-relaxed">${project.learnings}</p>
+
+        <!-- Right Column (Expanded Mobile Showcase Fitted to Section Height) -->
+        <div class="md:col-span-6 lg:col-span-7 flex justify-center items-center w-full min-w-0">
+          <div class="w-full max-w-[320px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[400px] mx-auto relative rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 sm:p-4 shadow-2xl flex flex-col items-center justify-center overflow-hidden">
+            
+            <!-- Subtle Ambient Glow Backdrop -->
+            <div class="absolute w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] rounded-full bg-[var(--accent)]/15 blur-[80px] pointer-events-none -top-10 -right-10"></div>
+            <div class="absolute w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-[#ff7a59]/10 blur-[70px] pointer-events-none -bottom-8 -left-8"></div>
+
+            <!-- Inner Card Framing Canvas (Terracotta / Warm Burgundy tone - NO overflow-hidden) -->
+            <div class="relative w-full rounded-xl bg-gradient-to-b from-[#341b23] via-[#24131b] to-[#1a0c14] border border-white/5 py-3 px-3 sm:py-4 sm:px-4 flex flex-col items-center justify-center shadow-inner">
+              
+              <!-- Phone Exterior Chassis with titanium rim & bezels (Responsive width, centered, unclipped frame) -->
+              <div class="relative w-[210px] min-[360px]:w-[220px] sm:w-[230px] md:w-[225px] lg:w-[240px] max-w-full rounded-[36px] sm:rounded-[40px] p-2 sm:p-2.5 bg-gradient-to-b from-[#2d1f2a] via-[#1a1118] to-[#120910] border-2 border-[var(--border)] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/80 flex flex-col items-center mx-auto transition-all select-none">
+                
+                <!-- Top Speaker Slit on Outer Bezel (Integrated, zero layout shift) -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-1 bg-black/80 rounded-full border border-white/10 pointer-events-none z-10" aria-hidden="true"></div>
+
+                <!-- Hardware buttons on phone edges (unclipped) -->
+                <div class="absolute -left-[2.5px] top-14 sm:top-16 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -left-[2.5px] top-21 sm:top-24 w-[2.5px] h-5 sm:h-6 bg-[#3d2a36] rounded-l border-l border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+                <div class="absolute -right-[2.5px] top-16 sm:top-18 w-[2.5px] h-8 sm:h-9 bg-[#3d2a36] rounded-r border-r border-t border-b border-white/10 pointer-events-none" aria-hidden="true"></div>
+
+                <!-- Inner Screen Area (Exact 9 / 19.5 aspect ratio matching mobile screen display) -->
+                <div 
+                  class="relative w-full rounded-[28px] sm:rounded-[30px] overflow-hidden bg-black flex items-center justify-center group/screen cursor-pointer select-none"
+                  style="aspect-ratio: 9 / 19.5; width: 100%; height: auto;"
+                  onclick="toggleMeditrackBillingPlayback()"
+                  title="Click to toggle billing walkthrough playback"
+                >
+                  <!-- Billing Walkthrough Video -->
+                  <video
+                    id="csMeditrackBillingVideo"
+                    autoplay
+                    muted
+                    defaultMuted
+                    loop
+                    playsinline
+                    webkit-playsinline
+                    preload="auto"
+                    poster="assets/meditrack-billing-workflow-poster.jpg"
+                    class="w-full h-full object-contain block select-none bg-black"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000000;"
+                    aria-label="MediTrack Billing and Checkout Walkthrough"
+                  >
+                    <source src="assets/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="public/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="assets/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <source src="/videos/meditrack-billing-workflow.mp4#t=0.001" type="video/mp4">
+                    <p class="p-2 text-[10px] text-[var(--text-sec)]">Your browser does not support the video tag.</p>
+                  </video>
+
+                  <!-- Screen Gloss Reflection -->
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] z-10 rounded-[28px] sm:rounded-[30px]" aria-hidden="true"></div>
+
+                  <!-- Fallback Play Overlay when Paused / Autoplay Blocked -->
+                  <div 
+                    id="csMeditrackBillingPlayOverlay" 
+                    class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center transition-opacity duration-200"
+                    aria-label="Play billing walkthrough"
+                  >
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[var(--accent)] text-[#170D13] flex items-center justify-center shadow-2xl transform group-hover/screen:scale-105 active:scale-95 transition-all">
+                      <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Caption Footer -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 w-full px-1 pt-2.5 text-[10px] sm:text-[11px] text-[var(--text-sec)] font-mono text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 shrink-0">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span class="tracking-wider">BILLING &amp; CHECKOUT WALKTHROUGH</span>
+              </span>
+              <span class="text-[var(--text-sec)] truncate max-w-full">Pharmacy Mobile Walkthrough</span>
+            </div>
+          </div>
         </div>
+
       </div>
+    </div>
+
+    <!-- 09 — Admin Oversight and Business Visibility: Desktop SaaS Dashboard -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">09 — ADMINISTRATIVE SYSTEM ARCHITECTURE</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Admin Oversight &amp; Business Visibility
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        While my primary scope focused on designing the handheld <strong class="text-[var(--text-main)] font-medium">Mobile Experience</strong> for floor and counter staff, MediTrack operates within a broader platform architecture supported by a separately designed Desktop SaaS Dashboard.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+            <h3 class="text-base font-semibold text-[var(--text-main)]">User Provisioning &amp; Role Management</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+            Centralized administration where owners generate staff credentials, assign permissions (Pharmacist vs. Local In-charge), and bind user profiles to specific store branches.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+            <h3 class="text-base font-semibold text-[var(--text-main)]">Live Counter Monitoring</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+            Real-time oversight into active billing sessions, held customer carts, daily transaction volumes, and counter throughput across all connected pharmacy branches.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+            <h3 class="text-base font-semibold text-[var(--text-main)]">Store-Wise Revenue Analytics</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+            Multi-branch financial reporting comparing revenue trends, fast-moving medicine categories, stock turnover ratios, and store-specific settlement tallies.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+            <h3 class="text-base font-semibold text-[var(--text-main)]">Doctor-Wise Referral Insights</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed">
+            Prescription analytics linking dispensed Schedule medicines with prescribing physicians, providing store leadership with clear visibility into local healthcare referral patterns.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 10 — Outcome and Reflection -->
+    <div class="mb-20 border-t border-[var(--border)] pt-12">
+      <div class="text-xs tracking-widest text-[var(--accent)] uppercase font-semibold mb-2">10 — OUTCOME &amp; REFLECTION</div>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-main)] font-bold mb-4">
+        Delivering a Clinically Safe, Operationally Agile System
+      </h2>
+      <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed max-w-3xl mb-8 font-light">
+        A structured synthesis distinguishing implemented mobile capabilities, intended operational benefits, and honest prototype evaluation.
+      </p>
+
+      <!-- Three Rigorous Dimensions: Implemented, Intended, Validated -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <!-- Dimension 1: Implemented -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">Scope Delivered</div>
+            <h3 class="text-base font-semibold text-[var(--text-main)] mb-3">Implemented Capabilities</h3>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">✓</span>
+                <span>Mobile POS supporting barcode scanning and instant chemical composition search.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">✓</span>
+                <span>Visual store layout mapping linking physical rack coordinates to SKU records.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">✓</span>
+                <span>Multi-session billing with Hold/Resume capabilities for uninterrupted queue handling.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">✓</span>
+                <span>Conditional prescription compliance gating with Pharmacist OTP authorization.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-[var(--accent)] font-bold">✓</span>
+                <span>Admin-provisioned login with role permissions and upfront 'What's New' briefing.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Designed Architecture
+          </div>
+        </div>
+
+        <!-- Dimension 2: Intended Benefits -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider mb-2 font-bold">UX Objectives</div>
+            <h3 class="text-base font-semibold text-[var(--text-main)] mb-3">Intended UX Benefits</h3>
+            <ul class="space-y-2 text-xs text-[var(--text-sec)] leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>Cuts manual catalog entry drudgery through bulk Excel uploads.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>Eliminates shelf-hunting confusion in physical aisles through visual rack indicators.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>Prevents counter standstills caused by delayed UPI payments or customer hesitation.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>Enforces strict regulatory drug compliance without adding friction to OTC sales.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>Fosters immediate awareness of application enhancements across all technical skill levels.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Intended Improvements
+          </div>
+        </div>
+
+        <!-- Dimension 3: Validated Results -->
+        <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-blue-400 uppercase tracking-wider mb-2 font-bold">Feedback &amp; Scope</div>
+            <h3 class="text-base font-semibold text-[var(--text-main)] mb-3">Validated Results</h3>
+            <p class="text-xs text-[var(--text-sec)] leading-relaxed mb-3">
+              During prototype reviews with pharmacy operators, the <strong class="text-[var(--text-main)] font-medium">visual rack locator</strong> and <strong class="text-[var(--text-main)] font-medium">held billing sessions</strong> received strong qualitative praise as immediate improvements over legacy desktop POS software.
+            </p>
+            <p class="text-xs text-[var(--text-sec)] leading-relaxed">
+              <em class="text-[var(--text-main)]">Methodological Note:</em> Precise quantitative metrics (such as exact percentage reductions in checkout duration or multi-store revenue growth) require long-term production telemetry across physical store rollouts, and are therefore purposefully not fabricated.
+            </p>
+          </div>
+          <div class="border-t border-[var(--border)] pt-3 mt-4 text-[11px] text-[var(--text-sec)] font-mono">
+            Qualitative Walkthrough Validation
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Personal Reflection Card -->
+      <div class="p-6 rounded-xl border border-[var(--border)] bg-[var(--sec-bg)] mb-8">
+        <div class="text-[10px] font-mono text-[var(--accent)] uppercase tracking-wider mb-2 font-bold">
+          Personal Reflection
+        </div>
+        <h3 class="text-lg font-serif text-[var(--text-main)] font-bold mb-3">
+          Designing for Physical Realities in Healthcare Retail
+        </h3>
+        <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed mb-3 font-light">
+          Designing MediTrack reinforced that healthcare interfaces never exist in a vacuum. A mobile app in a retail pharmacy operates amidst noisy store counters, crowded physical aisles, hurried customers, and strict legal boundaries.
+        </p>
+        <p class="text-xs sm:text-sm text-[var(--text-sec)] leading-relaxed font-light">
+          The core lesson was that good enterprise UX is not about packing more controls into a smartphone screen; it is about creating harmony between digital data and physical human movement—ensuring that a floor runner finds the right rack in seconds and a counter pharmacist dispenses life-critical medicine with confidence.
+        </p>
+      </div>
+
     </div>
 
     <!-- Explore More Work Section -->
